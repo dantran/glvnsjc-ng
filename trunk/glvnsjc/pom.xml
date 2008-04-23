@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.glvnsjc</groupId>
+    <artifactId>glvnsjc-root</artifactId>
+    <version>1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>glvnsjc</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <name>glvnsjc</name>
+
+  <packaging>war</packaging>
+
+  <description>
+    ${pom.name} is a web database application. It keeps track of students and instructors historical information.
+  </description>
+
+  <distributionManagement>
+    <repository>
+      <id>glvnsjc.repo</id>
+      <name>glvnsjc central repository</name>
+      <url>dav:http://glvnsjc.homedns.org/webdav/maven2</url>
+    </repository>
+    <snapshotRepository>
+      <id>glvnsjc.snapshot</id>
+      <name>glvnsjc snapshot repository</name>
+      <url>dav:http://glvnsjc.homedns.org/webdav/snapshots</url>
+    </snapshotRepository>
+    <site>
+      <id>glvnsjc.site</id>
+      <name>glvnsjc web site</name>
+      <url>dav:http://glvnsjc.homedns.org/webdav/site</url>
+    </site>
+  </distributionManagement>
+
+  <scm>
+    <connection>scm:svn:https://glvnsjc.dev.java.net/svn/glvnsjc/trunk/glvnsjc</connection>
+    <developerConnection>scm:svn:https://glvnsjc.dev.java.net/svn/glvnsjc/trunk/glvnsjc</developerConnection>
+    <url>https://glvnsjc.dev.java.net/source/browse/glvnsjc/trunk/glvnsjc</url>
+  </scm>
+
+  <!--  use this to override transitive dependency -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <version>1.8.0.7</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+
+    <!-- ================================================================== -->
+    <!--  utils                                                             -->
+    <!-- ================================================================== -->
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.3</version>
+    </dependency>
+
+    <!-- ================================================================== -->
+    <!--  JPA + Provider                                                             -->
+    <!-- ================================================================== -->
+
+    <!-- 
+      <dependency>
+      <groupId>javax.persistence</groupId>
+      <artifactId>persistence-api</artifactId>
+      <version>1.0</version>
+      </dependency>
+    -->
+
+    <dependency>
+      <groupId>org.apache.openjpa</groupId>
+      <artifactId>openjpa</artifactId>
+      <version>1.0.2</version>
+    </dependency>
+
+    <!-- ================================================================== -->
+    <!--  JDBC                                                              -->
+    <!-- ================================================================== -->
+
+    <dependency>
+      <groupId>commons-dbcp</groupId>
+      <artifactId>commons-dbcp</artifactId>
+      <version>1.2.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.derby</groupId>
+      <artifactId>derbyclient</artifactId>
+      <version>${derby.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.derby</groupId>
+      <artifactId>derby</artifactId>
+      <version>${derby.version}</version>
+    </dependency>
+
+    <!-- ================================================================== -->
+    <!--  Container                                                             -->
+    <!-- ================================================================== -->
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring</artifactId>
+      <version>2.5.3</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>aspectj</groupId>
+      <artifactId>aspectjrt</artifactId>
+      <version>${aspectj.version}</version>
+    </dependency>
+
+    <!-- 
+      <dependency>
+      <groupId>aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>${aspectj.version}</version>
+      </dependency>
+    -->
+
+    <!-- ================================================================== -->
+    <!--  Conversation                                                      -->
+    <!-- ================================================================== -->
+    <dependency>
+      <groupId>org.apache.myfaces.orchestra</groupId>
+      <artifactId>myfaces-orchestra-core</artifactId>
+      <version>1.1</version>
+    </dependency>
+
+    <!-- ================================================================== -->
+    <!--  WEB                                                               -->
+    <!-- ================================================================== -->
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- ================================================================== -->
+    <!--  test                                                             -->
+    <!-- ================================================================== -->
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+
+  <build>
+
+    <resources>
+      <resource>
+        <directory>${basedir}/target/resources</directory>
+      </resource>
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+      </resource>
+    </resources>
+
+
+    <plugins>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>buildnumber-maven-plugin</artifactId>
+        <version>1.0-beta-1</version>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>create</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        
+        <configuration>
+        
+          <additionalProjectFacets>
+            <jst.jsf>1.2</jst.jsf>
+          </additionalProjectFacets>
+          
+          <additionalProjectnatures>
+            <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
+          </additionalProjectnatures>
+          
+          <additionalBuildcommands>
+            <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
+          </additionalBuildcommands>
+          
+          <wtpContextName>${artifactId}</wtpContextName>
+          
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <warSourceDirectory>webapp</warSourceDirectory>
+          <archiveClasses>true</archiveClasses>
+        </configuration>
+      </plugin>
+
+
+      <!-- deploy the jar file sothat webtest can reuse the resource -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>attach-artifact</goal>
+            </goals>
+            <configuration>
+              <artifacts>
+                <artifact>
+                  <file>
+                    ${project.build.directory}/${project.build.finalName}/WEB-INF/lib/${project.build.finalName}.jar
+                  </file>
+                </artifact>
+              </artifacts>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <id>create-build-properties</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <mkdir dir="${secondary.resource.directory}" />
+                <tstamp />
+                <echo file="${build.properties.file}">
+                  version=${project.version} revision=${buildNumber} timestamp=${DSTAMP}-${TSTAMP}
+                </echo>
+              </tasks>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+
+  <properties>
+    <secondary.resource.directory>${project.build.directory}/resources/org/glvnsjc</secondary.resource.directory>
+    <build.properties.file>${secondary.resource.directory}/build.properties</build.properties.file>
+    <derby.version>10.3.2.1</derby.version>
+    <spring.version>2.5.3</spring.version>
+    <aspectj.version>1.5.3</aspectj.version>
+  </properties>
+
+</project>
