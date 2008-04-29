@@ -202,6 +202,36 @@
     <module>glvnsjc</module>
   </modules>
   
+  <profiles>
+   <profile>
+     <id>configure-workspace</id>
+     <build>
+        <plugins>
+          <!-- we only want generate surefire report when building the site -->
+          <plugin>
+            <artifactId>maven-antrun-plugin</artifactId>
+            <executions>
+              <execution>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>run</goal>
+                </goals>
+                <configuration>
+                   <tasks>
+                     <copy todir="${basedir}" overwrite="true">
+                       <fileset dir="${basedir}/src/eclipse/workspace"/> 
+                     </copy>
+                   </tasks>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+     
+   </profile>
+     
+  </profiles>  
   <properties>
     <javac.target>1.6</javac.target>
     <javac.source>1.6</javac.source>
