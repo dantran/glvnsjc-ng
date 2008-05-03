@@ -115,7 +115,7 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring</artifactId>
-      <version>2.5.3</version>
+      <version>${spring.version}</version>
     </dependency>
 
 
@@ -282,7 +282,7 @@
     <secondary.resource.directory>${project.build.directory}/resources/org/glvnsjc</secondary.resource.directory>
     <build.properties.file>${secondary.resource.directory}/build.properties</build.properties.file>
     <derby.version>10.3.2.1</derby.version>
-    <spring.version>2.5.3</spring.version>
+    <spring.version>2.5.4</spring.version>
     <aspectj.version>1.5.3</aspectj.version>
   </properties>
 
