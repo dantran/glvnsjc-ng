@@ -153,6 +153,18 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>javax.faces</groupId>
+      <artifactId>jsf-api</artifactId>
+      <version>1.2_02</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.faces</groupId>
+      <artifactId>jsf-impl</artifactId>
+      <version>1.2-b19</version>
+    </dependency>
+
     <!-- ================================================================== -->
     <!--  test                                                             -->
     <!-- ================================================================== -->
