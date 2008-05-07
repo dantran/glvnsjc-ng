@@ -49,7 +49,7 @@
   <bean id="persistentContextConversationInterceptor"
     class="org.apache.myfaces.orchestra.conversation.spring.PersistenceContextConversationInterceptor">
     <property name="persistenceContextFactory" ref="persistentContextFactory" />
-    <aop:scoped-proxy />
+
   </bean>
 
   <!-- 3. conversation - persistence adapter -->

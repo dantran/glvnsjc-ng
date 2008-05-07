@@ -90,7 +90,7 @@
     is deployed -->
   <context-param>
     <param-name>org.apache.myfaces.trinidad.CHECK_FILE_MODIFICATION</param-name>
-    <param-value>true</param-value>
+    <param-value>false</param-value>
   </context-param>
 
   <!-- Enables Change Persistence at a session scope.  By default,
@@ -140,4 +140,42 @@
     <url-pattern>/adf/*</url-pattern>
     </servlet-mapping>
   -->
+
+  <!-- =========================================================================== 
+    Spring Configuration                             
+    =========================================================================== -->
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>
+      classpath:org/glvnsjc/applicationContext-all.xml classpath:org/glvnsjc/applicationContext-dao.xml,
+      classpath:org/glvnsjc/applicationContext-datasource.xml,
+      <!-- classpath:org/glvnsjc/applicationContext-mail.xml, -->
+      classpath:org/glvnsjc/applicationContext-openjpa.xml, classpath:org/glvnsjc/applicationContext-orchestra.xml,
+      classpath:org/glvnsjc/applicationContext-persistence.xml, classpath:org/glvnsjc/applicationContext-resources.xml
+    </param-value>
+  </context-param>
+
+  <listener>
+    <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <!-- 
+    <listener>
+    <listener-class>org.acegisecurity.ui.session.HttpSessionEventPublisher</listener-class>
+    </listener>  
+  -->
+
+  <!-- =========================================================================== 
+    Orchestra Configuration                             
+    =========================================================================== -->
+  <listener>
+    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>
+      org.apache.myfaces.orchestra.conversation.servlet.ConversationManagerSessionListener
+    </listener-class>
+  </listener>
 </web-app>
