@@ -7,7 +7,8 @@
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>index.jsf</welcome-file>
+    <welcome-file>index.jsf</welcome-file>
     <welcome-file>default.html</welcome-file>
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
@@ -147,12 +148,13 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-      classpath:org/glvnsjc/applicationContext-all.xml classpath:org/glvnsjc/applicationContext-dao.xml,
+      classpath:org/glvnsjc/applicationContext-orchestra.xml
+      classpath:org/glvnsjc/applicationContext-persistence.xml, 
       classpath:org/glvnsjc/applicationContext-datasource.xml,
-      <!-- classpath:org/glvnsjc/applicationContext-mail.xml, -->
-      classpath:org/glvnsjc/applicationContext-openjpa.xml, classpath:org/glvnsjc/applicationContext-orchestra.xml,
-      classpath:org/glvnsjc/applicationContext-persistence.xml, classpath:org/glvnsjc/applicationContext-resources.xml,
-      classpath:org/glvnsjc/applicationContext-glvnsjc-web.xml
+      classpath:org/glvnsjc/applicationContext-resources.xml,
+      classpath:org/glvnsjc/applicationContext-openjpa.xml, 
+      classpath:org/glvnsjc/applicationContext-dao.xml,
+      classpath:org/glvnsjc/applicationContext-glvnsjc-web.xml,
     </param-value>
   </context-param>
 
