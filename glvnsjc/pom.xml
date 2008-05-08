@@ -155,18 +155,12 @@
       <version>1.0</version>
       <scope>provided</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>el-impl</groupId>
       <artifactId>el-impl</artifactId>
       <version>1.0</version>
       <scope>runtime</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.myfaces.trinidad</groupId>
-      <artifactId>trinidad-api</artifactId>
-      <version>1.2.7</version>
     </dependency>
 
     <dependency>
@@ -293,8 +287,16 @@
               <tasks>
                 <mkdir dir="${secondary.resource.directory}" />
                 <tstamp />
+                <!--  
+                  blanklines are intended to force eclipse formatter leave the properties
+                  alone, we dont want all properties in one line
+                -->
                 <echo file="${build.properties.file}">
-                  version=${project.version} revision=${buildNumber} timestamp=${DSTAMP}-${TSTAMP}
+                  version=${project.version}
+
+                  revision=${buildNumber}
+
+                  timestamp=${DSTAMP}-${TSTAMP}
                 </echo>
               </tasks>
             </configuration>
@@ -309,9 +311,9 @@
   <profiles>
 
     <!--=============================================================
-         JSF Provider
-    ===============================================================-->
-  
+      JSF Provider
+      ===============================================================-->
+
     <profile>
       <id>jsfri</id>
       <activation>
@@ -332,7 +334,7 @@
         </dependency>
       </dependencies>
     </profile>
-  
+
     <profile>
       <id>jsf-myface</id>
       <activation>
@@ -354,11 +356,11 @@
         </dependency>
       </dependencies>
     </profile>
-    
-    
+
+
     <!--=============================================================
-         JPA Provider
-    ===============================================================-->
+      JPA Provider
+      ===============================================================-->
     <profile>
       <id>jpa-openjpa</id>
       <activation>
@@ -374,7 +376,6 @@
         </dependency>
       </dependencies>
     </profile>
-
 
     <profile>
       <id>jpa-hibernate</id>
@@ -392,13 +393,13 @@
         </dependency>
       </dependencies>
     </profile>
-     
+
   </profiles>
-  
+
   <properties>
     <secondary.resource.directory>${project.build.directory}/resources/org/glvnsjc</secondary.resource.directory>
     <build.properties.file>${secondary.resource.directory}/build.properties</build.properties.file>
-    
+
     <openjpa.version>1.0.2</openjpa.version>
     <derby.version>10.4.1.3</derby.version>
     <spring.version>2.5.4</spring.version>

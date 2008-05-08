@@ -1,6 +1,5 @@
 package org.glvnsjc.model.domain;
 
-
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -103,19 +102,18 @@ public class Address
     public int hashCode()
     {
         int result;
-        result = ( address != null ? address.hashCode() : 0 );
-        result = 29 * result + ( city != null ? city.hashCode() : 0 );
-        result = 29 * result + ( province != null ? province.hashCode() : 0 );
-        result = 29 * result + ( country != null ? country.hashCode() : 0 );
-        result = 29 * result + ( postalCode != null ? postalCode.hashCode() : 0 );
+        result = ( getAddress() != null ? getAddress().hashCode() : 0 );
+        result = 29 * result + ( getCity() != null ? getCity().hashCode() : 0 );
+        result = 29 * result + ( getProvince() != null ? getProvince().hashCode() : 0 );
+        result = 29 * result + ( getCountry() != null ? getCountry().hashCode() : 0 );
+        result = 29 * result + ( getPostalCode() != null ? getPostalCode().hashCode() : 0 );
         return result;
     }
 
     public String toString()
     {
-        return new ToStringBuilder( this, ToStringStyle.MULTI_LINE_STYLE ).append( "country", this.country )
-            .append( "address", this.address ).append( "province", this.province ).append( "postalCode",
-                                                                                           this.postalCode )
-            .append( "city", this.city ).toString();
+        return new ToStringBuilder( this, ToStringStyle.MULTI_LINE_STYLE ).append( "country", this.getCountry() )
+            .append( "address", this.getAddress() ).append( "province", this.getProvince() )
+            .append( "postalCode", this.getPostalCode() ).append( "city", this.getCity() ).toString();
     }
 }
