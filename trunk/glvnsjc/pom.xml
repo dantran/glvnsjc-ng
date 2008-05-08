@@ -178,7 +178,21 @@
       <artifactId>jsf-facelets</artifactId>
       <version>1.1.14</version>
     </dependency>
+
+    <dependency>
+      <groupId>javax.el</groupId>
+      <artifactId>el-api</artifactId>
+      <version>1.0</version>
+      <scope>provided</scope>
+    </dependency>
     
+    <dependency>
+      <groupId>el-impl</groupId>
+      <artifactId>el-impl</artifactId>
+      <version>1.0</version>
+      <scope>runtime</scope>
+    </dependency>
+
     <dependency>
       <groupId>org.apache.myfaces.trinidad</groupId>
       <artifactId>trinidad-api</artifactId>
