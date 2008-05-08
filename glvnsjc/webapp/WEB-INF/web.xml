@@ -151,7 +151,8 @@
       classpath:org/glvnsjc/applicationContext-datasource.xml,
       <!-- classpath:org/glvnsjc/applicationContext-mail.xml, -->
       classpath:org/glvnsjc/applicationContext-openjpa.xml, classpath:org/glvnsjc/applicationContext-orchestra.xml,
-      classpath:org/glvnsjc/applicationContext-persistence.xml, classpath:org/glvnsjc/applicationContext-resources.xml
+      classpath:org/glvnsjc/applicationContext-persistence.xml, classpath:org/glvnsjc/applicationContext-resources.xml,
+      classpath:org/glvnsjc/applicationContext-glvnsjc-web.xml
     </param-value>
   </context-param>
 
