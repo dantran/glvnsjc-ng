@@ -1,0 +1,41 @@
+@CHARSET "ISO-8859-1";
+
+html, body {
+	margin: 0;
+	padding: 0;
+	border:0;
+	height: 100%;
+	min-height: 100%;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* Because IE adds a bottom margin/padding to images unless they have display:block; */ 
+img {
+	display:block;
+}
+
+/* ============== Facelets Div Styles  ============== 
+	 see layout.xhtml file . Using # (id) specific selectors for layout classes. */
+	 
+#header {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#leftMenu {
+	float:left;
+	width: 10em;
+	height:100%;
+	min-height: 100%;
+	border-right: 1px solid gray;
+
+}
+
+#content {
+	float:left;
+	border-bottom: green 1px solid;
+	border-right: green 1px solid;
+	border-top: green 1px solid;
+	border-left: green 1px solid;
+}
