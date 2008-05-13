@@ -195,6 +195,90 @@
           </configuration>
         </plugin>
         
+        <plugin>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <configuration>
+            <!-- starting with surefire 2.4, any jpa/embedded derby require this settings -->
+            <useSystemClassLoader>${useSystemClassLoader}</useSystemClassLoader>
+            
+            <systemProperties>
+
+              <property>
+                <name>jdbc.dialect</name>
+                <value>${jdbc.dialect}</value>
+              </property>
+
+              <property>
+                <name>jdbc.host</name>
+                <value>${jdbc.host}</value>
+              </property>
+
+              <property>
+                <name>jdbc.port</name>
+                <value>${jdbc.port}</value>
+              </property>
+              
+              <property>
+                <name>jdbc.name</name>
+                <value>${jdbc.name}</value>
+              </property>
+              
+              <property>
+                <name>jdbc.driver</name>
+                <value>${jdbc.driver}</value>
+              </property>
+              
+              <property>
+                <name>jdbc.url</name>
+                <value>${jdbc.url}</value>
+              </property>
+              
+              <property>
+                <name>jdbc.username</name>
+                <value>${jdbc.username}</value>
+              </property>
+              
+              <property>
+                <name>jdbc.password</name>
+                <value>${jdbc.password}</value>
+              </property>
+              
+              <property>
+                <name>hibernate.showsql</name>
+                <value>${hibernate.showsql}</value>
+              </property>
+              
+              <property>
+                <name>hibernate.schema</name>
+                <value>${hibernate.schema}</value>
+              </property>
+
+              <property>
+                <name>hibernate.dialect</name>
+                <value>${hibernate.dialect}</value>
+              </property>
+
+              <property>
+                <name>openjpa.showsql</name>
+                <value>${openjpa.showsql}</value>
+              </property>
+              
+              <property>
+                <name>openjpa.schema</name>
+                <value>${openjpa.schema}</value>
+              </property>
+              
+              <property>
+                <name>derby.system.home</name>
+                <value>${basedir}/target</value>
+              </property>
+
+            </systemProperties>
+            
+          </configuration>
+        </plugin>
+        
+        
       </plugins>
       
     </pluginManagement>
@@ -249,6 +333,69 @@
       </build>
      
    </profile>
+    
+    <profile>
+      <id>openjpa</id>
+      <properties>
+        <openjpa.showsql>DefaultLevel=WARN,SQL=TRACE</openjpa.showsql>
+        <openjpa.schema>buildSchema(SchemaAction='add')</openjpa.schema>
+      </properties>
+      <activation>
+        <property>
+          <name>!jpa</name>
+        </property>
+      </activation>
+    </profile>
+
+    <profile>
+      <id>hibernate</id>
+      <properties>
+        <jpa>hibernate</jpa>
+        <hibernate.showsql>false</hibernate.showsql>
+        <hibernate.schema>create-drop</hibernate.schema>
+      </properties>
+    </profile>
+    
+    <profile>
+      <id>hsqldb</id>
+      <properties>
+        <jdbc.dialect>hsqldb</jdbc.dialect>
+        <jdbc.host>localhost</jdbc.host>        
+        <jdbc.port>0</jdbc.port>        
+        <jdbc.name>${basedir}/target/database-hsqldb</jdbc.name>
+        <jdbc.username>sa</jdbc.username>
+        <jdbc.password />
+        <jdbc.driver>org.hsqldb.jdbcDriver</jdbc.driver>
+        <jdbc.url><![CDATA[jdbc:hsqldb:${jdbc.name};shutdown=true]]></jdbc.url>
+       
+        
+        <hibernate.dialect>org.hibernate.dialect.HSQLDialect</hibernate.dialect>        
+      </properties>
+      <activation>
+        <property>
+          <!-- this profile must be first in the list -->
+          <name>!jdbc.dialect</name>
+        </property>
+      </activation>
+    </profile>
+     
+    <profile>
+      <id>derby</id>
+      <properties>
+        <jdbc.dialect>derby</jdbc.dialect>
+        <jdbc.host>localhost</jdbc.host>        
+        <jdbc.port>0</jdbc.port>        
+        <jdbc.name>${basedir}/target/data/derby</jdbc.name> 
+        <jdbc.username>sa</jdbc.username>
+        <jdbc.password />
+        <jdbc.driver>org.apache.derby.jdbc.EmbeddedDriver</jdbc.driver>
+        <jdbc.url><![CDATA[jdbc:derby:${jdbc.name};create=true]]></jdbc.url>
+        
+        <hibernate.dialect>org.hibernate.dialect.DerbyDialect</hibernate.dialect>
+        <useSystemClassLoader>false</useSystemClassLoader>
+      </properties>
+    </profile>
+
      
   </profiles>  
   <properties>

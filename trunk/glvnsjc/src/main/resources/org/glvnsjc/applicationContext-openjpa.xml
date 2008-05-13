@@ -28,8 +28,8 @@
 
     <property name="jpaProperties">
       <props>
-        <prop key="openjpa.jdbc.SynchronizeMappings">buildSchema(SchemaAction='add')</prop>
-        <prop key="openjpa.Log">DefaultLevel=WARN,SQL=TRACE</prop>
+        <prop key="openjpa.jdbc.SynchronizeMappings">${openjpa.schema}</prop>
+        <prop key="openjpa.Log">${openjpa.showsql}</prop>
       </props>
     </property>
 
