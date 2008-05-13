@@ -21,8 +21,6 @@ public class Course
     @ManyToOne
     private Term term;
     
-    @OneToMany
-    private Set<Attendant> attendants = new HashSet<Attendant>();
 
     @OneToMany
     private Set<Score> scores = new HashSet<Score>();
@@ -58,6 +56,11 @@ public class Course
         this.scores = scores;
     }
 
+    ////////////////////////////////////////////////////////////////////////////////
+    
+    @OneToMany
+    private Set<Attendant> attendants = new HashSet<Attendant>();
+    
     public Set<Attendant> getAttendants()
     {
         return attendants;
@@ -67,5 +70,7 @@ public class Course
     {
         this.attendants = attendants;
     }
+    
+    ////////////////////////////////////////////////////////////////////////////////
     
 }
