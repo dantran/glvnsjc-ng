@@ -23,8 +23,8 @@
     <property name="jpaProperties">
       <props>
         <prop key="hibernate.dialect">${hibernate.dialect}</prop>
-        <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
-        <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>     
+        <prop key="hibernate.hbm2ddl.auto">${hibernate.schema}</prop>
+        <prop key="hibernate.show_sql">${hibernate.showsql}</prop>     
       </props>
     </property>
 
