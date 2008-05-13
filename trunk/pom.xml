@@ -45,6 +45,25 @@
     </site>
   </distributionManagement>
 
+  <repositories>
+    <repository>
+      <id>java-net</id>
+      <url>http://download.java.net/maven/1</url>
+      <layout>legacy</layout>
+    </repository>
+    <repository>
+      <id>snapshots</id>
+      <name>Apache Snapshots</name>
+      <url>http://people.apache.org/repo/m2-snapshot-repository</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    
+  </repositories>
   <scm>
     <connection>scm:svn:https://glvnsjc.googlecode.com/svn/trunk</connection>
     <developerConnection>scm:svn:https://glvnsjc.googlecode.com/svn/trunk</developerConnection>
