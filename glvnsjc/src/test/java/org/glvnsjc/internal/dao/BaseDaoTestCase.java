@@ -34,7 +34,7 @@ public abstract class BaseDaoTestCase
             "/org/glvnsjc/test/applicationContext-resources.xml",
             "/org/glvnsjc/applicationContext-datasource.xml",
             "/org/glvnsjc/applicationContext-persistence.xml",
-            "/org/glvnsjc/applicationContext-openjpa.xml",
+            "/org/glvnsjc/applicationContext-jpa.xml",
             "/org/glvnsjc/applicationContext-dao.xml"
             };
     }

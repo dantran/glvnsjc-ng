@@ -79,6 +79,35 @@
     </developer>
   </developers>
     
+  <!--  use this to override transitive dependency -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>hsqldb</groupId>
+        <artifactId>hsqldb</artifactId>
+        <version>1.8.0.7</version>
+      </dependency>
+      
+      <dependency>
+        <groupId>concurrent</groupId>
+        <artifactId>concurrent</artifactId>
+        <version>1.3.4</version>
+      </dependency>
+      
+        <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-entitymanager</artifactId>
+          <version>${hibernate.entitymanager.version}</version>
+        </dependency>
+      
+        <dependency>
+          <groupId>org.hibernate</groupId>
+          <artifactId>hibernate-annotations</artifactId>
+          <version>${hibernate.annotations.version}</version>
+        </dependency>
+      
+    </dependencies>
+  </dependencyManagement>
     
   <reporting>
   
@@ -400,9 +429,23 @@
 
      
   </profiles>  
+  
   <properties>
     <javac.target>1.6</javac.target>
     <javac.source>1.6</javac.source>
+    
+
+    <openjpa.version>1.0.2</openjpa.version>
+    
+    <hibernate.entitymanager.version>3.3.1.ga</hibernate.entitymanager.version>
+    <hibernate.annotations.version>3.3.1.ga</hibernate.annotations.version>
+    
+    <derby.version>10.4.1.3</derby.version>
+    <spring.version>2.5.4</spring.version>
+    <aspectj.version>1.5.3</aspectj.version>
+    <jsfri.version>1.2_08</jsfri.version>
+    <jsfmyfaces.version>1.2.1</jsfmyfaces.version>
+    
   </properties>
 
 </project>

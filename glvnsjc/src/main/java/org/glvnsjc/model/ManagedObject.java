@@ -11,7 +11,7 @@ public abstract class ManagedObject
 {
     
     @Column(nullable = false, unique = true)
-    private String guid;    
+    private String guid = "";    
     
             
     ////////////////////////////////////////////////////////////////////////////

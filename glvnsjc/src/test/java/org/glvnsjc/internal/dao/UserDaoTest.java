@@ -20,8 +20,14 @@ public class UserDaoTest
         User savedUser = this.dao.save( user );
         assertNotNull( savedUser.getId() );
         assertEquals( user.getName(), savedUser.getName() );
-        
     }
 
-
+    public void testGetName()
+    {
+        User user = new User();
+        user.setName( "user" );
+        User savedUser = this.dao.save( user );
+        assertNotNull( savedUser.getId() );
+        assertEquals( user.getName(), savedUser.getName() );
+    }
 }

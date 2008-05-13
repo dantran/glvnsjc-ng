@@ -13,6 +13,26 @@
   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
     <property name="persistenceUnitName" value="glvnsjc" />
     <property name="dataSource" ref="dataSource" />
+
+    <property name="jpaVendorAdapter">
+      <bean class="org.springframework.orm.jpa.vendor.OpenJpaVendorAdapter">
+        <property name="database" value="${jpa.database}" />
+      </bean>
+    </property>
+
+    <property name="jpaProperties">
+      <props>
+        <prop key="openjpa.jdbc.SynchronizeMappings">${openjpa.schema}</prop>
+        <prop key="openjpa.Log">${openjpa.showsql}</prop>
+      </props>
+    </property>
+
+  </bean>
+
+<!-- 
+  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name="persistenceUnitName" value="glvnsjc" />
+    <property name="dataSource" ref="dataSource" />
       
     <property name="jpaVendorAdapter">
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -29,6 +49,6 @@
     </property>
 
   </bean>
-
+  -->
 
 </beans>
