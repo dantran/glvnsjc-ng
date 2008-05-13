@@ -22,41 +22,41 @@ public class Address
 {
     private static final long serialVersionUID = 3617859655330969141L;
 
-    protected String address;
-
-    protected String city;
-
-    protected String province;
-
-    protected String country;
-
-    protected String postalCode;
-
     @Column(length = 150)
+    private String address;
+
+    @Column(nullable = true, length = 50)
+    private String city;
+
+    @Column(length = 100)
+    private String province;
+
+    @Column(length = 100)
+    private String country;
+
+    @Column(nullable = true, length = 15)
+    private String postalCode;
+
     public String getAddress()
     {
         return address;
     }
 
-    @Column(nullable = true, length = 50)
     public String getCity()
     {
         return city;
     }
 
-    @Column(length = 100)
     public String getProvince()
     {
         return province;
     }
 
-    @Column(length = 100)
     public String getCountry()
     {
         return country;
     }
 
-    @Column(name = "postal_code", nullable = true, length = 15)
     public String getPostalCode()
     {
         return postalCode;
