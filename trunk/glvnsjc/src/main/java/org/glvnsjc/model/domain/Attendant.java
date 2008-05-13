@@ -1,9 +1,10 @@
 package org.glvnsjc.model.domain;
 
-import org.glvnsjc.model.ManagedObject;
+import javax.persistence.Entity;
 
+@Entity
 public class Attendant
-    extends ManagedObject
+    //extends CourseDetail
 {
     private static final long serialVersionUID = 1L;
 }

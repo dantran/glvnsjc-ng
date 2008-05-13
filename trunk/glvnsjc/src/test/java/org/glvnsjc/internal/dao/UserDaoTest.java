@@ -5,9 +5,9 @@ import org.glvnsjc.model.domain.User;
 public class UserDaoTest
     extends BaseDaoTestCase
 {
-    private ManagedObjectDao<User, Long> dao;
+    private GenericNameDao<User, Long> dao;
     
-    public void setUserDao( ManagedObjectDao<User, Long> dao )
+    public void setUserDao( GenericNameDao<User, Long> dao )
     {
         this.dao = dao;
     }

@@ -11,6 +11,7 @@ public class ManagedGroup
 {
     private static final long serialVersionUID = 1L;
 
+    /*
     @OneToMany( mappedBy="group")
     private Set<ManagedObject> managedObjects;
     
@@ -20,5 +21,5 @@ public class ManagedGroup
     {
         return this.managedObjects;
     }
-    
+    */
 }
