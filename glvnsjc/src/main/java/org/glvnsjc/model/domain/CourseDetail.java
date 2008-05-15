@@ -1,20 +1,27 @@
 package org.glvnsjc.model.domain;
 
-import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
+import java.util.Date;
 
-import org.glvnsjc.model.ManagedObject;
+import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 
-@MappedSuperclass
+import org.glvnsjc.model.NamedEntity;
+
+@Entity
+@Inheritance( strategy=InheritanceType.JOINED )
 public abstract class CourseDetail
-    extends ManagedObject
+    extends NamedEntity
 {
     private static final long serialVersionUID = 1L;
+
+    private Date date;
     
-    @ManyToOne
+    @OneToOne
     private Student student;
-    
-    @ManyToOne
+
+    @OneToOne
     private Course course;
 
     public Course getCourse()
@@ -36,5 +43,15 @@ public abstract class CourseDetail
     {
         this.student = student;
     }
-    
+
+    public Date getDate()
+    {
+        return date;
+    }
+
+    public void setDate( Date date )
+    {
+        this.date = date;
+    }
+
 }
