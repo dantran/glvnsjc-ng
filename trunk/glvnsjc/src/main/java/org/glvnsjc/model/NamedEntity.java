@@ -4,6 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.commons.lang.builder.ToStringStyle;
 
 /**
  * Root of all named POJOs
@@ -14,11 +16,22 @@ import org.apache.commons.lang.StringUtils;
 public abstract class NamedEntity
     extends BaseEntity
 {
-    @Column(nullable = false, unique = true )
+    @Column(nullable = false, unique = true)
     private String name;
-    
+
     private String description;
 
+    
+    public NamedEntity()
+    {
+        
+    }
+    
+    public NamedEntity( final String name )
+    {
+        this.setName( name);
+    }  
+    
     public String getName()
     {
         return name;
@@ -38,4 +51,43 @@ public abstract class NamedEntity
     {
         this.description = description;
     }
+
+    /**
+     * {@inheritDoc}
+     * @fixme 
+     */
+    public boolean equals( Object o )
+    {
+        if ( this == o )
+        {
+            return true;
+        }
+        if ( !( o instanceof NamedEntity ) )
+        {
+            return false;
+        }
+
+        final NamedEntity entity = (NamedEntity) o;
+
+        return !( this.getName() != null ? !this.getName().equals( entity.getName() ) : entity.getName() != null );
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public int hashCode()
+    {
+        return ( this.getName() != null ? this.getName().hashCode() : 0 );
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public String toString()
+    {
+        return new ToStringBuilder( this, ToStringStyle.SIMPLE_STYLE ).append( this.getName() ).toString();
+    }
+
+
 }
