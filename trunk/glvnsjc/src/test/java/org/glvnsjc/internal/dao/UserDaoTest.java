@@ -1,5 +1,6 @@
 package org.glvnsjc.internal.dao;
 
+import org.glvnsjc.model.domain.Student;
 import org.glvnsjc.model.domain.User;
 
 public class UserDaoTest
@@ -15,7 +16,7 @@ public class UserDaoTest
     //////////////////////////////////////////////////////////////////
     public void testNothing()
     {
-        User user = new User();
+        User user = new Student();
         user.setName( "user" );
         User savedUser = this.dao.save( user );
         assertNotNull( savedUser.getId() );
@@ -24,7 +25,7 @@ public class UserDaoTest
 
     public void testGetName()
     {
-        User user = new User();
+        User user = new Student();
         user.setName( "user" );
         User savedUser = this.dao.save( user );
         assertNotNull( savedUser.getId() );

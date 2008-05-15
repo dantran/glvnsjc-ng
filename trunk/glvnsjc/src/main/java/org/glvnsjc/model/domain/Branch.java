@@ -6,11 +6,11 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import org.glvnsjc.model.ManagedObject;
+import org.glvnsjc.model.NamedEntity;
 
 @Entity
 public class Branch
-    extends ManagedObject
+extends NamedEntity
 {
     private static final long serialVersionUID = 1L;
     

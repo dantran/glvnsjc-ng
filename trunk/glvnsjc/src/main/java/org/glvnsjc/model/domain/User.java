@@ -1,12 +1,15 @@
 package org.glvnsjc.model.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-import org.glvnsjc.model.ManagedObject;
+import org.glvnsjc.model.NamedEntity;
 
 @Entity
-public class User
-    extends ManagedObject
+@Inheritance( strategy=InheritanceType.JOINED )
+public abstract class User
+    extends NamedEntity
 {
     private static final long serialVersionUID = 1L;
     
