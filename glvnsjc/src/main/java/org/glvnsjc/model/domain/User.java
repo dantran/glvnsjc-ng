@@ -13,6 +13,8 @@ public abstract class User
 {
     private static final long serialVersionUID = 1L;
     
+    private boolean loginEnable;
+    
     private Address address;
     
     private String password;
@@ -45,6 +47,16 @@ public abstract class User
     public void setPassword( String password )
     {
         this.password = password;
+    }
+
+    public boolean isLoginEnable()
+    {
+        return loginEnable;
+    }
+
+    public void setLoginEnable( boolean loginEnable )
+    {
+        this.loginEnable = loginEnable;
     }
     
     
