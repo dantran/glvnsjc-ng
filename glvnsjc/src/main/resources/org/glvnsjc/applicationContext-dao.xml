@@ -14,4 +14,7 @@
      <constructor-arg ref="dataSource"/>
   </bean>
 
+  <bean id="roleDao" class="org.glvnsjc.internal.dao.RoleDaoJpa">
+  </bean>
+
 </beans>
