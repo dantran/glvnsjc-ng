@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.glvnsjc.internal.dao;
+package org.glvnsjc.internal.dao.generic;
 
 import java.io.Serializable;
 import java.util.HashMap;
