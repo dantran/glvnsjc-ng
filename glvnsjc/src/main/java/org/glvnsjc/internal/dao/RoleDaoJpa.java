@@ -14,35 +14,43 @@ import org.glvnsjc.model.domain.Role;
  * @author <a href="mailto:bwnoll@gmail.com">Bryan Noll</a> 
  */
 public class RoleDaoJpa
-    extends GenericNameDaoJpa<Role, Long> implements RoleDao {
+    extends GenericNameDaoJpa<Role, Long>
+    implements RoleDao
+{
 
     /**
      * Constructor to create a Generics-based version using Role as the entity
      */
-    public RoleDaoJpa() {
-        super(Role.class);
+    public RoleDaoJpa()
+    {
+        super( Role.class );
     }
 
     /**
      * {@inheritDoc}
      */
-    public Role getRoleByName(String rolename) {
-        Query q = super.entityManager.createQuery("select r from Role r where r.name = ?");
-        q.setParameter(1, rolename);
-        List roles = q.getResultList();
+    public Role getRoleByName( String rolename )
+    {
+        Query q = super.entityManager.createQuery( "select r from Role r where r.name = ?" );
+        q.setParameter( 1, rolename );
+        List<Role> roles = q.getResultList();
 
-        if (roles.isEmpty()) {
+        if ( roles.isEmpty() )
+        {
             return null;
-        } else {
-            return (Role) roles.get(0);
+        }
+        else
+        {
+            return (Role) roles.get( 0 );
         }
     }
 
     /**
      * {@inheritDoc}
      */
-    public void removeRole(String rolename) {
-        Object role = getRoleByName(rolename);
-        super.entityManager.remove(role);
+    public void removeRole( String rolename )
+    {
+        Object role = getRoleByName( rolename );
+        super.entityManager.remove( role );
     }
 }
