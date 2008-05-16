@@ -584,7 +584,7 @@
     <javac.target>1.6</javac.target>
     <javac.source>1.6</javac.source>
 
-    <openjpa.version>1.1.0</openjpa.version>
+    <openjpa.version>1.0.2</openjpa.version>
 
     <hibernate.entitymanager.version>3.3.1.ga</hibernate.entitymanager.version>
     <hibernate.annotations.version>3.3.1.ga</hibernate.annotations.version>
