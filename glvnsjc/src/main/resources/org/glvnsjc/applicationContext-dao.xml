@@ -10,8 +10,8 @@
           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
 
-  <bean id="userDao" class="org.glvnsjc.internal.dao.generic.GenericNameDaoJpa">
-    <constructor-arg value="org.glvnsjc.model.domain.User" />
+  <bean id="userDao" class="org.glvnsjc.internal.dao.UserDaoJpa">
+     <constructor-arg ref="dataSource"/>
   </bean>
 
 </beans>
