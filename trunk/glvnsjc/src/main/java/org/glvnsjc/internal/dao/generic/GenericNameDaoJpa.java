@@ -1,24 +1,23 @@
 /**
  * 
  */
-package org.glvnsjc.internal.dao;
+package org.glvnsjc.internal.dao.generic;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.UUID;
 
 import javax.persistence.Query;
 
-import org.glvnsjc.model.ManagedObject;
+import org.glvnsjc.model.NamedEntity;
 
 /**
- * Generic DAO (Data Access Object) with common methods to CRUD POJOs with uniqued name
+ * Generic DAO (Data Access Object) with common methods to CRUD POJOs with unique name
  * 
  *
  */
-public class ManagedObjectDaoJpa<T extends ManagedObject, PK extends Serializable>
+public class GenericNameDaoJpa<T extends NamedEntity, PK extends Serializable>
     extends GenericDaoJpa<T, PK>
-    implements ManagedObjectDao<T, PK>
+    implements GenericNameDao<T, PK>
 {
     private String fieldName = "name";
 
@@ -26,7 +25,7 @@ public class ManagedObjectDaoJpa<T extends ManagedObject, PK extends Serializabl
      * @param persistentClass
      * @param fieldName name of the property in the POJO
      */
-    public ManagedObjectDaoJpa( Class<T> persistentClass )
+    public GenericNameDaoJpa( Class<T> persistentClass )
     {
         super( persistentClass );
     }
@@ -34,7 +33,7 @@ public class ManagedObjectDaoJpa<T extends ManagedObject, PK extends Serializabl
     /**
      * @param persistentClass
      */
-    public ManagedObjectDaoJpa( Class<T> persistentClass, String fieldName )
+    public GenericNameDaoJpa( Class<T> persistentClass, String fieldName )
     {
         super( persistentClass );
 
@@ -62,27 +61,6 @@ public class ManagedObjectDaoJpa<T extends ManagedObject, PK extends Serializabl
         return objects.get( 0 );
     }
 
-    /* (non-Javadoc)
-     * @see com.iplocks.dao.GenericNameDao#getByName(java.lang.String)
-     */
-    @SuppressWarnings("unchecked")
-    public T getByGuid( String guid )
-    {
-        Query q = this.entityManager.createQuery( "select o from " + persistentClass.getName() + " o where o.guid"
-            + "=?" );
-
-        q.setParameter( 1, guid );
-
-        List<T> objects = q.getResultList();
-
-        if ( objects.isEmpty() )
-        {
-            return null;
-        }
-
-        return objects.get( 0 );
-    }
-
     public boolean nameExists( String name )
     {
         Query q = this.entityManager.createQuery( "select o from " + persistentClass.getName() + " o where o."
@@ -93,23 +71,4 @@ public class ManagedObjectDaoJpa<T extends ManagedObject, PK extends Serializabl
         return !q.getResultList().isEmpty() ? true : false;
     }
 
-    public T save( T t )
-    {
-        if ( t.getGuid() == null )
-        {
-            t.setGuid( UUID.randomUUID().toString() );
-        }
-
-        return super.save( t );
-    }
-
-    public void add( T t )
-    {
-        if ( t.getGuid() == null )
-        {
-            t.setGuid( UUID.randomUUID().toString() );
-        }
-
-        super.add( t );
-    }
 }

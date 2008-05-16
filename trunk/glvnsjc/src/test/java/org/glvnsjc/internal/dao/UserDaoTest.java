@@ -1,5 +1,6 @@
 package org.glvnsjc.internal.dao;
 
+import org.glvnsjc.internal.dao.generic.GenericNameDao;
 import org.glvnsjc.model.domain.Student;
 import org.glvnsjc.model.domain.User;
 
