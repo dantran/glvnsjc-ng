@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Parent
@@ -11,6 +12,7 @@ public class Parent
 {
     private static final long serialVersionUID = 1L;
 
+    @OneToMany
     private Set<Student> students = new HashSet<Student>();
 
     public Set<Student> getStudents()

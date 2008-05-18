@@ -329,7 +329,8 @@
       <id>openjpa</id>
       <activation>
         <property>
-          <name>!jpa</name>
+          <name>jpa</name>
+          <value>openjpa</value>
         </property>
       </activation>
       <dependencies>
@@ -345,8 +346,7 @@
       <id>hibernate</id>
       <activation>
         <property>
-          <name>jpa</name>
-          <value>hibernate</value>
+          <name>!jpa</name>
         </property>
       </activation>
       <dependencies>

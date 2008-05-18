@@ -506,22 +506,27 @@
 
     <profile>
       <id>openjpa</id>
+      <activation>
+        <property>
+          <name>jpa</name>
+          <value>openjpa</value>
+        </property>
+      </activation>
       <properties>
         <openjpa.showsql>DefaultLevel=WARN,SQL=TRACE</openjpa.showsql>
         <openjpa.schema>buildSchema(SchemaAction='add')</openjpa.schema>
       </properties>
+    </profile>
+
+    <profile>
+      <id>hibernate</id>
       <activation>
         <property>
           <name>!jpa</name>
         </property>
       </activation>
-    </profile>
-
-    <profile>
-      <id>hibernate</id>
       <properties>
-        <jpa>hibernate</jpa>
-        <hibernate.showsql>false</hibernate.showsql>
+        <hibernate.showsql>true</hibernate.showsql>
         <hibernate.schema>create-drop</hibernate.schema>
       </properties>
     </profile>

@@ -1,10 +1,12 @@
 package org.glvnsjc.model.domain;
 
+import javax.persistence.Entity;
 import javax.persistence.Transient;
 
 import org.glvnsjc.model.NamedEntity;
 import org.springframework.security.GrantedAuthority;
 
+@Entity
 public class Role
     extends NamedEntity
     implements GrantedAuthority
