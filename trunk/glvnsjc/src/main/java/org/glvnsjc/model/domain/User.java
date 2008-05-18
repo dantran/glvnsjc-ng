@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
@@ -36,7 +37,7 @@ public abstract class User
     
     private boolean enabled;
     
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER) 
     private Set<Role> roles = new HashSet<Role>();
     
     public Address getAddress()
