@@ -80,6 +80,7 @@
 
       classpath:org/glvnsjc/applicationContext-security.xml,
 
+
       classpath:org/glvnsjc/applicationContext-glvnsjc-web.xml,
 
     </param-value>
@@ -126,6 +127,11 @@
       org.apache.myfaces.orchestra.conversation.servlet.ConversationManagerSessionListener
     </listener-class>
   </listener>
+
+  <listener>
+      <listener-class>org.glvnsjc.webapp.listener.StartupListener</listener-class>
+  </listener>
+
 
   <!-- =========================================================================== 
     Servlet and Servlet mappings                             

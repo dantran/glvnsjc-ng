@@ -6,6 +6,7 @@ import java.util.List;
 import org.glvnsjc.internal.dao.generic.LookupDao;
 import org.glvnsjc.model.LabelValue;
 import org.glvnsjc.model.domain.Role;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Implementation of LookupManager interface to talk to the persistence layer.
@@ -31,6 +32,7 @@ public class LookupManagerImpl
     /**
      * {@inheritDoc}
      */
+    @Transactional(readOnly = true)
     public List<LabelValue> getAllRoles()
     {
         List<Role> roles = dao.getRoles();
