@@ -13,7 +13,10 @@ import java.util.Comparator;
  *
  * @see org.apache.struts.util.LabelValueBean
  */
-public class LabelValue implements Comparable, Serializable {
+@SuppressWarnings("unchecked")
+public class LabelValue
+    implements Comparable, Serializable
+{
 
     private static final long serialVersionUID = 3689355407466181430L;
 
@@ -21,21 +24,23 @@ public class LabelValue implements Comparable, Serializable {
      * Comparator that can be used for a case insensitive sort of
      * <code>LabelValue</code> objects.
      */
-    public static final Comparator CASE_INSENSITIVE_ORDER = new Comparator() {
-        public int compare(Object o1, Object o2) {
-            String label1 = ((LabelValue) o1).getLabel();
-            String label2 = ((LabelValue) o2).getLabel();
-            return label1.compareToIgnoreCase(label2);
+    public static final Comparator CASE_INSENSITIVE_ORDER = new Comparator()
+    {
+        public int compare( Object o1, Object o2 )
+        {
+            String label1 = ( (LabelValue) o1 ).getLabel();
+            String label2 = ( (LabelValue) o2 ).getLabel();
+            return label1.compareToIgnoreCase( label2 );
         }
     };
 
     // ----------------------------------------------------------- Constructors
 
-
     /**
      * Default constructor.
      */
-    public LabelValue() {
+    public LabelValue()
+    {
         super();
     }
 
@@ -45,41 +50,43 @@ public class LabelValue implements Comparable, Serializable {
      * @param label The label to be displayed to the user.
      * @param value The value to be returned to the server.
      */
-    public LabelValue(final String label, final String value) {
+    public LabelValue( final String label, final String value )
+    {
         this.label = label;
         this.value = value;
     }
 
     // ------------------------------------------------------------- Properties
 
-
     /**
      * The property which supplies the option label visible to the end user.
      */
     private String label;
 
-    public String getLabel() {
+    public String getLabel()
+    {
         return this.label;
     }
 
-    public void setLabel(String label) {
+    public void setLabel( String label )
+    {
         this.label = label;
     }
-
 
     /**
      * The property which supplies the value returned to the server.
      */
     private String value;
 
-    public String getValue() {
+    public String getValue()
+    {
         return this.value;
     }
 
-    public void setValue(String value) {
+    public void setValue( String value )
+    {
         this.value = value;
     }
-
 
     // --------------------------------------------------------- Public Methods
 
@@ -91,25 +98,27 @@ public class LabelValue implements Comparable, Serializable {
      * @param o LabelValue object to compare to
      * @return 0 if labels match for compared objects
      */
-    public int compareTo(Object o) {
+    public int compareTo( Object o )
+    {
         // Implicitly tests for the correct type, throwing
         // ClassCastException as required by interface
-        String otherLabel = ((LabelValue) o).getLabel();
+        String otherLabel = ( (LabelValue) o ).getLabel();
 
-        return this.getLabel().compareTo(otherLabel);
+        return this.getLabel().compareTo( otherLabel );
     }
 
     /**
      * Return a string representation of this object.
      * @return object as a string
      */
-    public String toString() {
-        StringBuffer sb = new StringBuffer("LabelValue[");
-        sb.append(this.label);
-        sb.append(", ");
-        sb.append(this.value);
-        sb.append("]");
-        return (sb.toString());
+    public String toString()
+    {
+        StringBuffer sb = new StringBuffer( "LabelValue[" );
+        sb.append( this.label );
+        sb.append( ", " );
+        sb.append( this.value );
+        sb.append( "]" );
+        return ( sb.toString() );
     }
 
     /**
@@ -119,25 +128,33 @@ public class LabelValue implements Comparable, Serializable {
      * @param obj object to compare to
      * @return true/false based on whether values match or not
      */
-    public boolean equals(Object obj) {
-        if (obj == this) {
+    public boolean equals( Object obj )
+    {
+        if ( obj == this )
+        {
             return true;
         }
 
-        if (!(obj instanceof LabelValue)) {
+        if ( !( obj instanceof LabelValue ) )
+        {
             return false;
         }
 
         LabelValue bean = (LabelValue) obj;
-        int nil = (this.getValue() == null) ? 1 : 0;
-        nil += (bean.getValue() == null) ? 1 : 0;
+        int nil = ( this.getValue() == null ) ? 1 : 0;
+        nil += ( bean.getValue() == null ) ? 1 : 0;
 
-        if (nil == 2) {
+        if ( nil == 2 )
+        {
             return true;
-        } else if (nil == 1) {
+        }
+        else if ( nil == 1 )
+        {
             return false;
-        } else {
-            return this.getValue().equals(bean.getValue());
+        }
+        else
+        {
+            return this.getValue().equals( bean.getValue() );
         }
 
     }
@@ -148,7 +165,8 @@ public class LabelValue implements Comparable, Serializable {
      * @see java.lang.Object#hashCode()
      * @return hashCode
      */
-    public int hashCode() {
-        return (this.getValue() == null) ? 17 : this.getValue().hashCode();
+    public int hashCode()
+    {
+        return ( this.getValue() == null ) ? 17 : this.getValue().hashCode();
     }
 }

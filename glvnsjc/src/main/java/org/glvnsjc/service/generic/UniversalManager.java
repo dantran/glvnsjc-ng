@@ -23,6 +23,7 @@ import java.util.List;
  *
  * @see com.einvite.service.GenericManager
  */
+@SuppressWarnings("unchecked")
 public interface UniversalManager
 {
     /**
