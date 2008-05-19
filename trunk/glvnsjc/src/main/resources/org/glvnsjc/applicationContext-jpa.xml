@@ -9,48 +9,48 @@
 	      http://www.springframework.org/schema/tx 
           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
-<!-- 
-  <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+  <!-- 
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
     <property name="persistenceUnitName" value="glvnsjc" />
     <property name="dataSource" ref="dataSource" />
-
+    
     <property name="jpaVendorAdapter">
-      <bean class="org.springframework.orm.jpa.vendor.OpenJpaVendorAdapter">
-        <property name="database" value="${jpa.database}" />
-      </bean>
+    <bean class="org.springframework.orm.jpa.vendor.OpenJpaVendorAdapter">
+    <property name="database" value="${jpa.database}" />
+    </bean>
     </property>
-
+    
     <property name="jpaProperties">
-      <props>
-        <prop key="openjpa.jdbc.SynchronizeMappings">${openjpa.schema}</prop>
-        <prop key="openjpa.Log">${openjpa.showsql}</prop>
-      </props>
+    <props>
+    <prop key="openjpa.jdbc.SynchronizeMappings">${openjpa.schema}</prop>
+    <prop key="openjpa.Log">${openjpa.showsql}</prop>
+    </props>
     </property>
-
-  </bean>
-
---> 
+    
+    </bean>
+    
+  -->
 
 
   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
     <property name="persistenceUnitName" value="glvnsjc" />
     <property name="dataSource" ref="dataSource" />
-      
+
     <property name="jpaVendorAdapter">
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="database" value="${jpa.database}" />
       </bean>
     </property>
-    
+
     <property name="jpaProperties">
       <props>
         <prop key="hibernate.dialect">${hibernate.dialect}</prop>
         <prop key="hibernate.hbm2ddl.auto">${hibernate.schema}</prop>
-        <prop key="hibernate.show_sql">${hibernate.showsql}</prop>     
+        <prop key="hibernate.show_sql">${hibernate.showsql}</prop>
       </props>
     </property>
 
   </bean>
-  
+
 
 </beans>

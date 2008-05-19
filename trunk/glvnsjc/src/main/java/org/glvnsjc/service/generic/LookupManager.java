@@ -10,7 +10,9 @@ import org.glvnsjc.model.LabelValue;
  *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
-public interface LookupManager extends UniversalManager {
+public interface LookupManager
+    extends UniversalManager
+{
     /**
      * Retrieves all possible roles from persistence layer
      * @return List of LabelValue objects

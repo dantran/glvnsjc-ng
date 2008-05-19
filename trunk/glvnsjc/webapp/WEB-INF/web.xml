@@ -3,7 +3,7 @@
   xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
   id="WebApp_ID" version="2.5">
-  
+
   <display-name>glvnsjc-webapp</display-name>
 
   <servlet>
@@ -125,16 +125,13 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-      classpath:org/glvnsjc/applicationContext-persistence.xml, 
-      classpath:org/glvnsjc/applicationContext-datasource.xml,
-      classpath:org/glvnsjc/applicationContext-resources.xml,
-      classpath:org/glvnsjc/applicationContext-jpa.xml, 
-      classpath:org/glvnsjc/applicationContext-orchestra.xml,
-      classpath:org/glvnsjc/applicationContext-dao.xml,
+      classpath:org/glvnsjc/applicationContext-persistence.xml, classpath:org/glvnsjc/applicationContext-datasource.xml,
+      classpath:org/glvnsjc/applicationContext-resources.xml, classpath:org/glvnsjc/applicationContext-jpa.xml,
+      classpath:org/glvnsjc/applicationContext-orchestra.xml, classpath:org/glvnsjc/applicationContext-dao.xml,
       classpath:org/glvnsjc/applicationContext-glvnsjc-web.xml,
     </param-value>
   </context-param>
-  
+
   <!-- =========================================================================== 
     JSF to Spring bridge Configuration                             
     =========================================================================== -->
@@ -143,8 +140,8 @@
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
 
-  <!-- ======================================================================== --> 
-  <!-- Spring logger                                                            -->                           
+  <!-- ======================================================================== -->
+  <!-- Spring logger                                                            -->
   <!-- ======================================================================== -->
 
   <listener>
@@ -165,19 +162,21 @@
     <param-name>log4jConfigLocation</param-name>
     <param-value>/WEB-INF/log4j.properties</param-value>
   </context-param>
-  
-  <!--============================================================================--> 
+
+  <!--============================================================================-->
   <!-- Orchestra Configuration                                                    -->
   <!--============================================================================-->
   <listener>
     <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
   </listener>
-  
+
   <listener>
-    <listener-class>org.apache.myfaces.orchestra.conversation.servlet.ConversationManagerSessionListener</listener-class>
+    <listener-class>
+      org.apache.myfaces.orchestra.conversation.servlet.ConversationManagerSessionListener
+    </listener-class>
   </listener>
-      
-  <!--============================================================================--> 
+
+  <!--============================================================================-->
   <!-- Welcome Configuration                                                      -->
   <!--============================================================================-->
   <welcome-file-list>
@@ -188,14 +187,14 @@
     <auth-method>BASIC</auth-method>
   </login-config>
 
-  <!--============================================================================--> 
+  <!--============================================================================-->
   <!-- HTTP Error Handling                                                        -->
   <!--============================================================================-->
 
   <!-- 
-  <error-page>
+    <error-page>
     <error-code>500</error-code>
     <location>/error.jsp</location>
-  </error-page>     
-  --> 
+    </error-page>     
+  -->
 </web-app>

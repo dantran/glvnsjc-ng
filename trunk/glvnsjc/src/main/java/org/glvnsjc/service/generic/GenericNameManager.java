@@ -3,17 +3,19 @@ package org.glvnsjc.service.generic;
 import java.io.Serializable;
 import java.util.List;
 
+import org.glvnsjc.model.NamedEntity;
+
 /**
- * Generic Manager that talks to GenericDao to CRUD POJOs.
+ * Generic Manager that talks to GenericNameDao to CRUD POJOs.
  *
  * <p>Extend this interface if you want typesafe (no casting necessary) managers
  * for your domain objects.
  *
- * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
+ * @author <a href="mailto:dantran@gmail.com">Dan Tran</a>
  * @param <T> a type variable
  * @param <PK> the primary key for that type
  */
-public interface GenericManager<T, PK extends Serializable>
+public interface GenericNameManager<T extends NamedEntity, PK extends Serializable>
 {
 
     /**
