@@ -16,4 +16,6 @@
 
   <bean id="roleDao" class="org.glvnsjc.internal.dao.RoleDaoJpa"></bean>
 
+  <bean id="lookupDao" class="org.glvnsjc.internal.dao.generic.LookupDaoJpa"/>
+
 </beans>

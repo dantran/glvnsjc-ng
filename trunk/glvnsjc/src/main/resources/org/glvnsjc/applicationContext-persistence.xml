@@ -9,20 +9,16 @@
           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
   default-lazy-init="true">
 
-  <!-- Enable @Transactional support -->
   <tx:annotation-driven />
 
-  <!-- Enable @AspectJ support -->
   <aop:aspectj-autoproxy />
 
-  <!-- Enable @Configured support -->
-  <!-- >aop:spring-configured/-->
-
+  <!--aop:spring-configured/-->
 
   <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
   <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
-
+ 
   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
     <property name="entityManagerFactory" ref="entityManagerFactory" />
   </bean>

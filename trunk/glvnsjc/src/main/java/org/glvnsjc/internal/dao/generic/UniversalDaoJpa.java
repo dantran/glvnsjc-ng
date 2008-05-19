@@ -30,7 +30,7 @@ public class UniversalDaoJpa
      */
     protected EntityManager entityManager;
 
-    @PersistenceContext(unitName = "ApplicationEntityManager")
+    @PersistenceContext()
     public void setEntityManager( EntityManager entityManager )
     {
         this.entityManager = entityManager;

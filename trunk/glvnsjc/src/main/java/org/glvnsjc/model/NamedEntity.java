@@ -2,6 +2,7 @@ package org.glvnsjc.model;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.Version;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -21,6 +22,8 @@ public abstract class NamedEntity
 
     private String description;
 
+    @Version
+    private Integer version;
     
     public NamedEntity()
     {
@@ -87,6 +90,11 @@ public abstract class NamedEntity
     public String toString()
     {
         return new ToStringBuilder( this, ToStringStyle.SIMPLE_STYLE ).append( this.getName() ).toString();
+    }
+
+    public Integer getVersion()
+    {
+        return version;
     }
 
 
