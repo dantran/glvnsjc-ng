@@ -1,7 +1,7 @@
 package org.glvnsjc.model.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Student
@@ -9,7 +9,7 @@ public class Student
 {
     private static final long serialVersionUID = 1L;
     
-    @OneToOne
+    @ManyToOne
     private Parent parent;
 
     public Parent getParent()
