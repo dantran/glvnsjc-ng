@@ -29,6 +29,7 @@ public class RoleDaoJpa
     /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("unchecked")
     public Role getRoleByName( String rolename )
     {
         Query q = super.entityManager.createQuery( "select r from Role r where r.name = ?" );

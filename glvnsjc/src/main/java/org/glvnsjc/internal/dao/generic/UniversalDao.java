@@ -24,6 +24,7 @@ import java.util.List;
  * 
  * @see com.glvnsjc.dao.GenericDao
  */
+@SuppressWarnings("unchecked")
 public interface UniversalDao {
 
     /**

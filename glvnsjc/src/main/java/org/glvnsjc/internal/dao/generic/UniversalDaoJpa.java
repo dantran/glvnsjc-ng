@@ -65,6 +65,7 @@ public class UniversalDaoJpa
     /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("unchecked")
     public List getAll( Class clazz )
     {
         return this.entityManager.createQuery( "select obj from " + clazz.getSimpleName() + " obj" ).getResultList();
@@ -73,6 +74,7 @@ public class UniversalDaoJpa
     /**
      * {@inheritDoc}
      */
+    @SuppressWarnings("unchecked")
     public void remove( Class clazz, Serializable id )
     {
         this.entityManager.remove( this.get( clazz, id ) );
