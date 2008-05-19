@@ -22,8 +22,6 @@ public abstract class User
 {
     private static final long serialVersionUID = 1L;
 
-    private boolean loginEnable;
-
     @Embedded
     private Address address;
 
@@ -68,16 +66,6 @@ public abstract class User
     public void setPassword( String password )
     {
         this.password = password;
-    }
-
-    public boolean isLoginEnable()
-    {
-        return loginEnable;
-    }
-
-    public void setLoginEnable( boolean loginEnable )
-    {
-        this.loginEnable = loginEnable;
     }
 
     /**
