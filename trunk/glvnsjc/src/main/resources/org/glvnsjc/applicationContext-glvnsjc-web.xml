@@ -10,6 +10,6 @@
           http://myfaces.apache.org/orchestra/orchestra.xsd">
 
 
-  <bean name="testView" class="org.glvnsjc.web.TestView" scope="session" autowire="byName"></bean>
+  <bean name="testView" class="org.glvnsjc.webapp.TestView" scope="session" autowire="byName"></bean>
 
 </beans>
