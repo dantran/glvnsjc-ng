@@ -1,4 +1,4 @@
-package org.glvnsjc.web;
+package org.glvnsjc.webapp;
 
 public class TestView
 {

@@ -1,4 +1,4 @@
-package org.glvnsjc.web;
+package org.glvnsjc.webapp;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
