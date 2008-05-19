@@ -138,6 +138,14 @@
       <groupId>javax.servlet</groupId>
       <artifactId>jstl</artifactId>
     </dependency>
+    
+      <dependency>
+        <groupId>net.sourceforge.jsf-comp</groupId>
+        <artifactId>acegi-jsf</artifactId>
+        <version>${acegi.jsf.version}</version>
+        <scope>runtime</scope>
+      </dependency>
+    
 
     <!-- ================================================================== -->
     <!--  logger                                                            -->
