@@ -24,6 +24,7 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
  * 
  * @author Matt Raible
  */
+@SuppressWarnings("unchecked")
 public class MailEngine
 {
     private final Log log = LogFactory.getLog( MailEngine.class );

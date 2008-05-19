@@ -13,6 +13,7 @@ import org.glvnsjc.internal.dao.generic.UniversalDao;
  *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
+@SuppressWarnings("unchecked")
 public class UniversalManagerImpl
     implements UniversalManager
 {
