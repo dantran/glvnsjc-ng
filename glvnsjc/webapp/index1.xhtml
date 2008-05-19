@@ -4,28 +4,28 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
   xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
   xmlns:tr="http://myfaces.apache.org/trinidad">
-  
+
 <ui:composition template="/WEB-INF/layout/layout1.xhtml">
 
   <ui:param name="pageid" value="page1" />
-  
+
   <ui:define name="window-title">
     <h:outputText value="Template Window Title" />
   </ui:define>
-  
-    
-<head>
-<title>Insert title here</title>
-</head>
+
+
+  <head>
+  <title>Insert title here</title>
+  </head>
   <ui:define name="content">
 
 
-<tr:panelGroupLayout layout="vertical">
+    <tr:panelGroupLayout layout="vertical">
       <h:outputText value="Hello outputText" />
       <tr:outputText value="AFFieldText" />
-</tr:panelGroupLayout>
+    </tr:panelGroupLayout>
 
 
-</ui:define>
+  </ui:define>
 </ui:composition>
 </html>

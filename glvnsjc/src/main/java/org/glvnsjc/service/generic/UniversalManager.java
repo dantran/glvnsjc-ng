@@ -23,13 +23,14 @@ import java.util.List;
  *
  * @see com.einvite.service.GenericManager
  */
-public interface UniversalManager {
+public interface UniversalManager
+{
     /**
      * Generic method used to get a all objects of a particular type. 
      * @param clazz the type of objects 
      * @return List of populated objects
      */
-    List getAll(Class clazz);
+    List getAll( Class clazz );
 
     /**
      * Generic method to get an object based on class and identifier. 
@@ -39,19 +40,19 @@ public interface UniversalManager {
      * @return a populated object 
      * @see org.springframework.orm.ObjectRetrievalFailureException
      */
-    Object get(Class clazz, Serializable id);
+    Object get( Class clazz, Serializable id );
 
     /**
      * Generic method to save an object.
      * @param o the object to save
      * @return a populated object
      */
-    Object save(Object o);
+    Object save( Object o );
 
     /**
      * Generic method to delete an object based on class and id
      * @param clazz model class to lookup
      * @param id the identifier of the class
      */
-    void remove(Class clazz, Serializable id);
+    void remove( Class clazz, Serializable id );
 }
