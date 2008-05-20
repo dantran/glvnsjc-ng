@@ -11,7 +11,6 @@ import org.glvnsjc.model.domain.User;
 import org.glvnsjc.service.UserExistsException;
 import org.glvnsjc.service.UserManager;
 import org.glvnsjc.service.UserService;
-import org.glvnsjc.service.generic.UniversalManagerImpl;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.providers.encoding.PasswordEncoder;
 import org.springframework.security.userdetails.UsernameNotFoundException;

@@ -1,4 +1,4 @@
-package org.glvnsjc.service.generic;
+package org.glvnsjc.service.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glvnsjc.internal.dao.generic.UniversalDao;
+import org.glvnsjc.service.UniversalManager;
 import org.springframework.transaction.annotation.Transactional;
 
 /**

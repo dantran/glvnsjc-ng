@@ -1,4 +1,4 @@
-package org.glvnsjc.service.generic;
+package org.glvnsjc.service.impl;
 
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package org.glvnsjc.service.generic;
+package org.glvnsjc.service.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,6 +7,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glvnsjc.internal.dao.generic.GenericNameDao;
 import org.glvnsjc.model.NamedEntity;
+import org.glvnsjc.service.GenericNameManager;
 
 /**
  * This class serves as the Base class for all other Managers - namely to hold

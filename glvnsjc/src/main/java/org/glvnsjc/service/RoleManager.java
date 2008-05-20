@@ -3,7 +3,6 @@ package org.glvnsjc.service;
 import java.util.List;
 
 import org.glvnsjc.model.domain.Role;
-import org.glvnsjc.service.generic.UniversalManager;
 
 /**
  * Business Service Interface to handle communication between web and
