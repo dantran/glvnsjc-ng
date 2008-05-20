@@ -3,9 +3,12 @@ package org.glvnsjc.service.generic;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.glvnsjc.internal.dao.generic.LookupDao;
 import org.glvnsjc.model.LabelValue;
 import org.glvnsjc.model.domain.Role;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -13,10 +16,12 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
+@Service( "lookupManager" )
 public class LookupManagerImpl
     extends UniversalManagerImpl
     implements LookupManager
 {
+    @Resource( name="lookupDao")
     private LookupDao dao;
 
     /**

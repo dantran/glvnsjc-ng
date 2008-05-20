@@ -14,6 +14,11 @@ public class Role
     
     private static final long serialVersionUID = 1L;
     
+    public Role()
+    {
+        super();
+    }
+    
     /**
      * Create a new instance and set the name.
      * @param name name of the role.

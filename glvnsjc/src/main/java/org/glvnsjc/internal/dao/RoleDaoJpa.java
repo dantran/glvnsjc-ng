@@ -6,6 +6,7 @@ import javax.persistence.Query;
 
 import org.glvnsjc.internal.dao.generic.GenericNameDaoJpa;
 import org.glvnsjc.model.domain.Role;
+import org.springframework.stereotype.Repository;
 
 /**
  * This class interacts with Spring's HibernateTemplate to save/delete and
@@ -13,6 +14,7 @@ import org.glvnsjc.model.domain.Role;
  *
  * @author <a href="mailto:bwnoll@gmail.com">Bryan Noll</a> 
  */
+@Repository("roleDao")
 public class RoleDaoJpa
     extends GenericNameDaoJpa<Role, Long>
     implements RoleDao
