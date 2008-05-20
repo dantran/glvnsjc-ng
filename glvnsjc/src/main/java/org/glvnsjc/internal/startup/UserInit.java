@@ -37,9 +37,10 @@ public class UserInit
         catch ( UsernameNotFoundException e )
         {
             adminUser = new Staff();
+            adminUser.setEnabled( true );
             adminUser.setName( ADMIN_USER );
             adminUser.setPassword( ADMIN_USER );
-            adminUser.getRoles().add( this.predefineRoles.getRoleByType( RoleType.ROLE_SYSTEM_ADMIN )  );
+            adminUser.getRoles().add( this.predefineRoles.getRoleByType( RoleType.ROLE_ADMIN )  );
             adminUser =  this.userManager.saveUser( adminUser );
         }
         
