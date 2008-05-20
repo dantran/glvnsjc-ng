@@ -3,9 +3,9 @@
   xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
   xmlns:orchestra="http://myfaces.apache.org/orchestra"
   xsi:schemaLocation="http://www.springframework.org/schema/beans 
-          http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+          http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
       http://www.springframework.org/schema/aop 
-          http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
+          http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
           http://myfaces.apache.org/orchestra
           http://myfaces.apache.org/orchestra/orchestra.xsd">
 

@@ -114,6 +114,9 @@ public class StartupListener
         // get list of possible roles
         context.setAttribute( Constants.AVAILABLE_ROLES, mgr.getAllRolesWithLabels() );
         log.debug( "Drop-down initialization complete [OK]" );
+        
+        //load UserInit bean
+        ctx.getBean( "userInit" );
     }
 
     /**
