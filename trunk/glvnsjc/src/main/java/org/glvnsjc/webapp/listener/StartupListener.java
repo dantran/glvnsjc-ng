@@ -10,7 +10,7 @@ import javax.servlet.ServletContextListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glvnsjc.Constants;
-import org.glvnsjc.internal.startup.UserRoleList;
+import org.glvnsjc.service.UserRoleList;
 import org.glvnsjc.service.generic.LookupManager;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
