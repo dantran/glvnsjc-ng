@@ -9,12 +9,14 @@ import java.util.List;
 import javax.persistence.Query;
 
 import org.glvnsjc.model.NamedEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Generic DAO (Data Access Object) with common methods to CRUD POJOs with unique name
  * 
  *
  */
+@Transactional
 public class GenericNameDaoJpa<T extends NamedEntity, PK extends Serializable>
     extends GenericDaoJpa<T, PK>
     implements GenericNameDao<T, PK>

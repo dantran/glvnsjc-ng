@@ -10,6 +10,7 @@ import javax.servlet.ServletContextListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glvnsjc.Constants;
+import org.glvnsjc.internal.startup.UserRoleList;
 import org.glvnsjc.service.generic.LookupManager;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
@@ -109,10 +110,10 @@ public class StartupListener
     public static void setupContext( ServletContext context )
     {
         ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext( context );
-        LookupManager mgr = (LookupManager) ctx.getBean( "lookupManager" );
+        UserRoleList mgr = (UserRoleList) ctx.getBean( "userRoleList" );
 
         // get list of possible roles
-        context.setAttribute( Constants.AVAILABLE_ROLES, mgr.getAllRoles() );
+        context.setAttribute( Constants.AVAILABLE_ROLES, mgr.getLabelRoles() );
         log.debug( "Drop-down initialization complete [OK]" );
     }
 

@@ -2,6 +2,7 @@ package org.glvnsjc.internal.dao;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.sql.DataSource;
@@ -13,6 +14,7 @@ import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.security.userdetails.UserDetails;
 import org.springframework.security.userdetails.UserDetailsService;
 import org.springframework.security.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -25,20 +27,20 @@ import org.springframework.transaction.annotation.Transactional;
  *   Modified by <a href="mailto:bwnoll@gmail.com">Bryan Noll</a> to work with 
  *   the new BaseDaoHibernate implementation that uses generics.
 */
+@Repository("userDao")
 public class UserDaoJpa
     extends GenericNameDaoJpa<User, Long>
     implements UserDao, UserDetailsService
 {
+    @Resource
     private DataSource dataSource;
 
     /**
      * Constructor that sets the entity to User.class.
-     * @param dataSource the dataSource to use for looking up user's password with a jdbcTemplate
      */
-    public UserDaoJpa( DataSource dataSource )
+    public UserDaoJpa()
     {
         super( User.class );
-        this.dataSource = dataSource;
     }
 
     /**
