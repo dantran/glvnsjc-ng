@@ -1,4 +1,4 @@
-package org.glvnsjc.internal.dao.generic;
+package org.glvnsjc.internal.dao.jpa;
 
 import java.io.Serializable;
 import java.util.List;
@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.glvnsjc.internal.dao.UniversalDao;
 
 /**
  * This class serves as the a class that can CRUD any object witout any

@@ -7,7 +7,7 @@ import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.sql.DataSource;
 
-import org.glvnsjc.internal.dao.generic.GenericNameDaoJpa;
+import org.glvnsjc.internal.dao.jpa.GenericNameDaoJpa;
 import org.glvnsjc.model.domain.User;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;

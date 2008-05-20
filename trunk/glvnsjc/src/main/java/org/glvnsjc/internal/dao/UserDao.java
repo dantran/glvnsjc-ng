@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.security.userdetails.UserDetails;
 import org.springframework.security.userdetails.UsernameNotFoundException;
-import org.glvnsjc.internal.dao.generic.GenericNameDao;
 import org.glvnsjc.model.domain.User;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.annotation.Propagation;

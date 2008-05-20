@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.glvnsjc.internal.dao.generic.UniversalDao;
+import org.glvnsjc.internal.dao.UniversalDao;
 import org.glvnsjc.service.UniversalManager;
 import org.springframework.transaction.annotation.Transactional;
 

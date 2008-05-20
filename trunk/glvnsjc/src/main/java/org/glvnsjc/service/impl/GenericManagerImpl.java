@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.glvnsjc.internal.dao.generic.GenericDao;
+import org.glvnsjc.internal.dao.GenericDao;
 import org.glvnsjc.service.GenericManager;
 
 /**
