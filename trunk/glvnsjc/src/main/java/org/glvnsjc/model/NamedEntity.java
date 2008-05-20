@@ -97,5 +97,10 @@ public abstract class NamedEntity
         return version;
     }
 
+    public void setVersion( Integer version )
+    {
+        this.version = version;
+    }
+
 
 }

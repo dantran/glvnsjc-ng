@@ -3,13 +3,13 @@ package org.glvnsjc.model.domain;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Transient;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
 import org.glvnsjc.model.NamedEntity;
 import org.springframework.security.GrantedAuthority;
@@ -23,22 +23,38 @@ public abstract class User
 {
     private static final long serialVersionUID = 1L;
 
+    private String firstName;
+    
+    private String middleName;
+    
+    private String lastName;
+    
+    private String email; // required; unique
+
+    private String phoneNumber;
+
     @Embedded
     private Address address;
 
     private String password;
+    
+    @Transient
+    private String confirmPassword;
+    
+    private String passwordHint;
+    
 
     private boolean credentialsExpired;
-    
+
     private boolean accountLocked;
-    
+
     private boolean accountExpired;
-    
+
     private boolean enabled;
-    
-    @ManyToMany(fetch = FetchType.EAGER) 
+
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<Role>();
-    
+
     public Address getAddress()
     {
         return address;
@@ -49,6 +65,19 @@ public abstract class User
         this.address = address;
     }
 
+    /**
+     * Returns the full name.
+     * @return firstName + ' ' + lastName
+     */
+    @Transient
+    public String getFullName()
+    {
+        return firstName + ' ' + middleName + ' ' + lastName;
+    }
+
+    /**
+     * Alias to getName();
+     */
     @Transient
     public String getUsername()
     {
@@ -135,6 +164,86 @@ public abstract class User
     public void setRoles( Set<Role> roles )
     {
         this.roles = roles;
+    }
+    
+    public void addRole( Role role )
+    {
+        this.roles.add( role );
+    }
+
+    public String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail( String email )
+    {
+        this.email = email;
+    }
+
+    public String getPhoneNumber()
+    {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber( String phoneNumber )
+    {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getFirstName()
+    {
+        return firstName;
+    }
+
+    public void setFirstName( String firstName )
+    {
+        this.firstName = firstName;
+    }
+
+    public String getMiddleName()
+    {
+        return middleName;
+    }
+
+    public void setMiddleName( String middleName )
+    {
+        this.middleName = middleName;
+    }
+
+    public String getLastName()
+    {
+        return lastName;
+    }
+
+    public void setLastName( String lastName )
+    {
+        this.lastName = lastName;
+    }
+
+    public String getConfirmPassword()
+    {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword( String confirmPassword )
+    {
+        this.confirmPassword = confirmPassword;
+    }
+
+    public String getPasswordHint()
+    {
+        return passwordHint;
+    }
+
+    public void setPasswordHint( String passwordHint )
+    {
+        this.passwordHint = passwordHint;
+    }
+
+    public void setEnabled( boolean enabled )
+    {
+        this.enabled = enabled;
     }
 
 }

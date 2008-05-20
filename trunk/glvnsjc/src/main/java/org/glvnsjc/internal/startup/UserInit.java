@@ -39,9 +39,8 @@ public class UserInit
             adminUser = new Staff();
             adminUser.setName( ADMIN_USER );
             adminUser.setPassword( ADMIN_USER );
-            adminUser =  this.userManager.saveUser( adminUser );
             adminUser.getRoles().add( this.predefineRoles.getRoleByType( RoleType.ROLE_SYSTEM_ADMIN )  );
-            this.userManager.saveUser( adminUser );
+            adminUser =  this.userManager.saveUser( adminUser );
         }
         
     }

@@ -1,4 +1,4 @@
-package org.glvnsjc.webapp;
+package org.glvnsjc.webapp.filter;
 
 import java.io.IOException;
 
