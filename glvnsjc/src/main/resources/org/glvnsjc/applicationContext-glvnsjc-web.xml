@@ -10,8 +10,6 @@
           http://myfaces.apache.org/orchestra/orchestra.xsd">
 
 
-  <bean name="testView" class="org.glvnsjc.webapp.TestView" scope="session" autowire="byName"></bean>
-
     <!-- =================================================================== -->
     <!-- Security class from Spring Security - used to configure Password    -->
     <!-- Encryption in UserManagerImpl. Can override in security.xml.        -->
