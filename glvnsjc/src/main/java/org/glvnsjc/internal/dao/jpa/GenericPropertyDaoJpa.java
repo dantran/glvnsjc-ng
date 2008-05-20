@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.glvnsjc.internal.dao.generic;
+package org.glvnsjc.internal.dao.jpa;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.glvnsjc.internal.dao.GenericPropertyDao;
 import org.glvnsjc.model.PropertyEntity;
 
 /**

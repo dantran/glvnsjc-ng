@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.Query;
 
-import org.glvnsjc.internal.dao.generic.GenericNameDaoJpa;
+import org.glvnsjc.internal.dao.jpa.GenericNameDaoJpa;
 import org.glvnsjc.model.domain.Role;
 import org.springframework.stereotype.Repository;
 
