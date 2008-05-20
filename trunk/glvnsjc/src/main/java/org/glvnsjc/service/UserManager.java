@@ -3,7 +3,6 @@ package org.glvnsjc.service;
 import java.util.List;
 
 import org.glvnsjc.model.domain.User;
-import org.glvnsjc.service.generic.UniversalManager;
 import org.springframework.security.userdetails.UsernameNotFoundException;
 
 /**

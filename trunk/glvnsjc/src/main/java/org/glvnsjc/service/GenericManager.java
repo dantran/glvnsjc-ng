@@ -1,4 +1,4 @@
-package org.glvnsjc.service.generic;
+package org.glvnsjc.service;
 
 import java.io.Serializable;
 import java.util.List;
