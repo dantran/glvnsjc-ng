@@ -3,7 +3,7 @@ package org.glvnsjc.model.domain;
 import javax.persistence.Entity;
 
 /**
- * None Academic User
+ * None Academic User, ie system admin
  * @author dtran
  *
  */
