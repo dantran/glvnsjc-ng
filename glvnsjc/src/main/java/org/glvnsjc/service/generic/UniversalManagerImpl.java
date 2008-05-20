@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glvnsjc.internal.dao.generic.UniversalDao;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Base class for Business Services - use this class for utility methods and
@@ -14,6 +15,7 @@ import org.glvnsjc.internal.dao.generic.UniversalDao;
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
 @SuppressWarnings("unchecked")
+@Transactional
 public class UniversalManagerImpl
     implements UniversalManager
 {
@@ -51,6 +53,7 @@ public class UniversalManagerImpl
     /**
      * {@inheritDoc}
      */
+    @Transactional(readOnly = false)    
     public void remove( Class clazz, Serializable id )
     {
         dao.remove( clazz, id );
@@ -59,6 +62,7 @@ public class UniversalManagerImpl
     /**
      * {@inheritDoc}
      */
+    @Transactional(readOnly = false)    
     public Object save( Object o )
     {
         return dao.save( o );
