@@ -17,7 +17,7 @@ public interface RoleManager
     /**
      * {@inheritDoc}
      */
-    List getRoles( Role role );
+    List<Role> getRoles( Role role );
 
     /**
      * {@inheritDoc}
