@@ -1,4 +1,4 @@
-package org.glvnsjc.service;
+package org.glvnsjc.service.impl;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.glvnsjc.internal.dao.RoleDao;
 import org.glvnsjc.model.domain.Role;
+import org.glvnsjc.service.RoleManager;
 import org.glvnsjc.service.generic.UniversalManagerImpl;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,7 +1,9 @@
 package org.glvnsjc.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -11,10 +13,11 @@ import org.glvnsjc.model.domain.Role;
 import org.glvnsjc.model.domain.RoleType;
 import org.springframework.stereotype.Service;
 
-@Service
-public class UserRoleList
+@Service( "predefinedRoles" )
+public class PredefinedRoleImpl
+    implements PredefinedRoles
 {
-    private List<Role> roles = new ArrayList<Role>();
+    private Map<RoleType, Role> roles = new HashMap<RoleType, Role>();
     
     @Resource
     private RoleManager roleManager;
@@ -30,27 +33,36 @@ public class UserRoleList
                 role = new Role( roleType.name() );
                 role = roleManager.saveRole( role );
             }
-            roles.add( role );
+            roles.put( roleType, role );
         }
     }
     
-    public List<Role> getRoles()
-    {
-        return roles;
-    }
     
-    public List<LabelValue> getLabelRoles()
+    public List<LabelValue> getAllRolesWithLabels()
     {
-        List<Role> roles = this.getRoles();
-        
         List<LabelValue> list = new ArrayList<LabelValue>();
 
-        for ( Role role : roles )
+        for ( RoleType type: RoleType.values() )
         {
+            Role role = roles.get( type.name() );
             list.add( new LabelValue( role.getName(), role.getName() ) );
         }
 
         return list;
+    }
+
+
+    @Override
+    public Role getRoleByName( String name )
+    {
+        return roles.get( name );
+    }
+
+
+    @Override
+    public Role getRoleByType( RoleType type )
+    {
+        return roles.get(  type.name() );
     }
     
 }
