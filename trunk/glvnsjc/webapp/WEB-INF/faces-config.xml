@@ -4,12 +4,32 @@
   xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
   version="1.2">
 
-  <application>
-    <!-- Use the Trinidad RenderKit -->
-    <default-render-kit-id>org.apache.myfaces.trinidad.core</default-render-kit-id>
+    <application>
+        <default-render-kit-id>org.apache.myfaces.trinidad.core</default-render-kit-id>
+        <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
+        <locale-config>
+            <default-locale>en</default-locale>
+            <supported-locale>de</supported-locale>
+            <supported-locale>en</supported-locale>
+            <supported-locale>es</supported-locale>
+            <supported-locale>fr</supported-locale>
+            <supported-locale>it</supported-locale>
+            <supported-locale>ko</supported-locale>
+            <supported-locale>nl</supported-locale>
+            <supported-locale>no</supported-locale>
+            <supported-locale>pt</supported-locale>
+            <supported-locale>pt_BR</supported-locale>
+            <supported-locale>tr</supported-locale>
+            <supported-locale>zh</supported-locale>
+            <supported-locale>zh_CN</supported-locale>
+            <supported-locale>zh_TW</supported-locale>
+        </locale-config>
+        <message-bundle>org.glvnsjc.resource.ApplicationResources</message-bundle>
+    </application>
 
-    <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
-
-  </application>
+    <component>
+        <component-type>com.corejsf.validator.UIValidatorScript</component-type>
+        <component-class>com.corejsf.validator.UIValidatorScript</component-class>
+    </component>
 
 </faces-config>

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import javax.annotation.Resource;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -25,14 +26,20 @@ import org.glvnsjc.Constants;
 import org.glvnsjc.model.domain.User;
 import org.glvnsjc.service.UserManager;
 import org.glvnsjc.service.impl.MailEngine;
+import org.springframework.context.annotation.Scope;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope("request")
 public class BasePage
 {
     protected final Log log = LogFactory.getLog( getClass() );
 
+    @Resource
     protected UserManager userManager;
 
+    @Resource
     protected MailEngine mailEngine;
 
     protected SimpleMailMessage message;
