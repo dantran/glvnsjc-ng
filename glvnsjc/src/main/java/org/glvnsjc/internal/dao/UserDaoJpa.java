@@ -49,7 +49,7 @@ public class UserDaoJpa
     @SuppressWarnings("unchecked")
     public List<User> getUsers()
     {
-        Query q = this.entityManager.createQuery( "select u from User u order by upper(u.username)" );
+        Query q = this.entityManager.createQuery( "select u from User u order by upper(u.name)" );
         return q.getResultList();
     }
 
@@ -61,7 +61,7 @@ public class UserDaoJpa
     public UserDetails loadUserByUsername( String username )
         throws UsernameNotFoundException
     {
-        Query q = this.entityManager.createQuery( "select u from User u where username=?" );
+        Query q = this.entityManager.createQuery( "select u from User u where name=?" );
         q.setParameter( 1, username );
         List<User> users = q.getResultList();
         if ( users == null || users.isEmpty() )
@@ -92,8 +92,9 @@ public class UserDaoJpa
     public String getUserPassword( String username )
     {
         SimpleJdbcTemplate jdbcTemplate = new SimpleJdbcTemplate( dataSource );
-        Table table = AnnotationUtils.findAnnotation( User.class, Table.class );
-        return jdbcTemplate.queryForObject( "select password from " + table.name() + " where username=?", String.class,
+        //Table table = AnnotationUtils.findAnnotation( User.class, Table.class );
+        //@fixme use hardcoded table name
+        return jdbcTemplate.queryForObject( "select password from " + "user" + " where name=?", String.class,
                                             username );
     }
 }

@@ -3,6 +3,7 @@ package org.glvnsjc.model.domain;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Transient;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -48,6 +49,7 @@ public abstract class User
         this.address = address;
     }
 
+    @Transient
     public String getUsername()
     {
         return this.getName();
@@ -72,7 +74,7 @@ public abstract class User
      * @see org.springframework.security.userdetails.UserDetails#getAuthorities()
      * @return GrantedAuthority[] an array of roles.
      */
-    //@Transient
+    @Transient
     public GrantedAuthority[] getAuthorities()
     {
         return roles.toArray( new GrantedAuthority[0] );
@@ -91,7 +93,7 @@ public abstract class User
     /**
      * @see org.springframework.security.userdetails.UserDetails#isAccountNonExpired()
      */
-    //@Transient
+    @Transient
     public boolean isAccountNonExpired()
     {
         return !isAccountExpired();
@@ -105,7 +107,7 @@ public abstract class User
     /**
      * @see org.springframework.security.userdetails.UserDetails#isAccountNonLocked()
      */
-    //@Transient
+    @Transient
     public boolean isAccountNonLocked()
     {
         return !isAccountLocked();
@@ -119,7 +121,7 @@ public abstract class User
     /**
      * @see org.springframework.security.userdetails.UserDetails#isCredentialsNonExpired()
      */
-    //@Transient
+    @Transient
     public boolean isCredentialsNonExpired()
     {
         return !credentialsExpired;
