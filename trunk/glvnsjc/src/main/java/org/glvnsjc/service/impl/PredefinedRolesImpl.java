@@ -16,7 +16,7 @@ import org.glvnsjc.service.RoleManager;
 import org.springframework.stereotype.Service;
 
 @Service( "predefinedRoles" )
-public class PredefinedRoleImpl
+public class PredefinedRolesImpl
     implements PredefinedRoles
 {
     private Map<String, Role> roles = new HashMap<String, Role>();
