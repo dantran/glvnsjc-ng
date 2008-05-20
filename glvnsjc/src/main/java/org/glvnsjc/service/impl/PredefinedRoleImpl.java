@@ -1,4 +1,4 @@
-package org.glvnsjc.service;
+package org.glvnsjc.service.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,13 +11,15 @@ import javax.annotation.Resource;
 import org.glvnsjc.model.LabelValue;
 import org.glvnsjc.model.domain.Role;
 import org.glvnsjc.model.domain.RoleType;
+import org.glvnsjc.service.PredefinedRoles;
+import org.glvnsjc.service.RoleManager;
 import org.springframework.stereotype.Service;
 
 @Service( "predefinedRoles" )
 public class PredefinedRoleImpl
     implements PredefinedRoles
 {
-    private Map<RoleType, Role> roles = new HashMap<RoleType, Role>();
+    private Map<String, Role> roles = new HashMap<String, Role>();
     
     @Resource
     private RoleManager roleManager;
@@ -33,7 +35,7 @@ public class PredefinedRoleImpl
                 role = new Role( roleType.name() );
                 role = roleManager.saveRole( role );
             }
-            roles.put( roleType, role );
+            roles.put( roleType.name(), role );
         }
     }
     
