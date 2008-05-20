@@ -2,7 +2,7 @@ package org.glvnsjc.model.domain;
 
 public enum RoleType {
     
-    ROLE_SYSTEM_ADMIN,
+    ROLE_ADMIN,
     
     ROLE_SCHOOL_ADMIN,
     
