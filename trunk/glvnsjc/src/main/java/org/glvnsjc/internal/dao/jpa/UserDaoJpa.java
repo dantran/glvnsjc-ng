@@ -1,15 +1,13 @@
-package org.glvnsjc.internal.dao;
+package org.glvnsjc.internal.dao.jpa;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.persistence.Query;
-import javax.persistence.Table;
 import javax.sql.DataSource;
 
-import org.glvnsjc.internal.dao.jpa.GenericNameDaoJpa;
+import org.glvnsjc.internal.dao.UserDao;
 import org.glvnsjc.model.domain.User;
-import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.security.userdetails.UserDetails;
 import org.springframework.security.userdetails.UserDetailsService;
@@ -28,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
  *   the new BaseDaoHibernate implementation that uses generics.
 */
 @Repository("userDao")
+@Transactional
 public class UserDaoJpa
     extends GenericNameDaoJpa<User, Long>
     implements UserDao, UserDetailsService
@@ -57,7 +56,6 @@ public class UserDaoJpa
      * {@inheritDoc}
      */
     @SuppressWarnings("unchecked")
-    @Transactional
     public UserDetails loadUserByUsername( String username )
         throws UsernameNotFoundException
     {

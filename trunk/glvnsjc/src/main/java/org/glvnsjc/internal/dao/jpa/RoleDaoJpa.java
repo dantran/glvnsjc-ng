@@ -1,10 +1,10 @@
-package org.glvnsjc.internal.dao;
+package org.glvnsjc.internal.dao.jpa;
 
 import java.util.List;
 
 import javax.persistence.Query;
 
-import org.glvnsjc.internal.dao.jpa.GenericNameDaoJpa;
+import org.glvnsjc.internal.dao.RoleDao;
 import org.glvnsjc.model.domain.Role;
 import org.springframework.stereotype.Repository;
 
