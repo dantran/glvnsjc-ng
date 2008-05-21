@@ -1,4 +1,3 @@
-<script type="text/javascript">
 
 /* This function is used to change the style class of an element */
 function swapClass(obj, newStyle) {
@@ -345,5 +344,4 @@ window.onload = function() {
 // Show the document's title on the status bar
 window.defaultStatus=document.title;
 
-</script>
 

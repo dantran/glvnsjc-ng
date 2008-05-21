@@ -215,6 +215,11 @@
   </filter>
 
   <filter>
+    <filter-name>sitemesh</filter-name>
+    <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
+  </filter>
+
+  <filter>
     <filter-name>localeFilter</filter-name>
     <filter-class>org.glvnsjc.webapp.filter.LocaleFilter</filter-class>
   </filter>
@@ -224,9 +229,23 @@
     <filter-class>org.glvnsjc.webapp.filter.MessageFilter</filter-class>
   </filter>
 
+
+
   <!-- =========================================================================== 
     Filter settings                             
     =========================================================================== -->
+
+  <filter-mapping>
+    <filter-name>sitemesh</filter-name>
+    <url-pattern>/login.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 
   <filter-mapping>
     <filter-name>ajax4jsf</filter-name>

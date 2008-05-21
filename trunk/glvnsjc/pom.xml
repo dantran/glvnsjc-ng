@@ -249,6 +249,11 @@
       <version>${ajax4jsf.version}</version>
     </dependency>
 
+    <dependency>
+      <groupId>opensymphony</groupId>
+      <artifactId>sitemesh</artifactId>
+      <version>${sitemesh.version}</version>
+    </dependency>
 
     <!-- ================================================================== -->
     <!--  logger                                                            -->
