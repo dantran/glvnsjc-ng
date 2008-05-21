@@ -7,7 +7,6 @@
 <link rel="stylesheet" type="text/css" media="all"
   href="<c:url value='/styles/${appConfig["csstheme"]}/layout-1col.css'/>" />
 
-<script type="text/javascript" src="<c:url value='/scripts/global.js'/>"></script>
 
 </head>
 <body id="login" />
@@ -41,7 +40,6 @@
 </fieldset>
 </form>
 
-<%@ include file="./scripts/global.js"%>
 <%@ include file="./scripts/login.js"%>
 
 <p><fmt:message key="login.passwordHint" /></p>
