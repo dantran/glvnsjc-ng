@@ -21,12 +21,14 @@
 
     <ui:define name="content">
 
+      <tr:form>
       <tr:panelCaptionGroup captionText="The Caption Text">
         <tr:panelGroupLayout layout="vertical">
           <tr:outputText value="Hello outputText" />
           <tr:outputText value="${testView.testString}" />
         </tr:panelGroupLayout>
       </tr:panelCaptionGroup>
+      </tr:form>
     </ui:define>
 
   </ui:composition>
