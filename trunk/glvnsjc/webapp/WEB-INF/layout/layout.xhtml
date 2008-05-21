@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html">
+<head>
+
+<title><ui:insert name="window-title">	Default Title </ui:insert></title>
+
+<link rel="stylesheet" type="text/css" href="./../css/main.css" title="IPLocks" />
+<link rel="alternate stylesheet" type="text/css" href="./../css/alt1-main.css" title="Alt1-Wash" />
+<link rel="alternate stylesheet" type="text/css" href="./../css/alt2-main.css" title="Alt2-Wash" />
+<link rel="stylesheet" type="text/css" href="../css/schedule.css" />
+<link rel="stylesheet" type="text/css" href="../css/report.css" />
+<link rel="stylesheet" type="text/css" href="../css/fonts-min.css" />
+<link rel="stylesheet" type="text/css" href="../css/container.css" />
+<script type="text/javascript" src="./../scripts/utilities.js"></script>
+<script type="text/javascript" src="./../scripts/container.js"></script>
+</head>
+
+<body id="#{pageid}" class=" yui-skin-sam">
+
+<div id="header"><ui:insert name="header">
+  <ui:include src="header.xhtml" />
+</ui:insert></div>
+
+<div id="loginstatusbar"><ui:insert name="loginstatusbar">
+  <ui:include src="loginstatusbar.xhtml" />
+</ui:insert></div>
+
+<!-- 
+<div id="left"><ui:insert name="navigation">
+  <ui:include src="navigation.xhtml" />
+</ui:insert></div>
+
+ -->
+
+<div id="center"><ui:insert name="errors">
+  <ui:include src="errors.xhtml" />
+</ui:insert>
+
+<div id="contentheader" style=""><ui:insert name="content-title" /></div>
+
+<ui:insert name="content">
+  <ui:include src="content.xhtml" />
+</ui:insert></div>
+
+</body>
+
+</html>
+
