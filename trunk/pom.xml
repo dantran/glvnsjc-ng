@@ -611,6 +611,7 @@
     <jstl.standard.version>1.1.2</jstl.standard.version>
     <corejsf.validator.version>1.0</corejsf.validator.version>
     <jsp.version>2.1</jsp.version>
+    <ajax4jsf.version>1.1.1</ajax4jsf.version>
   </properties>
 
 </project>

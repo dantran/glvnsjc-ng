@@ -3,35 +3,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+<tr:document xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
   xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
   xmlns:tr="http://myfaces.apache.org/trinidad">
 
-<ui:composition template="/WEB-INF/layout/layout.xhtml">
+  <ui:composition template="/WEB-INF/layout/layout.xhtml">
 
-  <ui:param name="pageid" value="page1" />
+    <ui:param name="pageid" value="page1" />
 
-  <ui:define name="window-title">
-    <h:outputText value="Template Window Title" />
-  </ui:define>
+    <ui:define name="window-title">
+      <h:outputText value="Template Window Title" />
+    </ui:define>
 
+    <head>
+    <title>Insert title here</title>
+    </head>
 
-  <head>
-  <title>Insert title here</title>
-  </head>
-  <ui:define name="content">
+    <ui:define name="content">
 
+      <tr:panelCaptionGroup captionText="The Caption Text">
+        <tr:panelGroupLayout layout="vertical">
+          <tr:outputText value="Hello outputText" />
+          <tr:outputText value="${testView.testString}" />
+        </tr:panelGroupLayout>
+      </tr:panelCaptionGroup>
+    </ui:define>
 
+  </ui:composition>
 
-    <tr:panelGroupLayout layout="vertical">
-      <tr:outputText value="Hello outputText" />
-      <tr:outputText value="${testView.testString}" />
-    </tr:panelGroupLayout>
-
-
-  </ui:define>
-</ui:composition>
-</html>
+</tr:document>
 
 
 

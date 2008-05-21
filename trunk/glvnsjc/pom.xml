@@ -236,12 +236,19 @@
       <version>${corejsf.validator.version}</version>
     </dependency>
 
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>${jsp.version}</version>
-            <scope>provided</scope>
-        </dependency>
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>jsp-api</artifactId>
+      <version>${jsp.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.ajax4jsf</groupId>
+      <artifactId>ajax4jsf</artifactId>
+      <version>${ajax4jsf.version}</version>
+    </dependency>
+
 
     <!-- ================================================================== -->
     <!--  logger                                                            -->
