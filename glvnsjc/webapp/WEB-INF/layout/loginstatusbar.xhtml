@@ -11,7 +11,7 @@
     <h:panelGrid cellspacing="0" columns="1" columnClasses="alignLeft,alignRight,alignRight"
       style="margin-top:3px; margin-bottom:3px; float:left; width:60%">
 
-      <h:outputText value="#{base['user.status']}: #{currentUser.userDetails.username}" />
+      <h:outputText value="#{base['user.status']} #{currentUser.userDetails.username}" />
 
     </h:panelGrid>
 
@@ -19,7 +19,7 @@
       columnClasses="rightSideEvenCell,rightSideEvenCell,rightSideEvenCell,rightSideOddCell">
 
       <h:commandLink action="#{logout.logout}" immediate="true">
-        <h:outputText id="logout" value="#{base['user.logout']}" title="${base['user.logout']}" />
+        <h:outputText id="logout" value="#{base['user.logout']}" title="#{base['user.logout']}" />
       </h:commandLink>
 
     </h:panelGrid>
