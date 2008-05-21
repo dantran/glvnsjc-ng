@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:tr="http://myfaces.apache.org/trinidad">
+
+<ui:composition>
+
+    <tr:form id="statusForm" styleClass="font1" style="margin-top:0px">
+
+      <h:panelGrid cellspacing="0" columns="2" columnClasses="alignLeft,alignRight" width="100%" >
+
+        <tr:outputText value="#{base['user.status']} #{currentUser.userDetails.username}" style="float:left; display:block;"/>
+        <tr:commandLink id="logout" action="#{logout.logout}" immediate="true" text="#{base['user.logout']}"  style="float:right; display:block;"/>
+
+      </h:panelGrid>
+
+
+    </tr:form>
+
+</ui:composition>
+
+</html>
+
+
