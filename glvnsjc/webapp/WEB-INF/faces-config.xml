@@ -27,12 +27,23 @@
     <resource-bundle>
       <base-name>org.glvnsjc.resource.ApplicationResources</base-name>
       <var>base</var>
-    </resource-bundle>    
+    </resource-bundle>
   </application>
 
   <component>
     <component-type>com.corejsf.validator.UIValidatorScript</component-type>
     <component-class>com.corejsf.validator.UIValidatorScript</component-class>
   </component>
-  
+
+  <navigation-rule>
+    <from-view-id>*</from-view-id>
+    <navigation-case>
+      <from-outcome>goto-login</from-outcome>
+      <to-view-id>/index.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+
+  </navigation-rule>
+
+
 </faces-config>

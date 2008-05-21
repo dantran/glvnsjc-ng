@@ -3,11 +3,13 @@ package org.glvnsjc.webapp.action;
 import java.io.IOException;
 
 import javax.faces.context.FacesContext;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.myfaces.orchestra.conversation.ConversationManager;
+import org.springframework.security.ui.rememberme.TokenBasedRememberMeServices;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -21,9 +23,9 @@ public class Logout
         HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
         session.invalidate();
         
-        //Cookie terminate = new Cookie( TokenBasedRememberMeServices.ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE_KEY, null );
-        //terminate.setMaxAge( 0 );
-        //getResponse().addCookie( terminate );
+        Cookie terminate = new Cookie( TokenBasedRememberMeServices.SPRING_SECURITY_REMEMBER_ME_COOKIE_KEY, null );
+        terminate.setMaxAge( 0 );
+        getResponse().addCookie( terminate );
         
         return "goto-login";
     }
