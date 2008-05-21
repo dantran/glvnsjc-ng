@@ -158,7 +158,7 @@
 
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>*.jsf</url-pattern>
+    <url-pattern>*.jspx</url-pattern>
   </servlet-mapping>
 
   <!-- =========================================================================== 
