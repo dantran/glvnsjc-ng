@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<tr:document xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:acegijsf="http://sourceforge.net/projects/jsf-comp/acegijsf" xmlns:tr="http://myfaces.apache.org/trinidad">
+
+  <ui:composition>
+    <tr:separator/>
+
+    <tr:form>
+        <tr:panelGroupLayout layout="vertical">
+          <tr:navigationPane hint="buttons" id="tabsExample">
+            <tr:commandNavigationItem text="System" partialSubmit="true"
+              actionListener="#{demoCommandNavigationItem.navigationItemAction}" />
+            <tr:commandNavigationItem text="School" partialSubmit="true" selected="true"
+              actionListener="#{demoCommandNavigationItem.navigationItemAction}" />
+            <tr:commandNavigationItem text="Branch" partialSubmit="true"
+              actionListener="#{demoCommandNavigationItem.navigationItemAction}" />
+            <tr:commandNavigationItem text="Class" partialSubmit="true"
+              actionListener="#{demoCommandNavigationItem.navigationItemAction}" rendered="false"/>
+          </tr:navigationPane>
+        </tr:panelGroupLayout>
+    </tr:form>
+
+    <tr:separator/>
+  </ui:composition>
+
+</tr:document>
