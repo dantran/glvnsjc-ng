@@ -7,18 +7,31 @@
   xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
   xmlns:tr="http://myfaces.apache.org/trinidad">
 
-<head>
-<title>Insert title here</title>
-</head>
-<body>
-<f:view>
-  Hello XHTML
-<tr:panelGroupLayout layout="vertical">
-    <h:outputText value="Hello outputText" />
-    <tr:outputText value="${testView.testString}" />
-  </tr:panelGroupLayout>
+<ui:composition template="/WEB-INF/layout/layout.xhtml">
 
-</f:view>
-</body>
+  <ui:param name="pageid" value="page1" />
 
+  <ui:define name="window-title">
+    <h:outputText value="Template Window Title" />
+  </ui:define>
+
+
+  <head>
+  <title>Insert title here</title>
+  </head>
+  <ui:define name="content">
+
+
+    <tr:panelGroupLayout layout="vertical">
+      <h:outputText value="Hello outputText" />
+      <tr:outputText value="${testView.testString}" />
+    </tr:panelGroupLayout>
+
+
+  </ui:define>
+</ui:composition>
 </html>
+
+
+
+
