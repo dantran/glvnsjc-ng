@@ -245,5 +245,5 @@ public abstract class User
     {
         this.enabled = enabled;
     }
-
+    
 }

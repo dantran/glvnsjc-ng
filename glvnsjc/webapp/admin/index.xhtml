@@ -1,31 +1,46 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+<tr:document xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
   xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
   xmlns:tr="http://myfaces.apache.org/trinidad">
 
-<ui:composition template="/WEB-INF/layout/layout.xhtml">
-
-  <ui:param name="pageid" value="page1" />
-
-  <ui:define name="window-title">
-    <h:outputText value="Template Window Title" />
-  </ui:define>
+  <ui:composition template="/WEB-INF/layout/layout.xhtml">
 
 
-  <head>
-  <title>Insert title here</title>
-  </head>
-  <ui:define name="content">
+    <ui:define name="content">
+      <tr:form>
+        <tr:panelGroupLayout layout="vertical">
 
 
-    <tr:panelGroupLayout layout="vertical">
-      <h:outputText value="Hello outputText" />
-      <tr:outputText value="AFFieldText" />
-    </tr:panelGroupLayout>
+          <tr:panelCaptionGroup captionText="School">
+            <tr:panelFormLayout rows="5" labelWidth="20%" fieldWidth="67%">
+              <tr:inputText columns="30" label="Name" />
+              <tr:inputText columns="30" label="Description" />
+            </tr:panelFormLayout>
+          </tr:panelCaptionGroup>
 
+          <tr:panelCaptionGroup captionText="Logos">
+            <tr:panelFormLayout rows="5" labelWidth="20%" fieldWidth="67%">
+              <tr:inputText columns="60" label="Login Logo" />
+              <tr:inputText columns="60" label="Banner Logo" />
+            </tr:panelFormLayout>
+          </tr:panelCaptionGroup>
 
-  </ui:define>
-</ui:composition>
-</html>
+          <tr:panelCaptionGroup captionText="Email">
+            <tr:panelFormLayout rows="5" labelWidth="20%" fieldWidth="67%">
+              <tr:inputText columns="30" label="SMTP Host" />
+              <tr:inputText columns="5" label="SMTP Port" />
+              <tr:inputText columns="20" label="User Name" />
+              <tr:inputText columns="20" label="Password" />
+            </tr:panelFormLayout>
+          </tr:panelCaptionGroup>
+
+          <tr:panelCaptionGroup captionText="Branches">
+          </tr:panelCaptionGroup>
+
+        </tr:panelGroupLayout>
+      </tr:form>
+    </ui:define>
+  </ui:composition>
+</tr:document>
