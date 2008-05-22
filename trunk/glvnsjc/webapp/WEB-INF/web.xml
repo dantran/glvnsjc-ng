@@ -243,6 +243,10 @@
     <filter-class>org.glvnsjc.webapp.filter.MessageFilter</filter-class>
   </filter>
 
+  <filter>
+    <filter-name>viewExpiredFilter</filter-name>
+    <filter-class>org.glvnsjc.webapp.filter.ViewExpiredFilter</filter-class>
+  </filter>
 
 
   <!-- =========================================================================== 
@@ -276,7 +280,7 @@
 
   <filter-mapping>
     <filter-name>extensionsFilter</filter-name>
-    <url-pattern>*.jsf</url-pattern>
+    <url-pattern>*.jspx</url-pattern>
   </filter-mapping>
 
   <filter-mapping>
@@ -285,6 +289,11 @@
     <servlet-name>Faces Servlet</servlet-name>
   </filter-mapping>
 
+  <filter-mapping>
+    <filter-name>viewExpiredFilter</filter-name>
+    <url-pattern>*.jspx</url-pattern>
+  </filter-mapping>
+  
   <!--============================================================================-->
   <!-- Welcome Configuration                                                      -->
   <!--============================================================================-->
