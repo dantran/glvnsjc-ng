@@ -37,6 +37,19 @@
           </tr:panelCaptionGroup>
 
           <tr:panelCaptionGroup captionText="Branches">
+          <tr:table var="row" emptyText="No Data"  summary="Dynamic Table">
+            <tr:column>
+              <f:facet name="header">
+                <tr:outputText value="Row"/>
+              </f:facet>
+              <tr:outputText value="#{empty row ? 'NULL - This is bad!' : row}"/>
+            </tr:column>
+            <tr:column>
+              <f:facet name="header">
+                <tr:outputText value="Number"/>
+              </f:facet>
+            </tr:column>
+          </tr:table>          
           </tr:panelCaptionGroup>
 
         </tr:panelGroupLayout>
