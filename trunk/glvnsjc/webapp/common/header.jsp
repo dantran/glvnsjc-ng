@@ -11,4 +11,4 @@
 <hr />
 
 <%-- Put constants into request scope --%>
-<appfuse:constants scope="request"/>
+<glvnsjc:constants scope="request"/>
