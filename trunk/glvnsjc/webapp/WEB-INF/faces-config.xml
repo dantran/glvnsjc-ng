@@ -43,6 +43,12 @@
       <redirect />
     </navigation-case>
 
+    <navigation-case>
+      <from-outcome>goto-system-configuration</from-outcome>
+      <to-view-id>/admin/index.xhtml</to-view-id>
+      <redirect />
+    </navigation-case>
+
   </navigation-rule>
 
 

@@ -6,13 +6,11 @@
   xmlns:acegijsf="http://sourceforge.net/projects/jsf-comp/acegijsf" xmlns:tr="http://myfaces.apache.org/trinidad">
 
   <ui:composition>
-    <tr:separator/>
 
     <tr:form>
-        <tr:panelGroupLayout layout="vertical">
           <tr:navigationPane hint="buttons" id="tabsExample">
-            <tr:commandNavigationItem text="System" partialSubmit="true"
-              actionListener="#{demoCommandNavigationItem.navigationItemAction}" />
+            <tr:commandNavigationItem text="System" partialSubmit="true" rendered="#{navigator.systemConfigurationEnable}"
+              action="goto-system-configuration" />
             <tr:commandNavigationItem text="School" partialSubmit="true" selected="true"
               actionListener="#{demoCommandNavigationItem.navigationItemAction}" />
             <tr:commandNavigationItem text="Branch" partialSubmit="true"
@@ -20,10 +18,8 @@
             <tr:commandNavigationItem text="Class" partialSubmit="true"
               actionListener="#{demoCommandNavigationItem.navigationItemAction}" rendered="false"/>
           </tr:navigationPane>
-        </tr:panelGroupLayout>
     </tr:form>
 
-    <tr:separator/>
   </ui:composition>
 
 </tr:document>

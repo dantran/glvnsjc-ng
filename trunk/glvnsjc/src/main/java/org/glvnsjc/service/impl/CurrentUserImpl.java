@@ -1,7 +1,12 @@
 package org.glvnsjc.service.impl;
 
+import javax.annotation.Resource;
+
+import org.glvnsjc.model.domain.Role;
+import org.glvnsjc.model.domain.RoleType;
 import org.glvnsjc.model.domain.User;
 import org.glvnsjc.service.CurrentUser;
+import org.glvnsjc.service.PredefinedRoles;
 import org.springframework.security.Authentication;
 import org.springframework.security.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -10,20 +15,35 @@ import org.springframework.stereotype.Component;
 public class CurrentUserImpl
     implements CurrentUser
 {
+    
+    @Resource
+    private PredefinedRoles predefinedRoles;
+    
+    private User cacheUser = null;
+    
     public User getUserDetails()
     {
+        if ( cacheUser != null )
+        {
+            return cacheUser;
+        }
         //goto to thread local storage to get principal
 
         Authentication au = SecurityContextHolder.getContext().getAuthentication();
 
-        User user = null;
-
         if ( au != null )
         {
-            user = (User) au.getPrincipal();
+            cacheUser = (User) au.getPrincipal();
         }
 
-        return user;
+        return cacheUser;
+    }
+    
+    public boolean isInRole( RoleType roleType )
+    {
+        Role role = this.predefinedRoles.getRoleByType( roleType );
+        
+        return getUserDetails().getRoles().contains( role );
     }
 
 
