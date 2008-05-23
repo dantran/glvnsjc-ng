@@ -3,11 +3,15 @@ package org.glvnsjc.service.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.EntityExistsException;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glvnsjc.internal.dao.GenericNameDao;
 import org.glvnsjc.model.NamedEntity;
 import org.glvnsjc.service.GenericNameManager;
+import org.glvnsjc.service.NameExistsException;
+import org.springframework.dao.DataIntegrityViolationException;
 
 /**
  * This class serves as the Base class for all other Managers - namely to hold
@@ -68,8 +72,23 @@ public class GenericNameManagerImpl<T extends NamedEntity, PK extends Serializab
      * {@inheritDoc}
      */
     public T save( T object )
+       throws NameExistsException
     {
-        return genericDao.save( object );
+        try
+        {
+            return genericDao.save( object );
+        }
+        catch ( DataIntegrityViolationException e )
+        {
+            log.warn( e.getMessage() );
+            throw new NameExistsException( object.getName() + "' already exists!" );
+        }
+        catch ( EntityExistsException e )
+        { // needed for JPA
+            log.warn( e.getMessage() );
+            throw new NameExistsException( object.getName() + "' already exists!" );
+        }    
+        
     }
 
     /**

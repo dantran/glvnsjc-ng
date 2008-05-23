@@ -108,13 +108,11 @@ public class UserManagerImpl
         }
         catch ( DataIntegrityViolationException e )
         {
-            e.printStackTrace();
             log.warn( e.getMessage() );
             throw new UserExistsException( "User '" + user.getUsername() + "' already exists!" );
         }
         catch ( EntityExistsException e )
         { // needed for JPA
-            e.printStackTrace();
             log.warn( e.getMessage() );
             throw new UserExistsException( "User '" + user.getUsername() + "' already exists!" );
         }
