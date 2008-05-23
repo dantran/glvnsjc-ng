@@ -54,7 +54,7 @@ public class CreateDemoData
         branch.setName( "PC" );
         branch.setDescription( "St. Patrick PM" );
         branch.setParentSchool( school );
-        branch.addInstructor( (Instructor)instructor ); //FIXME
+        branch.addInstructor( instructor ); 
         branch = branchManager.save( branch );
         school.addBranch( branch );
 
