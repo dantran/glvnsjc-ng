@@ -79,7 +79,7 @@
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>
-
+      <!-- prevent formater from combine them together -->
       classpath:org/glvnsjc/applicationContext-persistence.xml,
 
       classpath:org/glvnsjc/applicationContext-datasource.xml,
@@ -94,9 +94,7 @@
 
       classpath:org/glvnsjc/applicationContext-security.xml,
 
-
       classpath:org/glvnsjc/applicationContext-glvnsjc-web.xml,
-
     </param-value>
   </context-param>
 
@@ -119,6 +117,30 @@
     <param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
     <param-value>en</param-value>
   </context-param>
+
+  <!-- =========================================================================== 
+    Servlet and Servlet mappings                             
+    =========================================================================== -->
+  <servlet>
+    <servlet-name>Faces Servlet</servlet-name>
+    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>Faces Servlet</servlet-name>
+    <url-pattern>*.jspx</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>resources</servlet-name>
+    <servlet-class>org.apache.myfaces.trinidad.webapp.ResourceServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>resources</servlet-name>
+    <url-pattern>/adf/*</url-pattern>
+  </servlet-mapping>
 
   <!-- =========================================================================== 
     Listeners                          
@@ -149,35 +171,11 @@
   <listener>
     <listener-class>org.glvnsjc.webapp.listener.StartupListener</listener-class>
   </listener>
-
-
+  
   <!-- =========================================================================== 
-    Servlet and Servlet mappings                             
+    Filter settings, order are important                          
     =========================================================================== -->
-  <servlet>
-    <servlet-name>Faces Servlet</servlet-name>
-    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-
-  <servlet>
-    <servlet-name>resources</servlet-name>
-    <servlet-class>org.apache.myfaces.trinidad.webapp.ResourceServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>resources</servlet-name>
-    <url-pattern>/adf/*</url-pattern>
-  </servlet-mapping>
-
-  <servlet-mapping>
-    <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>*.jspx</url-pattern>
-  </servlet-mapping>
-
-  <!-- =========================================================================== 
-    Filter settings                             
-    =========================================================================== -->
+    
   <filter>
     <filter-name>securityFilter</filter-name>
     <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
@@ -187,6 +185,21 @@
     </init-param>
   </filter>
 
+  <filter-mapping>
+    <filter-name>securityFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+      
+  <filter>
+    <filter-name>trinidad</filter-name>
+    <filter-class>org.apache.myfaces.trinidad.webapp.TrinidadFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>trinidad</filter-name>
+    <servlet-name>Faces Servlet</servlet-name>
+  </filter-mapping>
+
   <filter>
     <filter-name>richfaces</filter-name>
     <filter-class>org.ajax4jsf.Filter</filter-class>
@@ -195,12 +208,29 @@
       <param-value>false</param-value>
     </init-param>
   </filter>
+  
+  <filter-mapping>
+    <filter-name>richfaces</filter-name>
+    <servlet-name>Faces Servlet</servlet-name>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>INCLUDE</dispatcher>
+  </filter-mapping>
 
   <filter>
-    <filter-name>trinidad</filter-name>
-    <filter-class>org.apache.myfaces.trinidad.webapp.TrinidadFilter</filter-class>
+    <filter-name>extensionsFilter</filter-name>
+    <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
+    <init-param>
+      <param-name>maxFileSize</param-name>
+      <param-value>2m</param-value>
+    </init-param>
   </filter>
-
+  
+  <filter-mapping>
+    <filter-name>extensionsFilter</filter-name>
+    <servlet-name>Faces Servlet</servlet-name>
+  </filter-mapping>
+  
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -215,24 +245,33 @@
   </filter>
 
   <filter-mapping>
-    <filter-name>securityFilter</filter-name>
+    <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-
-  <filter>
-    <filter-name>extensionsFilter</filter-name>
-    <filter-class>org.apache.myfaces.webapp.filter.ExtensionsFilter</filter-class>
-    <init-param>
-      <param-name>maxFileSize</param-name>
-      <param-value>2m</param-value>
-    </init-param>
-  </filter>
 
   <filter>
     <filter-name>sitemesh</filter-name>
     <filter-class>com.opensymphony.module.sitemesh.filter.PageFilter</filter-class>
   </filter>
 
+  <filter-mapping>
+    <filter-name>sitemesh</filter-name>
+    <url-pattern>/login.jsp</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+    <dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  
+  <filter>
+    <filter-name>viewExpiredFilter</filter-name>
+    <filter-class>org.glvnsjc.webapp.filter.ViewExpiredFilter</filter-class>
+  </filter>
+
+  <filter-mapping>
+    <filter-name>viewExpiredFilter</filter-name>
+    <servlet-name>Faces Servlet</servlet-name>
+  </filter-mapping>
+
+  <!--  fixme where are the filter mapping -->
   <filter>
     <filter-name>localeFilter</filter-name>
     <filter-class>org.glvnsjc.webapp.filter.LocaleFilter</filter-class>
@@ -243,57 +282,7 @@
     <filter-class>org.glvnsjc.webapp.filter.MessageFilter</filter-class>
   </filter>
 
-  <filter>
-    <filter-name>viewExpiredFilter</filter-name>
-    <filter-class>org.glvnsjc.webapp.filter.ViewExpiredFilter</filter-class>
-  </filter>
 
-
-  <!-- =========================================================================== 
-    Filter settings                             
-    =========================================================================== -->
-
-  <filter-mapping>
-    <filter-name>sitemesh</filter-name>
-    <url-pattern>/login.jsp</url-pattern>
-    <dispatcher>REQUEST</dispatcher>
-    <dispatcher>FORWARD</dispatcher>
-  </filter-mapping>
-
-  <filter-mapping>
-    <filter-name>encodingFilter</filter-name>
-    <url-pattern>/*</url-pattern>
-  </filter-mapping>
-
-  <filter-mapping>
-    <filter-name>richfaces</filter-name>
-    <servlet-name>Faces Servlet</servlet-name>
-    <dispatcher>REQUEST</dispatcher>
-    <dispatcher>FORWARD</dispatcher>
-    <dispatcher>INCLUDE</dispatcher>
-  </filter-mapping>
-
-  <filter-mapping>
-    <filter-name>trinidad</filter-name>
-    <servlet-name>Faces Servlet</servlet-name>
-  </filter-mapping>
-
-  <filter-mapping>
-    <filter-name>extensionsFilter</filter-name>
-    <url-pattern>*.jspx</url-pattern>
-  </filter-mapping>
-
-  <filter-mapping>
-    <filter-name>extensionsFilter</filter-name>
-    <!-- servlet-name must match the name of javax.faces.webapp.FacesServlet entry -->
-    <servlet-name>Faces Servlet</servlet-name>
-  </filter-mapping>
-
-  <filter-mapping>
-    <filter-name>viewExpiredFilter</filter-name>
-    <url-pattern>*.jspx</url-pattern>
-  </filter-mapping>
-  
   <!--============================================================================-->
   <!-- Welcome Configuration                                                      -->
   <!--============================================================================-->

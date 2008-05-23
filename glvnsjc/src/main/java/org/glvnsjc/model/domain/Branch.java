@@ -15,14 +15,14 @@ extends NamedEntity
     private static final long serialVersionUID = 1L;
     
     @OneToMany
-    private Set<Course> courses = new HashSet<Course>();
+    private Set<Clazz> courses = new HashSet<Clazz>();
 
-    public Set<Course> getCourses()
+    public Set<Clazz> getCourses()
     {
         return courses;
     }
 
-    public void setCourses( Set<Course> courses )
+    public void setCourses( Set<Clazz> courses )
     {
         this.courses = courses;
     }

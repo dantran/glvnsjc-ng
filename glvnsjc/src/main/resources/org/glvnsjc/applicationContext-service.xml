@@ -53,22 +53,18 @@
     <!-- =================================================================== -->
     <!-- Managers: For accessing DAOs                                        -->
     <!-- =================================================================== -->
-    <bean id="manager" class="org.glvnsjc.service.impl.UniversalManagerImpl">
-        <property name="dao" ref="universalDao"/>
+
+    <bean id="schoolManager" class="org.glvnsjc.service.impl.GenericNameManagerImpl">
+        <constructor-arg ref="schoolDao" />
+    </bean>
+
+    <bean id="courseManager" class="org.glvnsjc.service.impl.GenericNameManagerImpl">
+        <constructor-arg ref="courseDao" />
+    </bean>
+
+    <bean id="termManager" class="org.glvnsjc.service.impl.GenericNameManagerImpl">
+        <constructor-arg ref="termDao" />
     </bean>
     
-    <bean id="lookupManager" class="org.glvnsjc.service.impl.LookupManagerImpl">
-        <property name="lookupDao" ref="lookupDao"/>
-    </bean>
-
-    <bean id="userManager" class="org.glvnsjc.service.impl.UserManagerImpl">
-        <property name="userDao" ref="userDao"/>
-        <property name="passwordEncoder" ref="passwordEncoder"/>
-    </bean>
-
-    <bean id="roleManager" class="org.glvnsjc.service.impl.RoleManagerImpl">
-        <property name="roleDao" ref="roleDao"/>
-    </bean>
-
     <!-- Add new Managers here -->
 </beans>

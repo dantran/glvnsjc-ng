@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 
 @Entity
 public class Attendant
-    extends CourseDetail
+    extends ClazzDetail
 {
     private static final long serialVersionUID = 1L;
 }
