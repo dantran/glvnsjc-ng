@@ -40,6 +40,8 @@ public class CreateDemoData
     public void init()
         throws NameExistsException
     {
+        //Setup school infrastructure
+        
         School school = new School();
         school.setName( "GLVNSJC" );
         school.setDescription( "Giao Ly Viet Ngu at Sanjose" );
@@ -68,11 +70,15 @@ public class CreateDemoData
         course.setName( "VN1" );
         school.addCourse( this.courseManager.save( course ) );
 
+        school = schoolManager.save( school );
+        
+        //now deal with a new academic term
         Term term = new Term();
         term.setName( "term1" );
         term = termManager.save( term );
-        school.addTerm( term );
         
+        school.addTerm( term );
         school = schoolManager.save( school );
+        
     }
 }
