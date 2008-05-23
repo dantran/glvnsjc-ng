@@ -48,7 +48,7 @@ public interface GenericNameManager<T extends NamedEntity, PK extends Serializab
      * @param object the object to save
      * @return the updated object
      */
-    T save( T object );
+    T save( T object ) throws NameExistsException;
 
     /**
      * Generic method to delete an object based on class and id
