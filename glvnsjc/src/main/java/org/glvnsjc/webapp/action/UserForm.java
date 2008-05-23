@@ -12,8 +12,8 @@ import org.glvnsjc.Constants;
 import org.glvnsjc.model.domain.Role;
 import org.glvnsjc.model.domain.Staff;
 import org.glvnsjc.model.domain.User;
+import org.glvnsjc.service.NameExistsException;
 import org.glvnsjc.service.RoleManager;
-import org.glvnsjc.service.UserExistsException;
 import org.glvnsjc.util.ConvertUtil;
 import org.glvnsjc.webapp.util.RequestUtil;
 import org.springframework.mail.MailException;
@@ -174,7 +174,7 @@ public class UserForm
             getResponse().sendError( HttpServletResponse.SC_FORBIDDEN );
             return null;
         }
-        catch ( UserExistsException e )
+        catch ( NameExistsException e )
         {
             addError( "errors.existing.user", new Object[] { user.getUsername(), user.getEmail() } );
 

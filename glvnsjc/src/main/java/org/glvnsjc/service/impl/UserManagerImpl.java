@@ -8,7 +8,7 @@ import javax.persistence.EntityExistsException;
 
 import org.glvnsjc.internal.dao.UserDao;
 import org.glvnsjc.model.domain.User;
-import org.glvnsjc.service.UserExistsException;
+import org.glvnsjc.service.NameExistsException;
 import org.glvnsjc.service.UserManager;
 import org.glvnsjc.service.UserService;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -56,7 +56,7 @@ public class UserManagerImpl
      */
     @Transactional(readOnly = false)
     public User saveUser( User user )
-        throws UserExistsException
+        throws NameExistsException
     {
         if ( user.getVersion() == null )
         {
@@ -109,12 +109,12 @@ public class UserManagerImpl
         catch ( DataIntegrityViolationException e )
         {
             log.warn( e.getMessage() );
-            throw new UserExistsException( "User '" + user.getUsername() + "' already exists!" );
+            throw new NameExistsException( "User '" + user.getUsername() + "' already exists!" );
         }
         catch ( EntityExistsException e )
         { // needed for JPA
             log.warn( e.getMessage() );
-            throw new UserExistsException( "User '" + user.getUsername() + "' already exists!" );
+            throw new NameExistsException( "User '" + user.getUsername() + "' already exists!" );
         }
     }
 

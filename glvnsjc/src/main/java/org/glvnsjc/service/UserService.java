@@ -43,7 +43,7 @@ public interface UserService {
      * @throws UserExistsException thrown when user already exists
      * @return updated user
      */
-    User saveUser(User user) throws UserExistsException;
+    User saveUser(User user) throws NameExistsException;
 
     /**
      * Removes a user from the database by their userId

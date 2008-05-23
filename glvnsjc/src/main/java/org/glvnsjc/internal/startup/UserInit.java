@@ -6,8 +6,8 @@ import javax.annotation.Resource;
 import org.glvnsjc.model.domain.RoleType;
 import org.glvnsjc.model.domain.Staff;
 import org.glvnsjc.model.domain.User;
+import org.glvnsjc.service.NameExistsException;
 import org.glvnsjc.service.PredefinedRoles;
-import org.glvnsjc.service.UserExistsException;
 import org.glvnsjc.service.UserManager;
 import org.springframework.security.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
@@ -25,7 +25,7 @@ public class UserInit
     
     @PostConstruct
     public void afterPropertiesSet()
-        throws UserExistsException
+        throws NameExistsException
     {
         
         User adminUser = null;
