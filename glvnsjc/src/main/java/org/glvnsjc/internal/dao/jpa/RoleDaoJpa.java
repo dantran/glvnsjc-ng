@@ -7,6 +7,7 @@ import javax.persistence.Query;
 import org.glvnsjc.internal.dao.RoleDao;
 import org.glvnsjc.model.domain.Role;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * This class interacts with Spring's HibernateTemplate to save/delete and
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Repository;
  * @author <a href="mailto:bwnoll@gmail.com">Bryan Noll</a> 
  */
 @Repository("roleDao")
+@Transactional
 public class RoleDaoJpa
     extends GenericNameDaoJpa<Role, Long>
     implements RoleDao
@@ -51,6 +53,7 @@ public class RoleDaoJpa
     /**
      * {@inheritDoc}
      */
+    @Transactional( readOnly = false )
     public void removeRole( String rolename )
     {
         Object role = getRoleByName( rolename );

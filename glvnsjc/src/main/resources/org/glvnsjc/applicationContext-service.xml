@@ -55,6 +55,10 @@
         <constructor-arg ref="schoolDao" />
     </bean>
 
+    <bean id="branchManager" class="org.glvnsjc.service.impl.GenericNameManagerImpl">
+        <constructor-arg ref="branchDao" />
+    </bean>
+
     <bean id="courseManager" class="org.glvnsjc.service.impl.GenericNameManagerImpl">
         <constructor-arg ref="courseDao" />
     </bean>

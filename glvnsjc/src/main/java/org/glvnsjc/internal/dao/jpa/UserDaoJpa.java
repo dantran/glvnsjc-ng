@@ -77,6 +77,7 @@ public class UserDaoJpa
      * @param user the user to save
      * @return the updated user
      */
+    @Transactional( readOnly = false )
     public User saveUser( User user )
     {
         User u = super.save( user );

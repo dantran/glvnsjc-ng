@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -23,14 +24,17 @@ public class Clazz
     private static final long serialVersionUID = 1L;
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     private Course course;
     /**
      * school that offer this course in academic term
      */
     @ManyToOne
+    @JoinColumn(nullable = false)    
     private School school;
 
     @ManyToOne
+    @JoinColumn(nullable = false)    
     private Term term;
 
     @ManyToMany

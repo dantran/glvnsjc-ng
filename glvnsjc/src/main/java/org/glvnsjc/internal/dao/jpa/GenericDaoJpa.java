@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glvnsjc.internal.dao.GenericDao;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * This class serves as the Base class for all other DAOs - namely to hold
@@ -27,6 +28,7 @@ import org.glvnsjc.internal.dao.GenericDao;
  *
  * @author <a href="mailto:bwnoll@gmail.com">Bryan Noll</a>
  */
+@Transactional
 public class GenericDaoJpa<T, PK extends Serializable>
     implements GenericDao<T, PK>
 {
@@ -84,6 +86,7 @@ public class GenericDaoJpa<T, PK extends Serializable>
         return ( entity != null ) ? true : false;
     }
 
+    @Transactional( readOnly = false )
     public T save( T object )
     {
         return this.entityManager.merge( object );
@@ -92,8 +95,9 @@ public class GenericDaoJpa<T, PK extends Serializable>
     public void add( T object )
     {
         this.entityManager.persist( object );
-    }    
-
+    }
+    
+    @Transactional( readOnly = false )
     public void remove( PK id )
     {
         this.entityManager.remove( this.get( id ) );

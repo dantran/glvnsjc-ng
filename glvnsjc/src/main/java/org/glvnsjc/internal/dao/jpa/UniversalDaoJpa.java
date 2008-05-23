@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.glvnsjc.internal.dao.UniversalDao;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * This class serves as the a class that can CRUD any object witout any
@@ -18,6 +19,7 @@ import org.glvnsjc.internal.dao.UniversalDao;
  *
  * @author Bryan Noll
  */
+@Transactional
 public class UniversalDaoJpa
     implements UniversalDao
 {
@@ -48,6 +50,7 @@ public class UniversalDaoJpa
     /**
      * {@inheritDoc}
      */
+    @Transactional( readOnly = false )
     @SuppressWarnings("unchecked")
     public Object get( Class clazz, Serializable id )
     {
@@ -76,6 +79,7 @@ public class UniversalDaoJpa
      * {@inheritDoc}
      */
     @SuppressWarnings("unchecked")
+    @Transactional( readOnly = false )
     public void remove( Class clazz, Serializable id )
     {
         this.entityManager.remove( this.get( clazz, id ) );
