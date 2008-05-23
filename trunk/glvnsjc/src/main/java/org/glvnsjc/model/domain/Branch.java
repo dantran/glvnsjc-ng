@@ -20,24 +20,6 @@ extends NamedEntity
     @JoinColumn( nullable=false)
     private School parentSchool;
     
-    @OneToMany
-    private Set<Clazz> classes = new HashSet<Clazz>();
-
-    public Set<Clazz> getClasses()
-    {
-        return classes;
-    }
-
-    public void setClasses( Set<Clazz> classes )
-    {
-        this.classes = classes;
-    }
-    
-    public void addCourses( Clazz clazz )
-    {
-        this.classes.add( clazz );
-    }
-    
     public School getParentSchool()
     {
         return parentSchool;
@@ -46,6 +28,24 @@ extends NamedEntity
     public void setParentSchool( School parentSchool )
     {
         this.parentSchool = parentSchool;
+    }
+    
+    @OneToMany
+    private Set<Instructor> instructors = new HashSet<Instructor>();
+
+    public Set<Instructor> getInstructors()
+    {
+        return instructors;
+    }
+
+    public void setInstructors( Set<Instructor> instructors )
+    {
+        this.instructors = instructors;
+    }
+    
+    public void addInstructor( Instructor instructor )
+    {
+        this.instructors.add( instructor );
     }
 
 }

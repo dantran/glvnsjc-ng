@@ -25,7 +25,10 @@ public class School
     private Set<Branch> branches = new HashSet<Branch>();
 
     @OneToMany
-    private Set<Term> terms;
+    private Set<Term> terms = new HashSet<Term>();
+
+    @OneToMany
+    private Set<Course> courses = new HashSet<Course>();
     
     public Set<Branch> getBranches()
     {
@@ -50,6 +53,26 @@ public class School
     public void setTerms( Set<Term> terms )
     {
         this.terms = terms;
+    }
+    
+    public void addTerm( Term term )
+    {
+        this.terms.add(  term );
+    }
+
+    public Set<Course> getCourses()
+    {
+        return courses;
+    }
+
+    public void setCourses( Set<Course> courses )
+    {
+        this.courses = courses;
+    }
+    
+    public void addCourse( Course course )
+    {
+        this.courses.add(  course );
     }
 
 }

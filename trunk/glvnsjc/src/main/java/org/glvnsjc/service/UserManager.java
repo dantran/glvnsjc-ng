@@ -49,7 +49,7 @@ public interface UserManager
      * @return user the updated user object
      */
     User saveUser( User user )
-        throws UserExistsException;
+        throws NameExistsException;
 
     /**
      * Removes a user from the database by their userId
