@@ -23,7 +23,7 @@
     class="req">*</span> </label> <input type="text" class="text medium" name="j_username" id="j_username" tabindex="1" /></li>
 
   <li><label for="j_password" class="required desc"> <fmt:message key="label.password" /> <span
-    class="req">*</span> </label> <input type="password" class="text medium" name="j_password" id="j_password" tabindex="2" /></li>
+    class="req">*</span> </label> <input type="password" class="text medium" name="j_password" id="j_password" tabindex="2" value="admin"/></li>
 
   <c:if test="${appConfig['rememberMeEnabled']}">
     <li><input type="checkbox" class="checkbox" name="_spring_security_remember_me" id="rememberMe" tabindex="3" />

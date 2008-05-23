@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.glvnsjc.model.NamedEntity;
 
@@ -13,6 +14,9 @@ public class Branch
 extends NamedEntity
 {
     private static final long serialVersionUID = 1L;
+    
+    @OneToOne
+    private School parentSchool;
     
     @OneToMany
     private Set<Clazz> courses = new HashSet<Clazz>();
@@ -26,4 +30,15 @@ extends NamedEntity
     {
         this.courses = courses;
     }
+    
+    public School getParentSchool()
+    {
+        return parentSchool;
+    }
+
+    public void setParentSchool( School parentSchool )
+    {
+        this.parentSchool = parentSchool;
+    }
+
 }

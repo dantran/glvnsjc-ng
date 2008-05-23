@@ -24,7 +24,7 @@ public class UserInit
     private UserManager userManager;
     
     @PostConstruct
-    public void init()
+    public void afterPropertiesSet()
         throws UserExistsException
     {
         

@@ -58,10 +58,6 @@ public class StartupListener
 
         ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext( context );
 
-        /*String[] beans = ctx.getBeanDefinitionNames();
-        for (String bean : beans) {
-            log.debug(bean);
-        }*/
 
         PasswordEncoder passwordEncoder = null;
         try
@@ -99,7 +95,6 @@ public class StartupListener
             log.debug( "Populating drop-downs..." );
         }
 
-        setupContext( context );
     }
 
     /**

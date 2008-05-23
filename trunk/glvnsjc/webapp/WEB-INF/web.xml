@@ -94,6 +94,8 @@
 
       classpath:org/glvnsjc/applicationContext-security.xml,
 
+      classpath:org/glvnsjc/applicationContext-service.xml,
+
       classpath:org/glvnsjc/applicationContext-glvnsjc-web.xml,
     </param-value>
   </context-param>
