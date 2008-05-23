@@ -11,7 +11,7 @@ import org.glvnsjc.model.NamedEntity;
 
 @Entity
 @Inheritance( strategy=InheritanceType.JOINED )
-public abstract class CourseDetail
+public abstract class ClazzDetail
     extends NamedEntity
 {
     private static final long serialVersionUID = 1L;
@@ -22,14 +22,14 @@ public abstract class CourseDetail
     private Student student;
 
     @OneToOne
-    private Course course;
+    private Clazz course;
 
-    public Course getCourse()
+    public Clazz getCourse()
     {
         return course;
     }
 
-    public void setCourse( Course course )
+    public void setCourse( Clazz course )
     {
         this.course = course;
     }

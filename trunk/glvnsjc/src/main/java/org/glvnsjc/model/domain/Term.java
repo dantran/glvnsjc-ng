@@ -28,7 +28,7 @@ public class Term
     private School school;
     
     @OneToMany
-    private Set<Course> courses = new HashSet<Course>();
+    private Set<Clazz> courses = new HashSet<Clazz>();
 
     public boolean isClosed()
     {
@@ -55,12 +55,12 @@ public class Term
         this.school = school;
     }
 
-    public Set<Course> getCourses()
+    public Set<Clazz> getCourses()
     {
         return courses;
     }
 
-    public void setCourses( Set<Course> courses )
+    public void setCourses( Set<Clazz> courses )
     {
         this.courses = courses;
     }
