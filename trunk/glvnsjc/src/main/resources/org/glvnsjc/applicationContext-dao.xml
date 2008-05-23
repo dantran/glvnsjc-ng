@@ -14,6 +14,10 @@
     <constructor-arg value = "org.glvnsjc.model.domain.School" />
   </bean>
 
+  <bean id="branchDao" class="org.glvnsjc.internal.dao.jpa.GenericNameDaoJpa">
+    <constructor-arg value = "org.glvnsjc.model.domain.Branch" />
+  </bean>
+
   <bean id="courseDao" class="org.glvnsjc.internal.dao.jpa.GenericNameDaoJpa">
     <constructor-arg value="org.glvnsjc.model.domain.Course" />
   </bean>

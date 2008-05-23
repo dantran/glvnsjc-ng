@@ -20,6 +20,7 @@ public class School
 {
     private static final long serialVersionUID = 1L;
         
+    
     @OneToMany
     private Set<Branch> branches = new HashSet<Branch>();
 

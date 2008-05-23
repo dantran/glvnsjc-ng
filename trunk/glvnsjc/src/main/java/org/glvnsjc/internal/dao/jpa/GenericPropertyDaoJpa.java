@@ -11,11 +11,13 @@ import java.util.Set;
 
 import org.glvnsjc.internal.dao.GenericPropertyDao;
 import org.glvnsjc.model.PropertyEntity;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Generic DAO (Data Access Object) 
  *
  */
+@Transactional
 public class GenericPropertyDaoJpa<T extends PropertyEntity, PK extends Serializable>
     extends GenericNameDaoJpa<T, PK>
     implements GenericPropertyDao<T, PK>
@@ -73,6 +75,7 @@ public class GenericPropertyDaoJpa<T extends PropertyEntity, PK extends Serializ
         return obj;
     }
     
+    @Transactional( readOnly = false )
     public T save( T obj )
     {
         if ( obj.isDirty() )
@@ -100,6 +103,7 @@ public class GenericPropertyDaoJpa<T extends PropertyEntity, PK extends Serializ
         return map;
     }
     
+    @Transactional( readOnly = false )    
     public void save( Map<String, T> properties )
     {
         Set<String> keySet = properties.keySet();

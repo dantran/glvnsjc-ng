@@ -4,8 +4,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 import org.glvnsjc.model.NamedEntity;
 
@@ -15,20 +16,26 @@ extends NamedEntity
 {
     private static final long serialVersionUID = 1L;
     
-    @OneToOne
+    @ManyToOne
+    @JoinColumn( nullable=false)
     private School parentSchool;
     
     @OneToMany
-    private Set<Clazz> courses = new HashSet<Clazz>();
+    private Set<Clazz> classes = new HashSet<Clazz>();
 
-    public Set<Clazz> getCourses()
+    public Set<Clazz> getClasses()
     {
-        return courses;
+        return classes;
     }
 
-    public void setCourses( Set<Clazz> courses )
+    public void setClasses( Set<Clazz> classes )
     {
-        this.courses = courses;
+        this.classes = classes;
+    }
+    
+    public void addCourses( Clazz clazz )
+    {
+        this.classes.add( clazz );
     }
     
     public School getParentSchool()
