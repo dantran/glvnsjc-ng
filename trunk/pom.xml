@@ -623,7 +623,7 @@
     <ajax4jsf.version>1.1.1</ajax4jsf.version>
     <sitemesh.version>2.2.1</sitemesh.version>
     <trinidad.version>1.2.8</trinidad.version>
-    <richfaces.version>3.2.1.CR5</richfaces.version>
+    <richfaces.version>3.2.1.CR6</richfaces.version>
   </properties>
 
 </project>
