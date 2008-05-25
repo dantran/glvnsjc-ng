@@ -67,5 +67,8 @@
         <constructor-arg ref="termDao" />
     </bean>
     
+    <bean id="classManager" class="org.glvnsjc.service.impl.GenericNameManagerImpl">
+        <constructor-arg ref="classDao" />
+    </bean>
     
 </beans>

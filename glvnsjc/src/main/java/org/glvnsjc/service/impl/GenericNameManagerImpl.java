@@ -98,4 +98,13 @@ public class GenericNameManagerImpl<T extends NamedEntity, PK extends Serializab
     {
         genericDao.remove( id );
     }
+    
+    /**
+     * {@inheritDoc}
+     */
+    public T getByName( String name )
+    {
+        return genericDao.getByName( name );
+    }
+    
 }

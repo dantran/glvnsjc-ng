@@ -103,4 +103,5 @@ public class GenericManagerImpl<T, PK extends Serializable>
     {
         genericDao.remove( id );
     }
+    
 }

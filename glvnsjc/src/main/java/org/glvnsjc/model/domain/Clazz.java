@@ -12,8 +12,8 @@ import javax.persistence.OneToMany;
 import org.glvnsjc.model.NamedEntity;
 
 /**
- * A class of a specific Course offered by a school in a academic year
- * A instructor creates class activities and keep scores and attendants
+ * A class of a specific Course offered by a school in a academic term.
+ * An instructor creates class activities and keep scores and attendants
  * @author dtran
  *
  */
@@ -26,6 +26,7 @@ public class Clazz
     @ManyToOne
     @JoinColumn(nullable = false)
     private Course course;
+    
     /**
      * school that offer this course in academic term
      */
