@@ -9,8 +9,12 @@ import javax.servlet.ServletContextListener;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.myfaces.orchestra.frameworkAdapter.FrameworkAdapter;
+import org.apache.myfaces.orchestra.frameworkAdapter.local.LocalFrameworkAdapter;
 import org.glvnsjc.Constants;
+import org.glvnsjc.service.NameExistsException;
 import org.glvnsjc.service.PredefinedRoles;
+import org.glvnsjc.service.demo.CreateDemoData;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.security.providers.AuthenticationProvider;
@@ -58,7 +62,6 @@ public class StartupListener
 
         ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext( context );
 
-
         PasswordEncoder passwordEncoder = null;
         try
         {
@@ -95,6 +98,7 @@ public class StartupListener
             log.debug( "Populating drop-downs..." );
         }
 
+        setupContext( event.getServletContext() );
     }
 
     /**
@@ -102,6 +106,7 @@ public class StartupListener
      * @param context The servlet context
      */
     public static void setupContext( ServletContext context )
+
     {
         ApplicationContext ctx = WebApplicationContextUtils.getRequiredWebApplicationContext( context );
         PredefinedRoles mgr = (PredefinedRoles) ctx.getBean( "predefinedRoles" );
@@ -109,9 +114,24 @@ public class StartupListener
         // get list of possible roles
         context.setAttribute( Constants.AVAILABLE_ROLES, mgr.getAllRolesWithLabels() );
         log.debug( "Drop-down initialization complete [OK]" );
-        
+
         //load UserInit bean
         ctx.getBean( "userInit" );
+
+        try
+        {
+            LocalFrameworkAdapter localFrameworkAdapter = (LocalFrameworkAdapter) ctx.getBean( "localFrameworkAdapter" );
+            FrameworkAdapter frameworkAdapter = FrameworkAdapter.getCurrentInstance();
+            FrameworkAdapter.setCurrentInstance( localFrameworkAdapter );
+            CreateDemoData demoData = (CreateDemoData) ctx.getBean( "createDemoData" );
+            demoData.init();
+            FrameworkAdapter.setCurrentInstance( frameworkAdapter );
+        }
+        catch ( NameExistsException e )
+        {
+            throw new IllegalStateException( e );
+        }
+
     }
 
     /**

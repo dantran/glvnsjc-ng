@@ -11,7 +11,8 @@ public class TestCreateDemoData
     private CreateDemoData createSchoolDemo;
     
     public void testCreateDemoData()
+        throws Exception
     {
-        
+        createSchoolDemo.init();
     }
 }

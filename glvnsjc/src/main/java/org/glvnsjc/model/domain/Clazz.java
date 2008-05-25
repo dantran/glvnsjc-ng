@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -41,7 +42,7 @@ public class Clazz
     @ManyToMany
     private Set<Instructor> instructors = new HashSet<Instructor>();
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Student> students = new HashSet<Student>();
     
     @OneToMany

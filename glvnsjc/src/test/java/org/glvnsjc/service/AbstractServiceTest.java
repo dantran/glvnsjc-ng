@@ -2,9 +2,10 @@ package org.glvnsjc.service;
 
 import java.io.File;
 
+import javax.annotation.Resource;
+
 import org.apache.myfaces.orchestra.frameworkAdapter.FrameworkAdapter;
 import org.apache.myfaces.orchestra.frameworkAdapter.local.LocalFrameworkAdapter;
-import org.dom4j.rule.RuleManager;
 import org.springframework.test.AbstractDependencyInjectionSpringContextTests;
 
 /**
@@ -16,13 +17,8 @@ public abstract class AbstractServiceTest
     protected File basedir = new File( System.getProperty( "basedir", "." ) );
     protected File targetDir = new File( basedir, "target");
     
+    @Resource
     protected LocalFrameworkAdapter localFrameworkAdapter;
-
-
-    public void setLocalFrameworkAdapter( LocalFrameworkAdapter localFrameworkAdapter )
-    {
-        this.localFrameworkAdapter = localFrameworkAdapter;
-    }
 
     //////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////
