@@ -8,14 +8,17 @@ import org.glvnsjc.model.domain.Clazz;
 import org.glvnsjc.model.domain.Course;
 import org.glvnsjc.model.domain.Instructor;
 import org.glvnsjc.model.domain.School;
+import org.glvnsjc.model.domain.Student;
 import org.glvnsjc.model.domain.Term;
 import org.glvnsjc.service.GenericNameManager;
 import org.glvnsjc.service.NameExistsException;
 import org.glvnsjc.service.RoleManager;
 import org.glvnsjc.service.UserManager;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
+@Scope( "conversation.access")
 public class CreateDemoData
 {
     @Resource
@@ -89,6 +92,7 @@ public class CreateDemoData
         school = schoolManager.save( school );
         
         //now deal with a new academic term
+        
         Term term = new Term();
         term.setName( "term1" );
         term.setSchool( school );
@@ -103,12 +107,38 @@ public class CreateDemoData
         clazz.setTerm( school.getCurrentTerm() );
         clazz.setCourse( courseManager.getByName( "GL1" ) );
         clazz.setSchool( schoolManager.getByName( "PC" ) );
+        clazz.addInstructor( instructor1 );
+        
         classManager.save( clazz );
         
         clazz.setName( "B" );
         clazz.setDescription( "GL1 B at PC" );
+        clazz.addInstructor( instructor2 );
         classManager.save( clazz );
         
+        clazz.setName( "C" );
+        clazz.setDescription( "GL1 C at PS" );
+        clazz.setSchool( schoolManager.getByName( "PS" ) );
+        classManager.save( clazz );
+        
+        //now assign students into class
+        
+        Student student = new Student();
+        student.setName( "GL1A student" );
+        student = (Student)userManager.saveUser( student );
+        
+        clazz = classManager.getByName( "A" );
+        clazz.addStudent( student );
+        classManager.save( clazz );
+        
+        student = new Student();
+        student.setName( "GL1B student" );
+        student = (Student) userManager.saveUser( student );
+        
+        
+        clazz = classManager.getByName( "B" );
+        clazz.addStudent( student );
+        classManager.save( clazz );        
         
         
         school.validate();

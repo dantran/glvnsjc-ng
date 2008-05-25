@@ -1,6 +1,7 @@
 package org.glvnsjc.model.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -10,6 +11,7 @@ public class Student
     private static final long serialVersionUID = 1L;
     
     @ManyToOne
+    @JoinColumn( nullable = true )
     private Parent parent;
 
     public Parent getParent()
