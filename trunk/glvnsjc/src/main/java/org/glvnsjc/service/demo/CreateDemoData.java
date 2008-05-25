@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope( "conversation.access")
+@Scope( "conversation.manual")
 public class CreateDemoData
 {
     @Resource
@@ -42,7 +42,7 @@ public class CreateDemoData
     @Resource
     private GenericNameManager<Clazz, Long> classManager;
 
-    @PostConstruct
+    //@PostConstruct
     public void init()
         throws NameExistsException
     {
