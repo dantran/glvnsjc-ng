@@ -22,7 +22,7 @@ public class Clazz
     extends NamedEntity
 {
     private static final long serialVersionUID = 1L;
-
+    
     @ManyToOne
     @JoinColumn(nullable = false)
     private Course course;
@@ -86,6 +86,11 @@ public class Clazz
     {
         this.instructors = instructors;
     }
+    
+    public void addInstructor( Instructor instructor )
+    {
+        this.instructors.add( instructor );
+    }
 
     public Set<Student> getStudents()
     {
@@ -97,6 +102,11 @@ public class Clazz
         this.students = students;
     }
 
+    public void addStudent( Student student )
+    {
+        this.students.add( student );
+    }
+    
     public Course getCourse()
     {
         return course;
