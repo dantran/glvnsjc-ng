@@ -42,7 +42,7 @@ public class Clazz
     @ManyToMany
     private Set<Instructor> instructors = new HashSet<Instructor>();
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     private Set<Student> students = new HashSet<Student>();
     
     @OneToMany
