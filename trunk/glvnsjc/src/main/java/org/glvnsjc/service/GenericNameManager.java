@@ -37,6 +37,17 @@ public interface GenericNameManager<T extends NamedEntity, PK extends Serializab
     T get( PK id );
 
     /**
+     * Generic method to get an object based on its name. An
+     * ObjectRetrievalFailureException Runtime Exception is thrown if
+     * nothing is found.
+     *
+     * @param name the named identifier  of the object to get
+     * @return a populated object
+     * @see org.springframework.orm.ObjectRetrievalFailureException
+     */
+    T getByName( String name );
+    
+    /**
      * Checks for existence of an object of type T using the id arg.
      * @param id the identifier (primary key) of the object to get
      * @return - true if it exists, false if it doesn't
