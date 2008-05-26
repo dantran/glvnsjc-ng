@@ -24,7 +24,7 @@ public class Navigator
 {
     private String lastCompId = null;
 
-    private List components = null;
+    private List<NavigatorDescriptor> components = null;
 
     private NavigatorDescriptor currentComponent;
 
@@ -151,6 +151,12 @@ public class Navigator
     {
         return getFilteredComponents( "system" );
     }
+    
+    public List getSchoolMenu()
+    {
+        return getFilteredComponents( "school" );
+    }
+
     public List getInstructorMenu()
     {
         return getFilteredComponents( "instructor" );

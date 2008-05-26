@@ -25,7 +25,6 @@
 <tbody>
 	<tr>
 		<td>
-			<!-- ui:include src="/templates/include/references.xhtml" /-->
 			<div class="menu_separator">
 				&nbsp;
 			</div>
@@ -34,10 +33,10 @@
 	</tr>
 </tbody>
 </table>
-<!-- 
-<h:graphicImage value="#{componentNavigator.currentComponent.captionImage}" 
+
+<h:graphicImage value="#{navigator.currentComponent.captionImage}" 
 	rendered="#{componentNavigator.hasCurrentComponent}" height="40" alt="" border="0" styleClass="component_name"/>
- -->
+
 <table cellpadding="0" cellspacing="0" border="0" class="content_container" width="100%">
 <tbody>
 	<tr>
@@ -55,10 +54,6 @@
 		<rich:spacer style="height:10px;" />
 		<rich:separator style="height:1px" />	
 		<div style="float:right;" class="footer-text">#{environment.version}</div>
-		<div style="float:none">
-			<a href="http://jboss.com/index.html?module=bb&amp;op=viewtopic&amp;t=104575"
-				 style="color:#000; display:block"  class="footer-text">RichFaces. Most Important Links</a>
-		</div>
 		</td>
 	</tr>
 </tbody>
