@@ -6,7 +6,7 @@ import org.glvnsjc.model.domain.RoleType;
 import org.glvnsjc.service.CurrentUser;
 import org.springframework.stereotype.Component;
 
-@Component
+//@Component
 public class Navigator
 {
     @Resource
