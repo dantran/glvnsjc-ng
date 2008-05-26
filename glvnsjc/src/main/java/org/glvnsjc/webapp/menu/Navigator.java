@@ -49,8 +49,11 @@ public class Navigator
         }
         else
         {
+            setCurrentComponent( findComponentById( "system" ) ); //fornow
+            /*
             String uri = getComponentUri();
             setCurrentComponent( findComponentByUri( uri ) );
+            */
         }
         return currentComponent;
     }
