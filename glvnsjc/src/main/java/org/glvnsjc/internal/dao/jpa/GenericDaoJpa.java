@@ -102,4 +102,10 @@ public class GenericDaoJpa<T, PK extends Serializable>
     {
         this.entityManager.remove( this.get( id ) );
     }
+    
+    @Transactional( readOnly = false )
+    public void remove( T obj )
+    {
+        this.entityManager.remove( obj );
+    }    
 }

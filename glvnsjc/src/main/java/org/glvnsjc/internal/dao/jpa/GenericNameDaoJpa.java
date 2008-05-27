@@ -73,5 +73,15 @@ public class GenericNameDaoJpa<T extends NamedEntity, PK extends Serializable>
 
         return !q.getResultList().isEmpty() ? true : false;
     }
+    
+    public void removeByName( String name )
+    {
+        T obj = this.getByName( name );
+        
+        if ( obj != null )
+        {
+            super.remove( obj );
+        }
+    }
 
 }

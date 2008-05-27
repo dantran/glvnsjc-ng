@@ -10,9 +10,6 @@
           http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
 
 
-  <bean id="schoolDao" class="org.glvnsjc.internal.dao.jpa.GenericNameDaoJpa">
-    <constructor-arg value = "org.glvnsjc.model.domain.School" />
-  </bean>
 
   <bean id="branchDao" class="org.glvnsjc.internal.dao.jpa.GenericNameDaoJpa">
     <constructor-arg value = "org.glvnsjc.model.domain.Branch" />

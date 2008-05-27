@@ -1,6 +1,5 @@
 package org.glvnsjc.service.demo;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.glvnsjc.model.domain.Branch;
@@ -13,6 +12,7 @@ import org.glvnsjc.model.domain.Term;
 import org.glvnsjc.service.GenericNameManager;
 import org.glvnsjc.service.NameExistsException;
 import org.glvnsjc.service.RoleManager;
+import org.glvnsjc.service.SchoolManager;
 import org.glvnsjc.service.UserManager;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -28,7 +28,7 @@ public class CreateDemoData
     private RoleManager roleManager;
 
     @Resource
-    private GenericNameManager<School, Long> schoolManager;
+    private SchoolManager schoolManager;
 
     @Resource
     private GenericNameManager<Branch, Long> branchManager;
@@ -47,10 +47,15 @@ public class CreateDemoData
         throws NameExistsException
     {
         //Setup school infrastructure
-        
+
         School school = new School();
+        school.setName( "MHT" );
+        school.setDescription( "Giao Ly Viet Ngu at Most Holy Trinity" );
+        schoolManager.save( school );
+        
+        school = new School();
         school.setName( "GLVNSJC" );
-        school.setDescription( "Giao Ly Viet Ngu at Sanjose" );
+        school.setDescription( "Giao Ly Viet Ngu at St. Patrick" );
         school = schoolManager.save( school );
 
         Instructor instructor1 = new Instructor();
