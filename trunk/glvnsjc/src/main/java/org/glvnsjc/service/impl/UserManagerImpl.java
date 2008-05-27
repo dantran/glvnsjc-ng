@@ -46,7 +46,7 @@ public class UserManagerImpl
     /**
      * {@inheritDoc}
      */
-    public List<User> getUsers( User user )
+    public List<User> getUsers()
     {
         return dao.getUsers();
     }

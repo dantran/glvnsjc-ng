@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:a4j="http://richfaces.org/a4j"
+  xmlns:rich="http://richfaces.org/rich">
+
+<ui:composition template="/templates/main.xhtml">
+
+  <style>
+.center {
+	text-align: center;
+}
+</style>
+
+  <ui:define name="content">
+
+    <h:form>
+    
+      <rich:dataTable value="#{schoolManager.mainSchools}" var="school" width="900px" columnClasses="center" rows="25">
+      
+        <f:facet name="header">
+          <h:outputText value="Main Schools" />
+        </f:facet>
+
+        <rich:column sortBy="#{school.name}">
+          <f:facet name="header">
+            <h:outputText value="Name" />
+          </f:facet>
+          <h:outputText value="#{school.name}" />
+        </rich:column>
+
+        <rich:column sortBy="#{cap.description}">
+          <f:facet name="header">
+            <h:outputText value="Description" />
+          </f:facet>
+          <h:outputText value="#{school.description}" />
+        </rich:column>
+
+      </rich:dataTable>
+
+    </h:form>
+  </ui:define>
+</ui:composition>
+</html>

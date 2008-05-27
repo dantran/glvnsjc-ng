@@ -34,7 +34,7 @@ public interface UserService {
      * @param user parameters to filter on
      * @return List
      */
-    List<User> getUsers(User user);
+    List<User> getUsers();
 
     /**
      * Saves a user's information

@@ -16,6 +16,6 @@ public class UserList
 
     public List getUsers()
     {
-        return sort( userManager.getUsers( null ) );
+        return sort( userManager.getUsers( ) );
     }
 }

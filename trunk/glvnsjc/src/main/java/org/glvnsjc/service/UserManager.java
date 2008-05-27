@@ -39,7 +39,7 @@ public interface UserManager
      * @param user parameters to filter on
      * @return List
      */
-    List<User> getUsers( User user );
+    List<User> getUsers();
 
     /**
      * Saves a user's information.
