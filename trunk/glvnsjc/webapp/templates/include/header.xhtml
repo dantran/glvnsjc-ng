@@ -6,16 +6,18 @@
   <table class="top_navbar" cellpadding="0" cellspacing="0" border="0">
     <tbody>
       <h:form>
-    
-        <tr>
-          <td><h:commandLink action="${logout.logout}" immediate="true">
-            <h:outputText id="logout" value="#{base['user.logout']}" />
-          </h:commandLink></td>
-          <td><h:commandLink action="${logout.logout}" immediate="true">
-            <h:outputText id="myAccount" value="My Account" />
-          </h:commandLink></td>
-        </tr>
-  
+        <table class="top_navbar" cellpadding="0" cellspacing="0" border="0">
+          <tbody>
+            <tr>
+              <td><h:commandLink action="${logout.logout}" immediate="true">
+                <h:outputText id="logout" value="#{base['user.logout']}" />
+              </h:commandLink></td>
+              <td><h:commandLink action="${logout.logout}" immediate="true">
+                <h:outputText id="myAccount" value="My Account" />
+              </h:commandLink></td>
+            </tr>
+          </tbody>
+        </table>
       </h:form>
     </tbody>
   </table>
