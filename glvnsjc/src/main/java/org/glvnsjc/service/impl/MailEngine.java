@@ -2,6 +2,7 @@ package org.glvnsjc.service.impl;
 
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
@@ -15,6 +16,7 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.velocity.VelocityEngineUtils;
 
 
@@ -25,10 +27,12 @@ import org.springframework.ui.velocity.VelocityEngineUtils;
  * @author Matt Raible
  */
 @SuppressWarnings("unchecked")
+@Service
 public class MailEngine
 {
     private final Log log = LogFactory.getLog( MailEngine.class );
 
+    @Resource
     private MailSender mailSender;
 
     private VelocityEngine velocityEngine;

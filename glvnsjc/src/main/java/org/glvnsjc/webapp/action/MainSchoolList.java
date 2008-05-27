@@ -12,12 +12,13 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope( "request")
 public class MainSchoolList
+   extends BasePage
 {
     
     @Resource
     private SchoolManager schoolManager;
-    
-    private Long selectedSchoolId;
+        
+    private School selectedSchool = new School();
     
     public List<School> getMainSchools()
     {
@@ -26,23 +27,19 @@ public class MainSchoolList
     
     public String prepareEdit()
     {
+        this.selectedSchool = this.schoolManager.get( this.selectedSchool.getId() );
         return "displayModify";
     }
     
     public String prepareDelete()
     {
+        this.selectedSchool = this.schoolManager.get( this.selectedSchool.getId() );
         return "displayDelete";
     }
 
-
-    public Long getSelectedSchoolId()
+    public School getSelectedSchool()
     {
-        return selectedSchoolId;
+        return selectedSchool;
     }
 
-    public void setSelectedSchoolId( Long selectedSchoolId )
-    {
-        this.selectedSchoolId = selectedSchoolId;
-    }
-    
 }
