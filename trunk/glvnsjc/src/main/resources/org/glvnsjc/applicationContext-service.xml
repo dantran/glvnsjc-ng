@@ -3,8 +3,7 @@
        xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
             http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd
-            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd"
-       default-lazy-init="true">
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
 
     <!-- =================================================================== -->
     <!-- AOP: Configuration and Aspects                                      -->
@@ -51,9 +50,6 @@
     <!-- Managers: For accessing DAOs                                        -->
     <!-- =================================================================== -->
 
-    <bean id="schoolManager" class="org.glvnsjc.service.impl.GenericNameManagerImpl">
-        <constructor-arg ref="schoolDao" />
-    </bean>
 
     <bean id="branchManager" class="org.glvnsjc.service.impl.GenericNameManagerImpl">
         <constructor-arg ref="branchDao" />

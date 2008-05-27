@@ -1,11 +1,11 @@
-package org.glvnsjc.service;
+package org.glvnsjc.internal.dao;
 
 import java.util.List;
 
 import org.glvnsjc.model.domain.School;
 
-public interface SchoolManager
-    extends GenericNameManager<School, Long>
+public interface SchoolDao
+    extends GenericNameDao<School, Long>
 {
     List<School> getMainSchools();
 }
