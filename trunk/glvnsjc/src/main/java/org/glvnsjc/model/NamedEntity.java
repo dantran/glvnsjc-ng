@@ -20,7 +20,7 @@ public abstract class NamedEntity
     @Column(nullable = false, unique = true)
     private String name;
 
-    private String description;
+    private String description = "";
 
     @Version
     private Integer version;

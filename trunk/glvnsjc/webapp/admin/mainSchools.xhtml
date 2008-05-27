@@ -7,21 +7,34 @@
 
 <ui:composition template="/templates/main.xhtml">
 
-  <style>
-.center {
-	text-align: center;
-}
-</style>
-
   <ui:define name="content">
 
     <h:form>
-    
+
       <rich:dataTable value="#{schoolManager.mainSchools}" var="school" width="900px" columnClasses="center" rows="25">
-      
+
         <f:facet name="header">
           <h:outputText value="Main Schools" />
         </f:facet>
+
+        <rich:column width="7">
+          <f:facet name="header">
+            <h:outputText value="Edit" />
+          </f:facet>
+          <h:commandLink action="${logout.logout}" immediate="true">
+            <h:graphicImage id="edit" url="/images/edit.gif" />
+          </h:commandLink>
+        </rich:column>
+
+        <rich:column width="7">
+          <f:facet name="header">
+            <h:outputText value="Del" />
+          </f:facet>
+          <h:commandLink action="${logout.logout}" immediate="true">
+            <h:graphicImage id="del" url="/images/delete.gif" />
+          </h:commandLink>
+        </rich:column>
+
 
         <rich:column sortBy="#{school.name}">
           <f:facet name="header">
@@ -30,7 +43,7 @@
           <h:outputText value="#{school.name}" />
         </rich:column>
 
-        <rich:column sortBy="#{cap.description}">
+        <rich:column sortBy="#{school.description}">
           <f:facet name="header">
             <h:outputText value="Description" />
           </f:facet>
