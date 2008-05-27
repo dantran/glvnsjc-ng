@@ -23,7 +23,7 @@
           </f:facet>
           <h:commandLink action="${mainSchoolList.prepareEdit}" immediate="true">
             <h:graphicImage id="edit" url="/images/edit.gif" />
-            <f:setPropertyActionListener target="${mainSchoolList.selectedSchoolId}" value="#{school.id}" />
+            <f:setPropertyActionListener target="${mainSchoolList.selectedSchool.id}" value="#{school.id}" />
           </h:commandLink>
         </rich:column>
 
@@ -33,7 +33,7 @@
           </f:facet>
           <h:commandLink action="${mainSchoolList.prepareDelete}" immediate="true">
             <h:graphicImage id="del" url="/images/delete.gif" />
-            <f:setPropertyActionListener target="${mainSchoolList.selectedSchoolId}" value="#{school.id}" />
+            <f:setPropertyActionListener target="${mainSchoolList.selectedSchool.id}" value="#{school.id}" />
           </h:commandLink>
         </rich:column>
 
