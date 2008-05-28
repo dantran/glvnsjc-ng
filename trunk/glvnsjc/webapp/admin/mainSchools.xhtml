@@ -2,7 +2,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
-  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:a4j="http://richfaces.org/a4j"
+  xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:tr="http://myfaces.apache.org/trinidad" xmlns:a4j="http://richfaces.org/a4j"
   xmlns:rich="http://richfaces.org/rich">
 
 <ui:composition template="/templates/main.xhtml">
@@ -21,10 +22,10 @@
           <f:facet name="header">
             <h:outputText value="Edit" />
           </f:facet>
-          <h:commandLink action="${mainSchoolList.prepareEdit}" immediate="true">
-            <h:graphicImage id="edit" url="/images/edit.gif" border="0"/>
-            <f:setPropertyActionListener target="${mainSchoolList.selectedSchool.id}" value="#{school.id}" />
-          </h:commandLink>
+          <a4j:commandLink reRender="schoolDetail">
+            <a4j:actionparam name="id" value="#{school.id}" assignTo="#{mainSchoolList.selectedSchoolId}" />
+            <h:graphicImage id="edit" url="/images/edit.gif" border="0" />
+          </a4j:commandLink>
         </rich:column>
 
         <rich:column width="7">
@@ -32,8 +33,8 @@
             <h:outputText value="Del" />
           </f:facet>
           <h:commandLink action="${mainSchoolList.prepareDelete}" immediate="true">
-            <h:graphicImage id="del" url="/images/delete.gif" border="0"/>
-            <f:setPropertyActionListener target="${mainSchoolList.selectedSchool.id}" value="#{school.id}" />
+            <h:graphicImage id="del" url="/images/delete.gif" border="0" />
+            <f:setPropertyActionListener target="${mainSchoolList.selectedSchoolId}" value="#{school.id}" />
           </h:commandLink>
         </rich:column>
 
@@ -55,6 +56,21 @@
       </rich:dataTable>
 
     </h:form>
+
+    <rich:spacer width="1" height="5" />
+
+    <f:subview>
+      <h:form>
+
+        <tr:panelCaptionGroup captionText="School Details">
+          <a4j:outputPanel layout="none">
+            <h:outputText id="schoolDetail" rendered="#{mainSchoolList.renderSelectedSchool}"
+              value="School name: #{mainSchoolList.selectedSchool.name}" />
+          </a4j:outputPanel>
+        </tr:panelCaptionGroup>
+      </h:form>
+    </f:subview>
+
   </ui:define>
 </ui:composition>
 </html>

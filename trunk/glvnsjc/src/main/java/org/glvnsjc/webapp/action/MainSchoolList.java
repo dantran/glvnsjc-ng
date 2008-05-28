@@ -17,8 +17,10 @@ public class MainSchoolList
     
     @Resource
     private SchoolManager schoolManager;
+    
+    private Long selectedSchoolId;
         
-    private School selectedSchool = new School();
+    private School selectedSchool;
     
     public List<School> getMainSchools()
     {
@@ -27,19 +29,35 @@ public class MainSchoolList
     
     public String prepareEdit()
     {
-        this.selectedSchool = this.schoolManager.get( this.selectedSchool.getId() );
+        this.selectedSchool = this.schoolManager.get( this.selectedSchoolId);
         return "displayModify";
     }
     
     public String prepareDelete()
     {
-        this.selectedSchool = this.schoolManager.get( this.selectedSchool.getId() );
+        this.selectedSchool = this.schoolManager.get( this.selectedSchoolId );
         return "displayDelete";
     }
 
     public School getSelectedSchool()
     {
-        return selectedSchool;
+        return this.schoolManager.get( selectedSchoolId );
     }
+    
+    public boolean isRenderSelectedSchool()
+    {
+        return this.selectedSchoolId != null;
+    }
+
+    public Long getSelectedSchoolId()
+    {
+        return selectedSchoolId;
+    }
+
+    public void setSelectedSchoolId( Long selectedSchoolId )
+    {
+        this.selectedSchoolId = selectedSchoolId;
+    }
+    
 
 }
