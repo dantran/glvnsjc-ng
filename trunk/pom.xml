@@ -5,11 +5,11 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.glvnsjc</groupId>
-  <artifactId>glvnsjc-root</artifactId>
+  <groupId>org.glvnsjc.shamrock</groupId>
+  <artifactId>shamrock</artifactId>
   <version>1-SNAPSHOT</version>
 
-  <name>glvnsjc-root</name>
+  <name>shamrock</name>
 
   <organization>
     <name>Giao Ly Viet Ngu St. Patrick, Sanjose, CA</name>
@@ -44,7 +44,7 @@
     <site>
       <id>glvnsjc.site</id>
       <name>glvnsjc web site</name>
-      <url>dav:http://glvnsjc.homedns.org/webdav/site</url>
+      <url>dav:http://glvnsjc.homedns.org/webdav/site/shamrock</url>
     </site>
   </distributionManagement>
 
@@ -121,7 +121,22 @@
   
   <dependencyManagement>
     <dependencies>
+
+      <!-- ================================================================================ -->
+      <!-- Internal Projects                                                                -->
+      <!-- ================================================================================ -->
+      <dependency>
+        <groupId>org.glvnsjc.shamrock</groupId>
+        <artifactId>shamrock-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
     
+      <dependency>
+        <groupId>org.glvnsjc.shamrock</groupId>
+        <artifactId>shamrock-web</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      
       <!-- ================================================================================ -->
       <!-- Database JDBC                                                                    -->
       <!-- ================================================================================ -->
@@ -586,7 +601,8 @@
   <!-- ================================================================================ -->
 
   <modules>
-    <module>glvnsjc</module>
+    <module>shamrock-core</module>
+    <module>shamrock-web</module>
   </modules>
 
   <!-- ================================================================================ -->
