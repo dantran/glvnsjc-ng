@@ -11,10 +11,10 @@
     <version>1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>shamrock-core</artifactId>
+  <artifactId>shamrock-web</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>shamrock-core</name>
+  <name>shamrock-web</name>
 
   <packaging>war</packaging>
 
@@ -23,15 +23,16 @@
   </description>
 
   <dependencies>
+  
+    <dependency>
+      <groupId>org.glvnsjc.shamrock</groupId>
+      <artifactId>shamrock-core</artifactId>
+    </dependency>
+    
 
     <!-- ================================================================== -->
     <!--  utils                                                             -->
     <!-- ================================================================== -->
-    <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <version>2.3</version>
-    </dependency>
 
     <dependency>
       <groupId>commons-io</groupId>
@@ -39,132 +40,6 @@
       <version>1.4</version>
     </dependency>
 
-    <!-- ================================================================== -->
-    <!--  JDBC                                                              -->
-    <!-- ================================================================== -->
-
-    <dependency>
-      <groupId>commons-dbcp</groupId>
-      <artifactId>commons-dbcp</artifactId>
-      <version>1.2.2</version>
-    </dependency>
-
-    <dependency>
-      <groupId>hsqldb</groupId>
-      <artifactId>hsqldb</artifactId>
-    </dependency>
-
-    <!--dependency>
-      <groupId>org.apache.derby</groupId>
-      <artifactId>derbyclient</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.derby</groupId>
-      <artifactId>derby</artifactId>
-    </dependency-->
-
-    <!-- ================================================================== -->
-    <!--  Container                                                             -->
-    <!-- ================================================================== -->
-
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-aspects</artifactId>
-      <version>${spring.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.aspectj</groupId>
-      <artifactId>aspectjrt</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.aspectj</groupId>
-      <artifactId>aspectjweaver</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-core-tiger</artifactId>
-      <exclusions>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-core</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-support</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-aop</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-beans</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-context</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
-    <dependency>
-      <groupId>org.springframework.security</groupId>
-      <artifactId>spring-security-taglibs</artifactId>
-      <version>${spring.security.version}</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-dao</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-jdbc</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-web</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-core</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-support</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-aop</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-beans</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.springframework</groupId>
-          <artifactId>spring-context</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
-
-    <!-- ================================================================== -->
-    <!--  Conversation                                                      -->
-    <!-- ================================================================== -->
-    <dependency>
-      <groupId>org.apache.myfaces.orchestra</groupId>
-      <artifactId>myfaces-orchestra-core</artifactId>
-      <version>1.1</version>
-    </dependency>
 
     <!-- ================================================================== -->
     <!--  WEB                                                               -->
@@ -265,45 +140,6 @@
       <groupId>opensymphony</groupId>
       <artifactId>sitemesh</artifactId>
       <version>${sitemesh.version}</version>
-    </dependency>
-
-    <!-- ================================================================== -->
-    <!--  logger                                                            -->
-    <!-- ================================================================== -->
-    <dependency>
-      <groupId>log4j</groupId>
-      <artifactId>log4j</artifactId>
-      <version>${log4j.version}</version>
-      <scope>runtime</scope>
-    </dependency>
-
-
-    <!-- ================================================================== -->
-    <!--  Mail                                                            -->
-    <!-- ================================================================== -->
-
-    <dependency>
-      <groupId>javax.mail</groupId>
-      <artifactId>mail</artifactId>
-      <version>${javamail.version}</version>
-    </dependency>
-
-    <dependency>
-      <groupId>velocity</groupId>
-      <artifactId>velocity</artifactId>
-      <version>${velocity.version}</version>
-    </dependency>
-
-
-    <!-- ================================================================== -->
-    <!--  test                                                             -->
-    <!-- ================================================================== -->
-
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-test</artifactId>
-      <version>${spring.version}</version>
-      <scope>test</scope>
     </dependency>
 
   </dependencies>
