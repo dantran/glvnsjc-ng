@@ -33,6 +33,12 @@
       <version>2.3</version>
     </dependency>
 
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>1.4</version>
+    </dependency>
+
     <!-- ================================================================== -->
     <!--  JDBC                                                              -->
     <!-- ================================================================== -->
@@ -48,7 +54,7 @@
       <artifactId>hsqldb</artifactId>
     </dependency>
 
-    <dependency>
+    <!--dependency>
       <groupId>org.apache.derby</groupId>
       <artifactId>derbyclient</artifactId>
     </dependency>
@@ -56,7 +62,7 @@
     <dependency>
       <groupId>org.apache.derby</groupId>
       <artifactId>derby</artifactId>
-    </dependency>
+    </dependency-->
 
     <!-- ================================================================== -->
     <!--  Container                                                             -->
