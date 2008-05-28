@@ -305,6 +305,8 @@
 
   <build>
 
+    <finalName>shamrock</finalName>
+    
     <resources>
       <resource>
         <directory>${basedir}/target/resources</directory>
