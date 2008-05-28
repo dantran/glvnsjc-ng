@@ -16,7 +16,7 @@
 
   <name>shamrock-core</name>
 
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
 
   <description>
     ${pom.name} is a web database application. It keeps track of students and instructors historical information.
@@ -311,33 +311,8 @@
 
   <build>
 
-    <finalName>shamrock</finalName>
-    
-    <resources>
-      <resource>
-        <directory>${basedir}/target/resources</directory>
-      </resource>
-      <resource>
-        <directory>${basedir}/src/main/resources</directory>
-      </resource>
-    </resources>
-
 
     <plugins>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>buildnumber-maven-plugin</artifactId>
-        <version>1.0-beta-1</version>
-        <executions>
-          <execution>
-            <phase>validate</phase>
-            <goals>
-              <goal>create</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
 
       <plugin>
         <artifactId>maven-eclipse-plugin</artifactId>
@@ -359,71 +334,6 @@
           <wtpContextName>${artifactId}</wtpContextName>
 
         </configuration>
-      </plugin>
-
-      <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <configuration>
-          <warSourceDirectory>webapp</warSourceDirectory>
-          <archiveClasses>true</archiveClasses>
-        </configuration>
-      </plugin>
-
-
-      <!-- deploy the jar file sothat webtest can reuse the resource -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.1</version>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>attach-artifact</goal>
-            </goals>
-            <configuration>
-              <artifacts>
-                <artifact>
-                  <file>
-                    ${project.build.directory}/${project.build.finalName}/WEB-INF/lib/${project.build.finalName}.jar
-                  </file>
-                </artifact>
-              </artifacts>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-
-
-      <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.1</version>
-        <executions>
-          <execution>
-            <id>create-build-properties</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
-            <configuration>
-              <tasks>
-                <mkdir dir="${secondary.resource.directory}" />
-                <tstamp />
-                <!--  
-                  blanklines are intended to force eclipse formatter leave the properties
-                  alone, we dont want all properties in one line
-                -->
-                <echo file="${build.properties.file}">
-                  version=${project.version}
-
-                  revision=${buildNumber}
-
-                  timestamp=${DSTAMP}-${TSTAMP}
-                </echo>
-              </tasks>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
 
     </plugins>
