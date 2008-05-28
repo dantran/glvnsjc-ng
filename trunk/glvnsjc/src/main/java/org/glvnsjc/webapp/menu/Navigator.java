@@ -15,6 +15,7 @@ import javax.faces.FacesException;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.IOUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -28,7 +29,7 @@ public class Navigator
 
     private NavigatorDescriptor currentComponent;
 
-    private List componentGroups = null;
+    private List<String> componentGroups = null;
 
     public boolean getHasCurrentComponent()
     {
@@ -78,7 +79,7 @@ public class Navigator
         }
     }
 
-    private List components_()
+    private List<NavigatorDescriptor> components_()
     {
         if ( components == null )
         {
@@ -89,7 +90,7 @@ public class Navigator
 
     public NavigatorDescriptor findComponentByUri( String uri )
     {
-        Iterator it = components_().iterator();
+        Iterator<NavigatorDescriptor> it = components_().iterator();
         while ( it.hasNext() )
         {
             NavigatorDescriptor component = (NavigatorDescriptor) it.next();
@@ -103,7 +104,7 @@ public class Navigator
 
     public NavigatorDescriptor findComponentById( String id )
     {
-        Iterator it = components_().iterator();
+        Iterator<NavigatorDescriptor> it = components_().iterator();
         while ( it.hasNext() )
         {
             NavigatorDescriptor component = (NavigatorDescriptor) it.next();
@@ -124,20 +125,20 @@ public class Navigator
         this.currentComponent = currentComponent;
     }
 
-    public List getComponentGroups()
+    public List<String> getComponentGroups()
     {
         return componentGroups;
     }
 
-    public void setComponentGroups( List componentGroups )
+    public void setComponentGroups( List<String> componentGroups )
     {
         this.componentGroups = componentGroups;
     }
 
-    private List getFilteredComponents( String group )
+    private List<NavigatorDescriptor> getFilteredComponents( String group )
     {
-        List ret = new ArrayList();
-        Iterator it = getComponents().iterator();
+        List<NavigatorDescriptor> ret = new ArrayList<NavigatorDescriptor>();
+        Iterator<NavigatorDescriptor> it = getComponents().iterator();
         while ( it.hasNext() )
         {
             NavigatorDescriptor desc = (NavigatorDescriptor) it.next();
@@ -149,89 +150,35 @@ public class Navigator
         return ret;
     }
 
-    public List getSystemMenu()
+    public List<NavigatorDescriptor> getSystemMenu()
     {
         return getFilteredComponents( "system" );
     }
 
-    public List getSchoolMenu()
+    public List<NavigatorDescriptor> getSchoolMenu()
     {
         return getFilteredComponents( "school" );
     }
 
-    public List getInstructorMenu()
+    public List<NavigatorDescriptor> getInstructorMenu()
     {
         return getFilteredComponents( "instructor" );
     }
 
-    public List getStudentMenu()
+    public List<NavigatorDescriptor> getStudentMenu()
     {
         return getFilteredComponents( "student" );
     }
 
-    public List getSelectComponents()
+    public List<NavigatorDescriptor> getSelectComponents()
     {
         return getFilteredComponents( "richSelect" );
     }
 
-    public List getRichDragDropComponents()
-    {
-        return getFilteredComponents( "richDragDrop" );
-    }
 
-    public List getRichDataIterators()
+    public List<NavigatorDescriptor> getComponents()
     {
-        return getFilteredComponents( "richDataIterators" );
-    }
-
-    public List getRichMenu()
-    {
-        return getFilteredComponents( "richMenu" );
-    }
-
-    public List getRichTree()
-    {
-        return getFilteredComponents( "richTree" );
-    }
-
-    public List getRichInputs()
-    {
-        return getFilteredComponents( "richInputs" );
-    }
-
-    public List getRichOutputs()
-    {
-        return getFilteredComponents( "richOutputs" );
-    }
-
-    public List getAjaxSupport()
-    {
-        return getFilteredComponents( "ajaxSupport" );
-    }
-
-    public List getAjaxResources()
-    {
-        return getFilteredComponents( "ajaxResources" );
-    }
-
-    public List getAjaxOutput()
-    {
-        return getFilteredComponents( "ajaxOutput" );
-    }
-
-    public List getAjaxMisc()
-    {
-        return getFilteredComponents( "ajaxMisc" );
-    }
-
-    public List getRichMisc()
-    {
-        return getFilteredComponents( "richMisc" );
-    }
-
-    public List getComponents()
-    {
-        Iterator it = components_().iterator();
+        Iterator<NavigatorDescriptor> it = components_().iterator();
         NavigatorDescriptor cur = getCurrentComponent();
         while ( it.hasNext() )
         {
@@ -248,7 +195,7 @@ public class Navigator
         return components;
     }
 
-    public void setComponents( List components )
+    public void setComponents( List<NavigatorDescriptor> components )
     {
         this.components = components;
     }
@@ -256,16 +203,22 @@ public class Navigator
     private void loadComponents()
     {
         Properties props = new Properties();
-        List temp = new ArrayList();
+        List<NavigatorDescriptor> temp = new ArrayList<NavigatorDescriptor>();
+        InputStream is = null;
         try
         {
-            InputStream is = this.getClass().getResourceAsStream( "/org/glvnsjc/webapp/menu/menu.properties" );
+            is = this.getClass().getResourceAsStream( "/org/glvnsjc/webapp/menu/menu.properties" );
             props.load( is );
         }
         catch ( Exception e )
         {
             throw new FacesException( e );
         }
+        finally
+        {
+            IOUtils.closeQuietly( is );
+        }
+        
         Set entries = props.entrySet();
         Iterator it = entries.iterator();
         while ( it.hasNext() )
@@ -285,6 +238,7 @@ public class Navigator
             desc.setDemoLocation( toc.nextToken().trim() );
             temp.add( desc );
         }
+        
         Collections.sort( temp, new Comparator()
         {
             public int compare( Object o1, Object o2 )
@@ -294,6 +248,7 @@ public class Navigator
                 return d1.getName().compareTo( d2.getName() );
             }
         } );
+        
         setComponents( temp );
         setCurrentComponent( (NavigatorDescriptor) temp.get( 0 ) );
     }
