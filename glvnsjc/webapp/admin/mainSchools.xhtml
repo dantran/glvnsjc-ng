@@ -24,6 +24,7 @@
           </f:facet>
           <a4j:commandLink reRender="schoolDetail">
             <a4j:actionparam name="id" value="#{school.id}" assignTo="#{mainSchoolList.selectedSchoolId}" />
+            <a4j:actionparam name="selectedSchoolAction" value="edit" assignTo="#{mainSchoolList.selectedSchoolAction}" />
             <h:graphicImage id="edit" url="/images/edit.gif" border="0" />
           </a4j:commandLink>
         </rich:column>
@@ -61,10 +62,12 @@
 
       <a4j:outputPanel layout="none">
         <h:form id="schoolDetail" rendered="#{mainSchoolList.renderSelectedSchool}">
-
           <tr:panelCaptionGroup captionText="School Details">
-            <h:outputText 
-              value="School name: #{mainSchoolList.selectedSchool.name}" />
+            <tr:panelFormLayout rows="3" labelWidth="20%" fieldWidth="67%">
+              <tr:inputText columns="30" label="Name" value="#{mainSchoolList.selectedSchool.name}" />
+              <tr:inputText columns="60" label="Description" value="#{mainSchoolList.selectedSchool.description}" />
+              <a4j:commandLink value="#{mainSchoolList.selectedSchoolAction}" action="${mainSchoolList.edit}" />              
+            </tr:panelFormLayout>
           </tr:panelCaptionGroup>
         </h:form>
       </a4j:outputPanel>
