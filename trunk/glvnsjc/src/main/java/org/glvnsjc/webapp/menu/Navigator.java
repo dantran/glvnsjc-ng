@@ -19,7 +19,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope( "request")
+@Scope("request")
 public class Navigator
 {
     private String lastCompId = null;
@@ -148,13 +148,12 @@ public class Navigator
         }
         return ret;
     }
-    
-    
+
     public List getSystemMenu()
     {
         return getFilteredComponents( "system" );
     }
-    
+
     public List getSchoolMenu()
     {
         return getFilteredComponents( "school" );
@@ -164,12 +163,12 @@ public class Navigator
     {
         return getFilteredComponents( "instructor" );
     }
+
     public List getStudentMenu()
     {
         return getFilteredComponents( "student" );
     }
-    
-    
+
     public List getSelectComponents()
     {
         return getFilteredComponents( "richSelect" );
@@ -260,8 +259,7 @@ public class Navigator
         List temp = new ArrayList();
         try
         {
-            InputStream is = this.getClass().getClassLoader()
-                .getResourceAsStream( "/org/glvnsjc/webapp/menu/menu.properties" );
+            InputStream is = this.getClass().getResourceAsStream( "/org/glvnsjc/webapp/menu/menu.properties" );
             props.load( is );
         }
         catch ( Exception e )
