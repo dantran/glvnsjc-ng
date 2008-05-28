@@ -10,29 +10,31 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope( "request")
+@Scope("request")
 public class MainSchoolList
-   extends BasePage
+    extends BasePage
 {
-    
+
     @Resource
     private SchoolManager schoolManager;
-    
+
     private Long selectedSchoolId;
-        
+
+    private String selectedSchoolAction;
+
     private School selectedSchool;
-    
+
     public List<School> getMainSchools()
     {
         return schoolManager.getMainSchools();
     }
-    
+
     public String prepareEdit()
     {
-        this.selectedSchool = this.schoolManager.get( this.selectedSchoolId);
+        this.selectedSchool = this.schoolManager.get( this.selectedSchoolId );
         return "displayModify";
     }
-    
+
     public String prepareDelete()
     {
         this.selectedSchool = this.schoolManager.get( this.selectedSchoolId );
@@ -41,9 +43,14 @@ public class MainSchoolList
 
     public School getSelectedSchool()
     {
-        return this.schoolManager.get( selectedSchoolId );
+        if ( selectedSchoolId != null )
+        {
+            return this.schoolManager.get( selectedSchoolId );
+        }
+
+        return new School();
     }
-    
+
     public boolean isRenderSelectedSchool()
     {
         return this.selectedSchoolId != null;
@@ -58,6 +65,25 @@ public class MainSchoolList
     {
         this.selectedSchoolId = selectedSchoolId;
     }
-    
+
+    public String getSelectedSchoolAction()
+    {
+        return selectedSchoolAction;
+    }
+
+    public void setSelectedSchoolAction( String selectedSchoolAction )
+    {
+        this.selectedSchoolAction = selectedSchoolAction;
+    }
+
+    public String edit()
+    {
+        return null;
+    }
+
+    public void setSelectedSchool( School selectedSchool )
+    {
+        this.selectedSchool = selectedSchool;
+    }
 
 }
