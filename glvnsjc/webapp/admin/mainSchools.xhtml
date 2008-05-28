@@ -57,18 +57,18 @@
 
     </h:form>
 
-    <rich:spacer width="1" height="5" />
+    <rich:spacer width="1" height="20" />
 
     <f:subview>
-      <h:form>
+      <a4j:outputPanel layout="none">
+        <h:form id="schoolDetail" rendered="#{mainSchoolList.renderSelectedSchool}">
 
-        <tr:panelCaptionGroup captionText="School Details">
-          <a4j:outputPanel layout="none">
-            <h:outputText id="schoolDetail" rendered="#{mainSchoolList.renderSelectedSchool}"
+          <tr:panelCaptionGroup captionText="School Details">
+            <h:outputText 
               value="School name: #{mainSchoolList.selectedSchool.name}" />
-          </a4j:outputPanel>
-        </tr:panelCaptionGroup>
-      </h:form>
+          </tr:panelCaptionGroup>
+        </h:form>
+      </a4j:outputPanel>
     </f:subview>
 
   </ui:define>
