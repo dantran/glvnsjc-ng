@@ -33,6 +33,7 @@ public abstract class AbstractServiceTest
             "/org/glvnsjc/applicationContext-jpa.xml",
             "/org/glvnsjc/applicationContext-dao.xml",
             "/org/glvnsjc/applicationContext-orchestra.xml",
+            "/org/glvnsjc/applicationContext-mail.xml",
             "/org/glvnsjc/applicationContext-service.xml"
             };
     }
