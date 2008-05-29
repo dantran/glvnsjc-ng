@@ -8,6 +8,8 @@ import javax.sql.DataSource;
 
 import org.glvnsjc.internal.dao.UserDao;
 import org.glvnsjc.model.domain.User;
+import org.glvnsjc.util.SpringMessageSource;
+import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.security.userdetails.UserDetails;
 import org.springframework.security.userdetails.UserDetailsService;
@@ -64,7 +66,9 @@ public class UserDaoJpa
         List<User> users = q.getResultList();
         if ( users == null || users.isEmpty() )
         {
-            throw new UsernameNotFoundException( "user '" + username + "' not found..." );
+            MessageSourceAccessor msgAccessor = SpringMessageSource.getAccessor();
+            msgAccessor.getMessage( "User.usernameNotFound", username );
+            throw new UsernameNotFoundException( msgAccessor.getMessage( "User.usernameNotFound", username ) );
         }
         else
         {
