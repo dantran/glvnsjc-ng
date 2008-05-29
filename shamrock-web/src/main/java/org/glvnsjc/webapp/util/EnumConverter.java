@@ -6,7 +6,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 
-import org.apache.myfaces.shared_tomahawk.util.ClassUtils;
+import org.apache.myfaces.shared.util.ClassUtils;
+
 
 /**
  * converts an enum in a way that makes the conversion reversible between view and backing bean

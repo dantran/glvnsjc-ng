@@ -1,0 +1,13 @@
+
+.AFDefaultFontFamily:alias
+{
+  font-family:Tahoma;
+}
+
+.AFDarkForeground:alias {color:red;}
+
+af|inputText:
+{
+  background-color:red; 
+  text-align:center;
+  }

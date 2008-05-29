@@ -8,12 +8,18 @@
       
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml; charset=UTF-8"/>
+
 <title>
 	<ui:insert name="title"/>
 </title>
-<link rel="STYLESHEET" type="text/css" href="${facesContext.externalContext.requestContextPath}/styles/${appConfig['csstheme']}/common.css"/>
+
+<link rel="stylesheet" type="text/css" href="${facesContext.externalContext.requestContextPath}/styles/${appConfig['csstheme']}/common.css"/>
+<link rel="stylesheet" type="text/css" href="${facesContext.externalContext.requestContextPath}/styles/${appConfig['csstheme']}/trinidad.css"/>
+
 <link rel="icon" href="${facesContext.externalContext.requestContextPath}/images/shamrock-icon.gif"/>
+
 <ui:include src="/templates/include/dynamic-css.xhtml" />
+
 </head>
 
 <body>
