@@ -114,7 +114,7 @@
 
   <context-param>
     <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
-    <param-value>org.glvnsjc.resource.ApplicationResources</param-value>
+    <param-value>org.glvnsjc.webapp.resource.ApplicationResources</param-value>
   </context-param>
 
   <context-param>
