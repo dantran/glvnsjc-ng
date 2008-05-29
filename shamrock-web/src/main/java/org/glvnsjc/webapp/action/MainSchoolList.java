@@ -17,12 +17,16 @@ public class MainSchoolList
 
     @Resource
     private SchoolManager schoolManager;
+    
+    /////////////////////////////////////////////////////////////////////////////////////////
 
     private Long selectedSchoolId;
 
     private String selectedSchoolAction;
 
     private School selectedSchool;
+    
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     public List<School> getMainSchools()
     {
@@ -80,7 +84,7 @@ public class MainSchoolList
         this.selectedSchool = new School();
     }
 
-    public void edit( javax.faces.event.ActionEvent event )
+    public void processSelectedSchool( javax.faces.event.ActionEvent event )
     {
 
         //save the school
@@ -95,14 +99,9 @@ public class MainSchoolList
         this.selectedSchool = selectedSchool;
     }
 
-    public boolean isReadonly()
+    public boolean isReadOnly()
     {
         return "del".equals( this.selectedSchoolAction );
-    }
-
-    public boolean isValidateNeeded()
-    {
-        return isReadonly();
     }
 
 }
