@@ -10,9 +10,9 @@
 
   <ui:define name="content">
 
-    <h:form>
+    <h:form id="list">
 
-      <rich:dataTable value="#{mainSchoolList.mainSchools}" var="school" width="900px" columnClasses="center" rows="25">
+      <rich:dataTable value="#{mainSchoolList.mainSchools}" var="school" width="900px" rows="25">
 
         <f:facet name="header">
           <h:outputText value="Main Schools" />
@@ -33,10 +33,11 @@
           <f:facet name="header">
             <h:outputText value="Del" />
           </f:facet>
-          <h:commandLink action="${mainSchoolList.prepareDelete}" immediate="true">
+          <a4j:commandLink reRender="schoolDetail">
+            <a4j:actionparam name="id" value="#{school.id}" assignTo="#{mainSchoolList.selectedSchoolId}" />
+            <a4j:actionparam name="selectedSchoolAction" value="del" assignTo="#{mainSchoolList.selectedSchoolAction}" />
             <h:graphicImage id="del" url="/images/delete.gif" border="0" />
-            <f:setPropertyActionListener target="${mainSchoolList.selectedSchoolId}" value="#{school.id}" />
-          </h:commandLink>
+          </a4j:commandLink>
         </rich:column>
 
 
@@ -60,17 +61,22 @@
 
     <rich:spacer width="1" height="20" />
 
-      <a4j:outputPanel layout="none">
-        <h:form id="schoolDetail" rendered="#{mainSchoolList.renderSelectedSchool}">
-          <tr:panelCaptionGroup captionText="School Details">
-            <tr:panelFormLayout rows="3" labelWidth="20%" fieldWidth="67%">
-              <tr:inputText columns="30" label="Name" value="#{mainSchoolList.selectedSchool.name}" />
-              <tr:inputText columns="60" label="Description" value="#{mainSchoolList.selectedSchool.description}" />
-              <a4j:commandLink value="#{mainSchoolList.selectedSchoolAction}" action="${mainSchoolList.edit}" />              
-            </tr:panelFormLayout>
-          </tr:panelCaptionGroup>
-        </h:form>
-      </a4j:outputPanel>
+    <a4j:outputPanel layout="none" ajaxRendered="true">
+      <h:form id="schoolDetail" rendered="#{mainSchoolList.renderSelectedSchool}" >
+        <tr:panelCaptionGroup captionText="School Details">
+          <tr:panelFormLayout rows="5" labelWidth="20%" fieldWidth="67%" >
+            <h:inputHidden id="selectedSchoolId" value="#{mainSchoolList.selectedSchoolId}" />
+            <h:inputHidden id="selectedSchoolAction" value="#{mainSchoolList.selectedSchoolAction}" />
+            <tr:inputText columns="30" label="Name" value="#{mainSchoolList.selectedSchool.name}"
+              readOnly="#{mainSchoolList.readonly}" />
+            <tr:inputText columns="60" label="Description" value="#{mainSchoolList.selectedSchool.description}"
+              readOnly="#{mainSchoolList.readonly}" />
+            <a4j:commandLink reRender="list" value="#{mainSchoolList.selectedSchoolAction}"
+              actionListener="#{mainSchoolList.edit}" immediate="#{mainSchoolList.validateNeeded}" />
+          </tr:panelFormLayout>
+        </tr:panelCaptionGroup>
+      </h:form>
+    </a4j:outputPanel>
 
   </ui:define>
 </ui:composition>

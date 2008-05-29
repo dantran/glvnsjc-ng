@@ -45,9 +45,10 @@ public class MainSchoolList
     {
         if ( selectedSchoolId != null )
         {
-            return this.schoolManager.get( selectedSchoolId );
+            return this.selectedSchool;
         }
 
+        //even though we don't render the school detail but still need a dummy school for loading purpose
         return new School();
     }
 
@@ -64,6 +65,8 @@ public class MainSchoolList
     public void setSelectedSchoolId( Long selectedSchoolId )
     {
         this.selectedSchoolId = selectedSchoolId;
+        this.selectedSchool = this.schoolManager.get( selectedSchoolId );
+
     }
 
     public String getSelectedSchoolAction()
@@ -76,14 +79,28 @@ public class MainSchoolList
         this.selectedSchoolAction = selectedSchoolAction;
     }
 
-    public String edit()
+    public void edit( javax.faces.event.ActionEvent event )
     {
-        return null;
+        //save the school
+
+        //reset the selectSchoolId to trigger the view to hide the school details block
+        this.selectedSchoolId = null;
+
     }
 
     public void setSelectedSchool( School selectedSchool )
     {
         this.selectedSchool = selectedSchool;
+    }
+
+    public boolean isReadonly()
+    {
+        return "del".equals( this.selectedSchoolAction );
+    }
+    
+    public boolean isValidateNeeded()
+    {
+        return isReadonly();
     }
 
 }
