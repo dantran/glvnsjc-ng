@@ -40,7 +40,6 @@
           </a4j:commandLink>
         </rich:column>
 
-
         <rich:column sortBy="#{school.name}">
           <f:facet name="header">
             <h:outputText value="Name" />
@@ -57,14 +56,17 @@
 
       </rich:dataTable>
 
+      <a4j:commandLink reRender="list" value="add" actionListener="#{mainSchoolList.prepareAdd}" immediate="true">
+        <a4j:actionparam name="selectedSchoolAction" value="add" assignTo="#{mainSchoolList.selectedSchoolAction}" />
+      </a4j:commandLink>
     </h:form>
 
     <rich:spacer width="1" height="20" />
 
     <a4j:outputPanel layout="none" ajaxRendered="true">
-      <h:form id="schoolDetail" rendered="#{mainSchoolList.renderSelectedSchool}" >
+      <h:form id="schoolDetail" rendered="#{mainSchoolList.renderSelectedSchool}">
         <tr:panelCaptionGroup captionText="School Details">
-          <tr:panelFormLayout rows="5" labelWidth="20%" fieldWidth="67%" >
+          <tr:panelFormLayout rows="5" labelWidth="20%" fieldWidth="67%">
             <h:inputHidden id="selectedSchoolId" value="#{mainSchoolList.selectedSchoolId}" />
             <h:inputHidden id="selectedSchoolAction" value="#{mainSchoolList.selectedSchoolAction}" />
             <tr:inputText columns="30" label="Name" value="#{mainSchoolList.selectedSchool.name}"

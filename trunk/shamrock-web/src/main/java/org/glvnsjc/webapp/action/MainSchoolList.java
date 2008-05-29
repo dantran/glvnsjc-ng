@@ -29,18 +29,6 @@ public class MainSchoolList
         return schoolManager.getMainSchools();
     }
 
-    public String prepareEdit()
-    {
-        this.selectedSchool = this.schoolManager.get( this.selectedSchoolId );
-        return "displayModify";
-    }
-
-    public String prepareDelete()
-    {
-        this.selectedSchool = this.schoolManager.get( this.selectedSchoolId );
-        return "displayDelete";
-    }
-
     public School getSelectedSchool()
     {
         if ( selectedSchoolId != null )
@@ -65,7 +53,14 @@ public class MainSchoolList
     public void setSelectedSchoolId( Long selectedSchoolId )
     {
         this.selectedSchoolId = selectedSchoolId;
-        this.selectedSchool = this.schoolManager.get( selectedSchoolId );
+        if ( selectedSchoolId.intValue() == 0 )
+        {
+            this.selectedSchool = new School();
+        }
+        else
+        {
+            this.selectedSchool = this.schoolManager.get( selectedSchoolId );
+        }
 
     }
 
@@ -79,8 +74,15 @@ public class MainSchoolList
         this.selectedSchoolAction = selectedSchoolAction;
     }
 
+    public void prepareAdd( javax.faces.event.ActionEvent event )
+    {
+        this.selectedSchoolId = new Long( 0 );
+        this.selectedSchool = new School();
+    }
+
     public void edit( javax.faces.event.ActionEvent event )
     {
+
         //save the school
 
         //reset the selectSchoolId to trigger the view to hide the school details block
@@ -97,7 +99,7 @@ public class MainSchoolList
     {
         return "del".equals( this.selectedSchoolAction );
     }
-    
+
     public boolean isValidateNeeded()
     {
         return isReadonly();
