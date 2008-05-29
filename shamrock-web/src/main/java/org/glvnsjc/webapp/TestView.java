@@ -4,8 +4,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("session")
+@Scope("request")
 public class TestView
+   
 {
     
     private String testString = "TestString";
