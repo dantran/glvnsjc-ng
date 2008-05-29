@@ -25,7 +25,7 @@
       <supported-locale>zh_TW</supported-locale>
     </locale-config>
     <resource-bundle>
-      <base-name>org.glvnsjc.resource.ApplicationResources</base-name>
+      <base-name>org.glvnsjc.webapp.resource.ApplicationResources</base-name>
       <var>base</var>
     </resource-bundle>
   </application>

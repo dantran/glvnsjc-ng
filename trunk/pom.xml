@@ -640,6 +640,7 @@
     <sitemesh.version>2.2.1</sitemesh.version>
     <trinidad.version>1.2.8</trinidad.version>
     <richfaces.version>3.2.1.CR8</richfaces.version>
+    <commons-beanutils.version>1.7.0</commons-beanutils.version>
   </properties>
 
 </project>
