@@ -28,7 +28,16 @@
       <base-name>org.glvnsjc.webapp.resource.ApplicationResources</base-name>
       <var>base</var>
     </resource-bundle>
+    <resource-bundle>
+      <base-name>org.glvnsjc.webapp.resource.EnumResources</base-name>
+      <var>enum</var>
+    </resource-bundle>
   </application>
+
+  <converter>
+    <converter-for-class>java.lang.Enum</converter-for-class>
+    <converter-class>org.glvnsjc.webapp.util.EnumConverter</converter-class>
+  </converter>
 
   <component>
     <component-type>com.corejsf.validator.UIValidatorScript</component-type>
