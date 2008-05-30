@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<tr:document xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
   xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
   xmlns:tr="http://myfaces.apache.org/trinidad" xmlns:a4j="http://richfaces.org/a4j"
   xmlns:rich="http://richfaces.org/rich">
@@ -12,66 +12,66 @@
 
     <tr:panelCaptionGroup captionText="Main Schools">
 
-      <h:form id="list">
+      <tr:form>
 
-        <rich:dataTable value="#{mainSchoolList.mainSchools}" var="school" width="900px" rows="25">
+        <tr:table value="#{mainSchoolList.mainSchools}" var="school" width="900px" rows="25" rowBandingInterval="1">
 
           <f:facet name="header">
-            <h:outputText value="Main Schools" />
+            <tr:outputText value="Main Schools" />
           </f:facet>
 
-          <rich:column width="7">
+          <tr:column width="7">
             <f:facet name="header">
-              <h:outputText value="Edit" />
+              <tr:outputText value="Edit" />
             </f:facet>
-            <a4j:commandLink reRender="schoolDetail">
-              <a4j:actionparam name="id" value="#{school.id}" assignTo="#{mainSchoolList.selectedSchoolId}" />
-              <a4j:actionparam name="selectedSchoolAction" value="edit"
-                assignTo="#{mainSchoolList.selectedSchoolAction}" />
-              <h:graphicImage id="edit" url="/images/edit.gif" border="0" />
-            </a4j:commandLink>
-          </rich:column>
+            <tr:commandLink id="prepareEdit" partialSubmit="true" immediate="true">
+              <f:setPropertyActionListener value="#{school.id}" target="#{mainSchoolList.selectedSchoolId}" />
+              <f:setPropertyActionListener value="edit" target="#{mainSchoolList.selectedSchoolAction}" />
+              <tr:image id="edit" source="/images/edit.gif" border="0" />
+            </tr:commandLink>
+          </tr:column>
 
-          <rich:column width="7">
+          <tr:column width="7">
             <f:facet name="header">
-              <h:outputText value="Del" />
+              <tr:outputText value="Del" />
             </f:facet>
-            <a4j:commandLink reRender="schoolDetail">
-              <a4j:actionparam name="id" value="#{school.id}" assignTo="#{mainSchoolList.selectedSchoolId}" />
-              <a4j:actionparam name="selectedSchoolAction" value="del" assignTo="#{mainSchoolList.selectedSchoolAction}" />
-              <h:graphicImage id="del" url="/images/delete.gif" border="0" />
-            </a4j:commandLink>
-          </rich:column>
+            <tr:commandLink id="prepareDel" partialSubmit="true" immediate="true">
+              <f:setPropertyActionListener value="#{school.id}" target="#{mainSchoolList.selectedSchoolId}" />
+              <f:setPropertyActionListener value="del" target="#{mainSchoolList.selectedSchoolAction}" />
+              <tr:image id="del" source="/images/delete.gif" border="0" />
+            </tr:commandLink>
+          </tr:column>
 
-          <rich:column sortBy="#{school.name}">
+          <tr:column sortProperty="name" sortable="true">
             <f:facet name="header">
               <h:outputText value="Name" />
             </f:facet>
             <h:outputText value="#{school.name}" />
-          </rich:column>
+          </tr:column>
 
-          <rich:column sortBy="#{school.description}">
+          <tr:column sortProperty="description" sortable="true">
             <f:facet name="header">
               <h:outputText value="Description" />
             </f:facet>
-            <h:outputText value="#{school.description}" />
-          </rich:column>
+            <tr:outputText value="#{school.description}" />
+          </tr:column>
 
-        </rich:dataTable>
+        </tr:table>
 
         <rich:spacer width="1" height="20" />
 
-        <a4j:commandLink reRender="schoolDetail" value="add" actionListener="#{mainSchoolList.prepareAdd}"
+        <tr:commandLink id="prepareAdd" partialSubmit="true" value="add" actionListener="#{mainSchoolList.prepareAdd}"
           immediate="true">
-          <a4j:actionparam name="selectedSchoolAction" value="add" assignTo="#{mainSchoolList.selectedSchoolAction}" />
-        </a4j:commandLink>
-      </h:form>
+          <f:setPropertyActionListener value="add" target="#{mainSchoolList.selectedSchoolAction}" />
+        </tr:commandLink>
+
+      </tr:form>
     </tr:panelCaptionGroup>
 
     <rich:spacer width="1" height="20" />
 
-    <a4j:outputPanel layout="none" ajaxRendered="true">
-      <h:form id="schoolDetail" rendered="#{mainSchoolList.renderSelectedSchool}">
+    <tr:panelGroupLayout partialTriggers="prepareEdit prepareDel prepareAdd">
+      <h:form >
         <tr:panelCaptionGroup captionText="School Details">
           <tr:panelFormLayout rows="7" labelWidth="20%" fieldWidth="67%">
             <h:inputHidden id="selectedSchoolId" value="#{mainSchoolList.selectedSchoolId}" />
@@ -82,13 +82,15 @@
             <tr:inputText columns="60" label="Description" value="#{mainSchoolList.selectedSchool.description}"
               readOnly="#{mainSchoolList.readOnly}" />
             <rich:spacer width="1" height="10" />
-            <a4j:commandLink reRender="list" value="#{mainSchoolList.selectedSchoolAction}"
+
+            <tr:commandLink partialSubmit="true" value="#{mainSchoolList.selectedSchoolAction}"
               actionListener="#{mainSchoolList.processSelectedSchool}" immediate="#{mainSchoolList.readOnly}" />
           </tr:panelFormLayout>
         </tr:panelCaptionGroup>
       </h:form>
-    </a4j:outputPanel>
+    </tr:panelGroupLayout>
+
 
   </ui:define>
 </ui:composition>
-</tr:document>
+</html>
