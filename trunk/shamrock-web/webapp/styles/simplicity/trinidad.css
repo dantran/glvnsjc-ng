@@ -1,13 +1,5 @@
 
-.AFDefaultFontFamily:alias
+.mainContentText
 {
-  font-family:Tahoma;
+  font-family: verdana,arial,helvetica,sans-serif; font-size: small;color:red;
 }
-
-.AFDarkForeground:alias {color:red;}
-
-af|inputText:
-{
-  background-color:red; 
-  text-align:center;
-  }
