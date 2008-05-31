@@ -20,7 +20,7 @@
     
     <tr:form id="listWrapper" >
 
-      <tr:panelCaptionGroup captionText="Main Schools">
+      <tr:panelCaptionGroup captionText="#{base['school.main']}">
 
         <tr:table id="list" value="#{mainSchoolList.mainSchools}" var="school" width="900px" rows="25"
           rowBandingInterval="1">
@@ -31,13 +31,13 @@
 
           <tr:column width="7">
             <f:facet name="header">
-              <tr:outputText value="#{base['crud.edit']}" />
+              <tr:outputText value="#{base['crud.modify.short']}" />
             </f:facet>
             <tr:commandLink id="prepareEdit" partialSubmit="true" immediate="true"
               action="#{schoolDetail.prepareDetail}">
               <f:setPropertyActionListener value="#{school.id}" target="#{schoolDetail.selectedSchoolId}" />
-              <f:setPropertyActionListener value="edit" target="#{schoolDetail.selectedSchoolAction}" />
-              <tr:image id="edit" source="/images/edit.gif" border="0" />
+              <f:setPropertyActionListener value="#{base['crud.modify']}" target="#{schoolDetail.selectedSchoolAction}" />
+              <tr:image source="/images/edit.gif" border="0" />
             </tr:commandLink>
           </tr:column>
 
@@ -47,21 +47,21 @@
             </f:facet>
             <tr:commandLink id="prepareDel" partialSubmit="true" immediate="true" action="#{schoolDetail.prepareDetail}">
               <f:setPropertyActionListener value="#{school.id}" target="#{schoolDetail.selectedSchoolId}" />
-              <f:setPropertyActionListener value="del" target="#{schoolDetail.selectedSchoolAction}" />
-              <tr:image id="del" source="/images/delete.gif" border="0" />
+              <f:setPropertyActionListener value="#{base['crud.remove']}" target="#{schoolDetail.selectedSchoolAction}" />
+              <tr:image source="/images/delete.gif" border="0" />
             </tr:commandLink>
           </tr:column>
 
           <tr:column sortProperty="name" sortable="true">
             <f:facet name="header">
-              <h:outputText value="Name" />
+              <h:outputText value="#{base['school.name']}" />
             </f:facet>
             <h:outputText value="#{school.name}" />
           </tr:column>
 
           <tr:column sortProperty="description" sortable="true">
             <f:facet name="header">
-              <h:outputText value="Description" />
+              <h:outputText value="#{base['school.description']}" />
             </f:facet>
             <tr:outputText value="#{school.description}" />
           </tr:column>
@@ -72,7 +72,7 @@
 
         <tr:commandLink id="prepareAdd" partialSubmit="true" text="#{base['crud.add']}" action="#{schoolDetail.prepareDetail}"
           immediate="true">
-          <f:setPropertyActionListener value="add" target="#{schoolDetail.selectedSchoolAction}" />
+          <f:setPropertyActionListener value="#{base['crud.add']}" target="#{schoolDetail.selectedSchoolAction}" />
         </tr:commandLink>
 
       </tr:panelCaptionGroup>

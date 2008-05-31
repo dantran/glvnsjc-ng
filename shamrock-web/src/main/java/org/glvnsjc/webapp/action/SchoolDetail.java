@@ -2,10 +2,10 @@ package org.glvnsjc.webapp.action;
 
 import javax.annotation.Resource;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 
 import org.glvnsjc.model.domain.School;
 import org.glvnsjc.service.SchoolManager;
+import org.glvnsjc.webapp.util.CrudType;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +18,7 @@ public class SchoolDetail
     private SchoolManager schoolManager;
     
     /////////////////////////////////////////////////////////////////////////////////////////
-
+    
     private Long selectedSchoolId;
 
     private String selectedSchoolAction;
@@ -78,24 +78,23 @@ public class SchoolDetail
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
-    
-    public boolean isRenderSelectedSchool()
+    public boolean isRendered()
     {
-        return this.selectedSchoolId != null;
-    }
-    
-    public void prepareAdd( javax.faces.event.ActionEvent event )
-    {
-        this.selectedSchoolId = new Long( 0 );
-        this.selectedSchool = new School();
-    }
-
-
+        return rendered;
+    }    
+    ////////////////////////////////////////////////////////////////////////////////////////////
+ 
     public boolean isReadOnly()
     {
-        return "del".equals( this.selectedSchoolAction );
+        //FIXME: need to get this from resource
+        
+        return "Remove".equals( this.selectedSchoolAction );
     }
     
+    /**
+     * Trigger the view to display selected school detail
+     * @return
+     */
     public String prepareDetail( )
     {
         this.rendered = true;
@@ -103,7 +102,6 @@ public class SchoolDetail
         return null;
     }
 
-    
     public String persistSchool( )
     {
         //handle pojo crud here
@@ -114,8 +112,6 @@ public class SchoolDetail
         return null;
     }
 
-    public boolean isRendered()
-    {
-        return rendered;
-    }
+
+
 }
