@@ -100,14 +100,9 @@ public class SchoolDetail
     {
         this.rendered = true;
         
-        return null;//System.out.println( "Control Id: " + event.getComponent().getId() );
+        return null;
     }
 
-    public void prepareDetail2( ActionEvent event )
-    {
-        this.rendered = true;
-        System.out.println( "Prepare: " + event.getComponent().getClientId( FacesContext.getCurrentInstance() ) );
-    }
     
     public String persistSchool( )
     {
