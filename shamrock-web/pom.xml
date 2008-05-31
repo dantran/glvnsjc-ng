@@ -162,7 +162,7 @@
           <version>1.0-alpha-1</version>
           <configuration>
             <url>http://glvnsjc.homedns.org:8080/manager</url>
-            <server>glvnsjc-demo-tomcat</server>
+            <server>shamrock-demo-tomcat</server>
           </configuration>
         </plugin>
       </plugins>
