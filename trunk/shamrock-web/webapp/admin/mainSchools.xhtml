@@ -26,12 +26,12 @@
           rowBandingInterval="1">
 
           <f:facet name="header">
-            <tr:outputText value="Main Schools" />
+            <tr:outputText value="#{base['school.main']}" />
           </f:facet>
 
           <tr:column width="7">
             <f:facet name="header">
-              <tr:outputText value="Edit" />
+              <tr:outputText value="#{base['crud.edit']}" />
             </f:facet>
             <tr:commandLink id="prepareEdit" partialSubmit="true" immediate="true"
               action="#{schoolDetail.prepareDetail}">
@@ -43,7 +43,7 @@
 
           <tr:column width="7">
             <f:facet name="header">
-              <tr:outputText value="Del" />
+              <tr:outputText value="#{base['crud.remove.short']}" />
             </f:facet>
             <tr:commandLink id="prepareDel" partialSubmit="true" immediate="true" action="#{schoolDetail.prepareDetail}">
               <f:setPropertyActionListener value="#{school.id}" target="#{schoolDetail.selectedSchoolId}" />
@@ -70,7 +70,7 @@
 
         <tr:spacer width="1" height="20" />
 
-        <tr:commandLink id="prepareAdd" partialSubmit="true" text="add" action="#{schoolDetail.prepareDetail}"
+        <tr:commandLink id="prepareAdd" partialSubmit="true" text="#{base['crud.add']}" action="#{schoolDetail.prepareDetail}"
           immediate="true">
           <f:setPropertyActionListener value="add" target="#{schoolDetail.selectedSchoolAction}" />
         </tr:commandLink>
@@ -86,19 +86,21 @@
 
       <tr:form id="detailWrapper" >
 
-        <tr:panelCaptionGroup captionText="School Details" rendered="#{schoolDetail.rendered}">
+        <tr:panelCaptionGroup captionText="#{base['school.detail']}" rendered="#{schoolDetail.rendered}">
           <tr:panelFormLayout rows="7" labelWidth="20%" fieldWidth="67%" >
             <h:inputHidden id="selectedSchoolId" value="#{schoolDetail.selectedSchoolId}" />
             <h:inputHidden id="selectedSchoolAction" value="#{schoolDetail.selectedSchoolAction}" />
-            <tr:inputText columns="30" label="Name" value="#{schoolDetail.selectedSchool.name}"
+            <tr:inputText required="true" columns="30" label="#{base['school.name']}" value="#{schoolDetail.selectedSchool.name}"
               disabled="#{schoolDetail.readOnly}" />
             <tr:spacer width="1" height="10" />
-            <tr:inputText columns="60" label="Description" value="#{schoolDetail.selectedSchool.description}"
+            <tr:inputText columns="60" label="#{base['school.description']}" value="#{schoolDetail.selectedSchool.description}"
               disabled="#{schoolDetail.readOnly}" />
+              
             <tr:spacer width="1" height="10" />
 
             <tr:commandLink partialSubmit="false" id="persist" text="#{schoolDetail.selectedSchoolAction}"
               action="#{schoolDetail.persistSchool}" />
+              
           </tr:panelFormLayout>
         </tr:panelCaptionGroup>
 
