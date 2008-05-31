@@ -29,14 +29,13 @@ public class MainSchoolList
     @PostConstruct
     public void loadMainSchools()
     {
-        //this.mainSchools = schoolManager.getMainSchools();
+        this.mainSchools = schoolManager.getMainSchools();
     }
     
    
     public List<School> getMainSchools()
     {
-        return schoolManager.getMainSchools();
-        //return this.mainSchools;
+        return this.mainSchools;
     }
 
     
