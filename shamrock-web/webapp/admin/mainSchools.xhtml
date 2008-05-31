@@ -10,11 +10,12 @@
 
   <ui:define name="content">
 
-    <tr:panelCaptionGroup captionText="Main Schools">
+    <tr:form id="listWrapper">
 
-      <tr:form>
+      <tr:panelCaptionGroup captionText="Main Schools">
 
-        <tr:table value="#{mainSchoolList.mainSchools}" var="school" width="900px" rows="25" rowBandingInterval="1">
+        <tr:table id="list" value="#{mainSchoolList.mainSchools}" var="school" width="900px" rows="25"
+          rowBandingInterval="1">
 
           <f:facet name="header">
             <tr:outputText value="Main Schools" />
@@ -24,9 +25,10 @@
             <f:facet name="header">
               <tr:outputText value="Edit" />
             </f:facet>
-            <tr:commandLink id="prepareEdit" partialSubmit="true" immediate="true">
-              <f:setPropertyActionListener value="#{school.id}" target="#{mainSchoolList.selectedSchoolId}" />
-              <f:setPropertyActionListener value="edit" target="#{mainSchoolList.selectedSchoolAction}" />
+            <tr:commandLink id="prepareEdit" partialSubmit="true" immediate="true"
+              actionListener="#{schoolDetail.prepareDetail2}">
+              <f:setPropertyActionListener value="#{school.id}" target="#{schoolDetail.selectedSchoolId}" />
+              <f:setPropertyActionListener value="edit" target="#{schoolDetail.selectedSchoolAction}" />
               <tr:image id="edit" source="/images/edit.gif" border="0" />
             </tr:commandLink>
           </tr:column>
@@ -35,9 +37,10 @@
             <f:facet name="header">
               <tr:outputText value="Del" />
             </f:facet>
-            <tr:commandLink id="prepareDel" partialSubmit="true" immediate="true">
-              <f:setPropertyActionListener value="#{school.id}" target="#{mainSchoolList.selectedSchoolId}" />
-              <f:setPropertyActionListener value="del" target="#{mainSchoolList.selectedSchoolAction}" />
+            <tr:commandLink id="prepareDel" partialSubmit="true" immediate="true"
+              action="#{schoolDetail.prepareDetail}">
+              <f:setPropertyActionListener value="#{school.id}" target="#{schoolDetail.selectedSchoolId}" />
+              <f:setPropertyActionListener value="del" target="#{schoolDetail.selectedSchoolAction}" />
               <tr:image id="del" source="/images/delete.gif" border="0" />
             </tr:commandLink>
           </tr:column>
@@ -60,36 +63,36 @@
 
         <rich:spacer width="1" height="20" />
 
-        <tr:commandLink id="prepareAdd" partialSubmit="true" value="add" actionListener="#{mainSchoolList.prepareAdd}"
+        <tr:commandLink id="prepareAdd" partialSubmit="true" text="add" action="#{mainSchoolList.prepareDetail}"
           immediate="true">
           <f:setPropertyActionListener value="add" target="#{mainSchoolList.selectedSchoolAction}" />
         </tr:commandLink>
-
-      </tr:form>
-    </tr:panelCaptionGroup>
+      </tr:panelCaptionGroup>
+    </tr:form>
 
     <rich:spacer width="1" height="20" />
 
-    <tr:panelGroupLayout partialTriggers="prepareEdit prepareDel prepareAdd">
-      <h:form >
+    <tr:form id="detailWrapper">
+
+      <tr:panelGroupLayout id="schoolDetails" partialTriggers=":::::list:prepareEdit :::::list:prepareDel :::::prepareAdd">
         <tr:panelCaptionGroup captionText="School Details">
           <tr:panelFormLayout rows="7" labelWidth="20%" fieldWidth="67%">
-            <h:inputHidden id="selectedSchoolId" value="#{mainSchoolList.selectedSchoolId}" />
-            <h:inputHidden id="selectedSchoolAction" value="#{mainSchoolList.selectedSchoolAction}" />
-            <tr:inputText columns="30" label="Name" value="#{mainSchoolList.selectedSchool.name}"
-              readOnly="#{mainSchoolList.readOnly}" />
-            <rich:spacer width="1" height="10" />
-            <tr:inputText columns="60" label="Description" value="#{mainSchoolList.selectedSchool.description}"
-              readOnly="#{mainSchoolList.readOnly}" />
-            <rich:spacer width="1" height="10" />
+            <h:inputHidden id="selectedSchoolId" value="#{schoolDetail.selectedSchoolId}" />
+            <h:inputHidden id="selectedSchoolAction" value="#{schoolDetail.selectedSchoolAction}" />
+            <tr:inputText columns="30" label="Name" value="#{schoolDetail.selectedSchool.name}"
+              readOnly="#{schoolDetail.readOnly}" />
+            <tr:spacer width="1" height="10" />
+            <tr:inputText columns="60" label="Description" value="#{schoolDetail.selectedSchool.description}"
+              readOnly="#{schoolDetail.readOnly}" />
+            <tr:spacer width="1" height="10" />
 
-            <tr:commandLink partialSubmit="true" value="#{mainSchoolList.selectedSchoolAction}"
-              actionListener="#{mainSchoolList.processSelectedSchool}" immediate="#{mainSchoolList.readOnly}" />
+            <tr:commandLink partialSubmit="true" text="#{schoolDetail.selectedSchoolAction}"
+              actionListener="#{schoolDetail.processSelectedSchool}" immediate="#{schoolDetail.readOnly}" />
           </tr:panelFormLayout>
         </tr:panelCaptionGroup>
-      </h:form>
-    </tr:panelGroupLayout>
+      </tr:panelGroupLayout>
 
+    </tr:form>
 
   </ui:define>
 </ui:composition>
