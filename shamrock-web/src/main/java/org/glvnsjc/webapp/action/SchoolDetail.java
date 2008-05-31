@@ -2,6 +2,7 @@ package org.glvnsjc.webapp.action;
 
 import javax.annotation.Resource;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 
 import org.glvnsjc.model.domain.School;
 import org.glvnsjc.service.SchoolManager;
@@ -23,6 +24,8 @@ public class SchoolDetail
     private String selectedSchoolAction;
 
     private School selectedSchool;
+    
+    private boolean rendered;
    
     ////////////////////////////////////////////////////////////////////////////////////////////
     
@@ -95,12 +98,29 @@ public class SchoolDetail
     
     public String prepareDetail( )
     {
+        this.rendered = true;
+        
         return null;//System.out.println( "Control Id: " + event.getComponent().getId() );
     }
 
-    public void prepareDetail2( javax.faces.event.ActionEvent event )
+    public void prepareDetail2( ActionEvent event )
     {
+        this.rendered = true;
         System.out.println( "Prepare: " + event.getComponent().getClientId( FacesContext.getCurrentInstance() ) );
     }
     
+    public String persistSchool( )
+    {
+        //handle pojo crud here
+       
+        
+        this.rendered = false;
+        
+        return null;
+    }
+
+    public boolean isRendered()
+    {
+        return rendered;
+    }
 }
