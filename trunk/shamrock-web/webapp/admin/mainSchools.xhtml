@@ -10,7 +10,9 @@
 
   <ui:define name="content">
 
-    <tr:form id="listWrapper">
+
+    
+    <tr:form id="listWrapper" >
 
       <tr:panelCaptionGroup captionText="Main Schools">
 
@@ -26,7 +28,7 @@
               <tr:outputText value="Edit" />
             </f:facet>
             <tr:commandLink id="prepareEdit" partialSubmit="true" immediate="true"
-              actionListener="#{schoolDetail.prepareDetail2}">
+              action="#{schoolDetail.prepareDetail}">
               <f:setPropertyActionListener value="#{school.id}" target="#{schoolDetail.selectedSchoolId}" />
               <f:setPropertyActionListener value="edit" target="#{schoolDetail.selectedSchoolAction}" />
               <tr:image id="edit" source="/images/edit.gif" border="0" />
@@ -37,8 +39,7 @@
             <f:facet name="header">
               <tr:outputText value="Del" />
             </f:facet>
-            <tr:commandLink id="prepareDel" partialSubmit="true" immediate="true"
-              action="#{schoolDetail.prepareDetail}">
+            <tr:commandLink id="prepareDel" partialSubmit="true" immediate="true" action="#{schoolDetail.prepareDetail}">
               <f:setPropertyActionListener value="#{school.id}" target="#{schoolDetail.selectedSchoolId}" />
               <f:setPropertyActionListener value="del" target="#{schoolDetail.selectedSchoolAction}" />
               <tr:image id="del" source="/images/delete.gif" border="0" />
@@ -61,38 +62,44 @@
 
         </tr:table>
 
-        <rich:spacer width="1" height="20" />
+        <tr:spacer width="1" height="20" />
 
-        <tr:commandLink id="prepareAdd" partialSubmit="true" text="add" action="#{mainSchoolList.prepareDetail}"
+        <tr:commandLink id="prepareAdd" partialSubmit="true" text="add" action="#{schoolDetail.prepareDetail}"
           immediate="true">
-          <f:setPropertyActionListener value="add" target="#{mainSchoolList.selectedSchoolAction}" />
+          <f:setPropertyActionListener value="add" target="#{schoolDetail.selectedSchoolAction}" />
         </tr:commandLink>
+
       </tr:panelCaptionGroup>
+
     </tr:form>
 
     <rich:spacer width="1" height="20" />
 
-    <tr:form id="detailWrapper">
+    <tr:panelGroupLayout id="schoolDetails"
+      partialTriggers=" :::::list:prepareEdit :::::list:prepareDel :::::prepareAdd persist">
 
-      <tr:panelGroupLayout id="schoolDetails" partialTriggers=":::::list:prepareEdit :::::list:prepareDel :::::prepareAdd">
-        <tr:panelCaptionGroup captionText="School Details">
-          <tr:panelFormLayout rows="7" labelWidth="20%" fieldWidth="67%">
+      <tr:form id="detailWrapper" >
+
+        <tr:panelCaptionGroup captionText="School Details" rendered="#{schoolDetail.rendered}">
+          <tr:panelFormLayout rows="7" labelWidth="20%" fieldWidth="67%" >
             <h:inputHidden id="selectedSchoolId" value="#{schoolDetail.selectedSchoolId}" />
             <h:inputHidden id="selectedSchoolAction" value="#{schoolDetail.selectedSchoolAction}" />
             <tr:inputText columns="30" label="Name" value="#{schoolDetail.selectedSchool.name}"
-              readOnly="#{schoolDetail.readOnly}" />
+              disabled="#{schoolDetail.readOnly}" />
             <tr:spacer width="1" height="10" />
             <tr:inputText columns="60" label="Description" value="#{schoolDetail.selectedSchool.description}"
-              readOnly="#{schoolDetail.readOnly}" />
+              disabled="#{schoolDetail.readOnly}" />
             <tr:spacer width="1" height="10" />
 
-            <tr:commandLink partialSubmit="true" text="#{schoolDetail.selectedSchoolAction}"
-              actionListener="#{schoolDetail.processSelectedSchool}" immediate="#{schoolDetail.readOnly}" />
+            <tr:commandLink partialSubmit="false" id="persist" text="#{schoolDetail.selectedSchoolAction}"
+              action="#{schoolDetail.persistSchool}" />
           </tr:panelFormLayout>
         </tr:panelCaptionGroup>
-      </tr:panelGroupLayout>
 
-    </tr:form>
+      </tr:form>
+
+    </tr:panelGroupLayout>
+
 
   </ui:define>
 </ui:composition>
