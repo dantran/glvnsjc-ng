@@ -17,8 +17,8 @@
          
          Submitting the school detail form triggers a full page reload ( ie no ajax )
      -->
-    
-    <tr:form id="listWrapper" >
+
+    <tr:form id="listWrapper">
 
       <tr:panelCaptionGroup captionText="#{base['school.main']}">
 
@@ -33,10 +33,9 @@
             <f:facet name="header">
               <tr:outputText value="#{base['crud.modify.short']}" />
             </f:facet>
-            <tr:commandLink id="prepareEdit" partialSubmit="true" immediate="true"
-              action="#{schoolDetail.prepareDetail}">
-              <f:setPropertyActionListener value="#{school.id}" target="#{schoolDetail.selectedSchoolId}" />
-              <f:setPropertyActionListener value="#{base['crud.modify']}" target="#{schoolDetail.selectedSchoolAction}" />
+            <tr:commandLink id="prepareEdit" partialSubmit="true" immediate="true" action="#{schoolDetail.selectSchool}">
+              <f:setPropertyActionListener value="#{school.id}" target="#{schoolDetail.id}" />
+              <f:setPropertyActionListener value="#{base['crud.modify']}" target="#{schoolDetail.action}" />
               <tr:image source="/images/edit.gif" border="0" />
             </tr:commandLink>
           </tr:column>
@@ -45,9 +44,9 @@
             <f:facet name="header">
               <tr:outputText value="#{base['crud.remove.short']}" />
             </f:facet>
-            <tr:commandLink id="prepareDel" partialSubmit="true" immediate="true" action="#{schoolDetail.prepareDetail}">
-              <f:setPropertyActionListener value="#{school.id}" target="#{schoolDetail.selectedSchoolId}" />
-              <f:setPropertyActionListener value="#{base['crud.remove']}" target="#{schoolDetail.selectedSchoolAction}" />
+            <tr:commandLink id="prepareDel" partialSubmit="true" immediate="true" action="#{schoolDetail.selectSchool}">
+              <f:setPropertyActionListener value="#{school.id}" target="#{schoolDetail.id}" />
+              <f:setPropertyActionListener value="#{base['crud.remove']}" target="#{schoolDetail.action}" />
               <tr:image source="/images/delete.gif" border="0" />
             </tr:commandLink>
           </tr:column>
@@ -70,9 +69,9 @@
 
         <tr:spacer width="1" height="20" />
 
-        <tr:commandLink id="prepareAdd" partialSubmit="true" text="#{base['crud.add']}" action="#{schoolDetail.prepareDetail}"
-          immediate="true">
-          <f:setPropertyActionListener value="#{base['crud.add']}" target="#{schoolDetail.selectedSchoolAction}" />
+        <tr:commandLink id="prepareAdd" partialSubmit="true" immediate="true" action="#{schoolDetail.selectSchool}">
+          <f:setPropertyActionListener value="#{base['crud.add']}" target="#{schoolDetail.action}" />
+          <h:outputText value="#{base['crud.add']}" />
         </tr:commandLink>
 
       </tr:panelCaptionGroup>
@@ -84,23 +83,23 @@
     <tr:panelGroupLayout id="schoolDetails"
       partialTriggers=" :::::list:prepareEdit :::::list:prepareDel :::::prepareAdd persist">
 
-      <tr:form id="detailWrapper" >
+      <tr:form id="detailWrapper">
 
         <tr:panelCaptionGroup captionText="#{base['school.detail']}" rendered="#{schoolDetail.rendered}">
-          <tr:panelFormLayout rows="7" labelWidth="20%" fieldWidth="67%" >
-            <h:inputHidden id="selectedSchoolId" value="#{schoolDetail.selectedSchoolId}" />
-            <h:inputHidden id="selectedSchoolAction" value="#{schoolDetail.selectedSchoolAction}" />
-            <tr:inputText required="true" columns="30" label="#{base['school.name']}" value="#{schoolDetail.selectedSchool.name}"
-              disabled="#{schoolDetail.readOnly}" />
+          <tr:panelFormLayout rows="7" labelWidth="20%" fieldWidth="67%">
+            <h:inputHidden id="selectedId" value="#{schoolDetail.id}" />
+            <h:inputHidden id="action" value="#{schoolDetail.action}" />
+            <tr:inputText required="true" columns="30" label="#{base['school.name']}"
+              value="#{schoolDetail.school.name}" disabled="#{schoolDetail.readOnly}" />
             <tr:spacer width="1" height="10" />
-            <tr:inputText columns="60" label="#{base['school.description']}" value="#{schoolDetail.selectedSchool.description}"
+            <tr:inputText columns="60" label="#{base['school.description']}" value="#{schoolDetail.school.description}"
               disabled="#{schoolDetail.readOnly}" />
-              
+
             <tr:spacer width="1" height="10" />
 
-            <tr:commandLink partialSubmit="false" id="persist" text="#{schoolDetail.selectedSchoolAction}"
+            <tr:commandLink partialSubmit="false" id="persist" text="#{schoolDetail.action}"
               action="#{schoolDetail.persistSchool}" />
-              
+
           </tr:panelFormLayout>
         </tr:panelCaptionGroup>
 

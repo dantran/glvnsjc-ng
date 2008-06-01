@@ -5,13 +5,13 @@
   version="1.2">
 
   <application>
-  
+
     <default-render-kit-id>org.apache.myfaces.trinidad.core</default-render-kit-id>
-    
+
     <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
-    
+
     <!--view-handler>com.sun.facelets.FaceletViewHandler</view-handler-->
-    
+
     <locale-config>
       <default-locale>en</default-locale>
       <supported-locale>de</supported-locale>
@@ -48,6 +48,17 @@
     <component-type>com.corejsf.validator.UIValidatorScript</component-type>
     <component-class>com.corejsf.validator.UIValidatorScript</component-class>
   </component>
+
+  <!-- Managed beans -->
+  <managed-bean>
+    <managed-bean-name>schoolDetail</managed-bean-name>
+    <managed-bean-class>org.glvnsjc.webapp.action.SchoolDetail</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+      <property-name>id</property-name>
+      <value>#{param.id}</value>
+    </managed-property>
+  </managed-bean>
 
   <navigation-rule>
     <from-view-id>*</from-view-id>
