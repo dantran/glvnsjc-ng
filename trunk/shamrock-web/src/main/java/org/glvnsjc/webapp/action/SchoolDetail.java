@@ -1,11 +1,9 @@
 package org.glvnsjc.webapp.action;
 
 import javax.annotation.Resource;
-import javax.faces.context.FacesContext;
 
 import org.glvnsjc.model.domain.School;
 import org.glvnsjc.service.SchoolManager;
-import org.glvnsjc.webapp.util.CrudType;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -16,102 +14,95 @@ public class SchoolDetail
 
     @Resource
     private SchoolManager schoolManager;
-    
+
     /////////////////////////////////////////////////////////////////////////////////////////
-    
-    private Long selectedSchoolId;
 
-    private String selectedSchoolAction;
+    private Long id;
 
-    private School selectedSchool;
-    
+    private String action;
+
+    private School school;
+
     private boolean rendered;
-   
-    ////////////////////////////////////////////////////////////////////////////////////////////
     
-    public School getSelectedSchool()
-    {
-        if ( selectedSchoolId != null )
-        {
-            return this.selectedSchool;
-        }
+    private boolean readOnly;
 
-        //even though we don't render the school detail but still need a dummy school for loading purpose
-        return new School();
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    public School getSchool()
+    {
+        return school;
     }
 
-    public void setSelectedSchool( School selectedSchool )
+    public void setSchool( School school )
     {
-        this.selectedSchool = selectedSchool;
+        this.school = school;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
-    public Long getSelectedSchoolId()
+    public Long getId()
     {
-        return selectedSchoolId;
+        return id;
     }
 
-    public void setSelectedSchoolId( Long selectedSchoolId )
+    public void setId( Long selectedSchoolId )
     {
-        this.selectedSchoolId = selectedSchoolId;
-        if ( selectedSchoolId.intValue() == 0 )
-        {
-            this.selectedSchool = new School();
-        }
-        else
-        {
-            this.selectedSchool = this.schoolManager.get( selectedSchoolId );
-        }
-
+        this.id = selectedSchoolId;
     }
-    
+
     ////////////////////////////////////////////////////////////////////////////////////////////
 
-    public String getSelectedSchoolAction()
+    public String getAction()
     {
-        return selectedSchoolAction;
+        return action;
     }
 
-    public void setSelectedSchoolAction( String selectedSchoolAction )
+    public void setAction( String selectedSchoolAction )
     {
-        this.selectedSchoolAction = selectedSchoolAction;
+        this.action = selectedSchoolAction;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////
     public boolean isRendered()
     {
         return rendered;
-    }    
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////
- 
+
     public boolean isReadOnly()
     {
-        //FIXME: need to get this from resource
-        
-        return "Remove".equals( this.selectedSchoolAction );
+        return readOnly;
     }
-    
-    /**
-     * Trigger the view to display selected school detail
-     * @return
-     */
-    public String prepareDetail( )
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    public String persistSchool()
     {
+        //handle pojo crud here
+
+        this.rendered = false;
+
+        return null;
+    }
+
+
+    public String selectSchool()
+    {
+        if ( id == null )
+        {
+            this.school = new School();
+        }
+        else
+        {
+            this.school = this.schoolManager.get( id );
+        }    
+        
+        this.readOnly = "Remove".equals( this.action );
+        
         this.rendered = true;
         
         return null;
-    }
-
-    public String persistSchool( )
-    {
-        //handle pojo crud here
-       
-        
-        this.rendered = false;
-        
-        return null;
-    }
-
-
+    }    
 
 }
