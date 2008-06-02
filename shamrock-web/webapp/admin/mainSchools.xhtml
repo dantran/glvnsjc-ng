@@ -33,12 +33,23 @@
             <f:facet name="header">
               <tr:outputText value="#{base['crud.modify.short']}" />
             </f:facet>
+            <tr:goLink  id="prepareEdit" destination="mainSchools.jspx?id=#{school.id}&amp;action=#{base['crud.modify.short']}" >
+              <tr:image source="/images/edit.gif" border="0" />
+            </tr:goLink>
+          </tr:column>
+          
+          <!--
+          <tr:column width="7">
+            <f:facet name="header">
+              <tr:outputText value="#{base['crud.modify.short']}" />
+            </f:facet>
             <tr:commandLink id="prepareEdit" partialSubmit="true" immediate="true" action="#{schoolDetail.selectSchool}">
               <f:setPropertyActionListener value="#{school.id}" target="#{schoolDetail.id}" />
               <f:setPropertyActionListener value="#{base['crud.modify']}" target="#{schoolDetail.action}" />
               <tr:image source="/images/edit.gif" border="0" />
             </tr:commandLink>
           </tr:column>
+          -->
 
           <tr:column width="7">
             <f:facet name="header">
