@@ -23,12 +23,12 @@
   </description>
 
   <dependencies>
-  
+
     <dependency>
       <groupId>org.glvnsjc.shamrock</groupId>
       <artifactId>shamrock-core</artifactId>
     </dependency>
-    
+
 
 
     <!-- ================================================================== -->
@@ -73,7 +73,7 @@
           <groupId>jspapi</groupId>
           <artifactId>jsp-api</artifactId>
         </exclusion>
-      </exclusions>          
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -144,21 +144,27 @@
       <version>${sitemesh.version}</version>
     </dependency>
 
-<!-- 
+
     <dependency>
       <groupId>org.apache.myfaces.orchestra</groupId>
       <artifactId>myfaces-orchestra-core15</artifactId>
       <version>1.0</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.myfaces.orchestra</groupId>
+          <artifactId>myfaces-orchestra-core</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
- -->
- 
+
+
   </dependencies>
 
 
   <build>
 
     <finalName>shamrock</finalName>
-    
+
     <resources>
       <resource>
         <directory>${basedir}/target/resources</directory>
@@ -167,7 +173,7 @@
         <directory>${basedir}/src/main/resources</directory>
       </resource>
     </resources>
-    
+
     <pluginManagement>
       <plugins>
         <plugin>

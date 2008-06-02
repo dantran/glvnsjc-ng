@@ -26,9 +26,9 @@
                 <ref bean="persistentContextConversationInterceptor" />
               </list>
             </property>
-            <property name="lifetime" value="manual" />
           </bean>
         </entry>
+
         <entry key="conversation.access">
           <bean class="org.apache.myfaces.orchestra.conversation.spring.SpringConversationScope">
             <property name="timeout" value="30" />
