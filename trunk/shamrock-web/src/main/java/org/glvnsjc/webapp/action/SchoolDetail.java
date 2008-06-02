@@ -1,9 +1,11 @@
 package org.glvnsjc.webapp.action;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.glvnsjc.model.domain.School;
 import org.glvnsjc.service.SchoolManager;
+import org.glvnsjc.webapp.util.RequestUtil;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -24,10 +26,29 @@ public class SchoolDetail
     private School school;
 
     private boolean rendered;
-    
+
     private boolean readOnly;
 
     ////////////////////////////////////////////////////////////////////////////////////////////
+
+    @PostConstruct
+    public void init()
+    {
+        String id = RequestUtil.getRequestParam( "id" );
+        Object action = RequestUtil.getRequestParam( "action" );
+
+        if ( id != null )
+        {
+            this.setId( Long.parseLong( id.toString() ) );
+        }
+
+        if ( action != null )
+        {
+            this.setAction( action.toString() );
+        }
+
+        selectSchool();
+    }
 
     public School getSchool()
     {
@@ -86,7 +107,6 @@ public class SchoolDetail
         return null;
     }
 
-
     public String selectSchool()
     {
         if ( id == null )
@@ -96,13 +116,21 @@ public class SchoolDetail
         else
         {
             this.school = this.schoolManager.get( id );
-        }    
-        
+        }
+
         this.readOnly = "Remove".equals( this.action );
-        
-        this.rendered = true;
-        
+
+        if ( this.action != null )
+        {
+            this.rendered = true;
+        }
+
         return null;
-    }    
+    }
+
+    public void setSchoolManager( SchoolManager schoolManager )
+    {
+        this.schoolManager = schoolManager;
+    }
 
 }

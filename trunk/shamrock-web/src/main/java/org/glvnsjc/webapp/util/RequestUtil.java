@@ -1,5 +1,6 @@
 package org.glvnsjc.webapp.util;
 
+import javax.faces.context.FacesContext;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -123,5 +124,14 @@ public final class RequestUtil
         }
         url.append( request.getContextPath() );
         return url.toString();
+    }
+    
+    public static String getRequestParam( String name )
+    {
+        FacesContext ctx = FacesContext.getCurrentInstance();
+        Object value = //ctx.getApplication().getVariableResolver().resolveVariable(ctx, name );
+            ctx.getExternalContext().getRequestParameterMap().get( name );
+            //ctx.getApplication().createValueBinding( "#{param." + name + "}" ).getValue( ctx );
+        return (String) value;
     }
 }
