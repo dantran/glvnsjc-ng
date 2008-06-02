@@ -70,10 +70,10 @@
       <version>${tomahawk.version}</version>
       <exclusions>
         <exclusion>
-          <groupId>commons-el</groupId>
-          <artifactId>commons-el</artifactId>
+          <groupId>jspapi</groupId>
+          <artifactId>jsp-api</artifactId>
         </exclusion>
-      </exclusions>
+      </exclusions>          
     </dependency>
 
     <dependency>
