@@ -68,6 +68,12 @@
       <groupId>org.apache.myfaces.tomahawk</groupId>
       <artifactId>tomahawk</artifactId>
       <version>${tomahawk.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-el</groupId>
+          <artifactId>commons-el</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
