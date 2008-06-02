@@ -144,6 +144,14 @@
       <version>${sitemesh.version}</version>
     </dependency>
 
+<!-- 
+    <dependency>
+      <groupId>org.apache.myfaces.orchestra</groupId>
+      <artifactId>myfaces-orchestra-core15</artifactId>
+      <version>1.0</version>
+    </dependency>
+ -->
+ 
   </dependencies>
 
 
@@ -332,46 +340,6 @@
     </profile>
 
 
-    <!--=============================================================
-      JPA Provider
-      ===============================================================-->
-    <profile>
-      <id>openjpa</id>
-      <activation>
-        <property>
-          <name>jpa</name>
-          <value>openjpa</value>
-        </property>
-      </activation>
-      <dependencies>
-        <dependency>
-          <groupId>org.apache.openjpa</groupId>
-          <artifactId>openjpa</artifactId>
-          <version>${openjpa.version}</version>
-        </dependency>
-      </dependencies>
-    </profile>
-
-    <profile>
-      <id>hibernate</id>
-      <activation>
-        <property>
-          <name>!jpa</name>
-        </property>
-      </activation>
-      <dependencies>
-        <dependency>
-          <groupId>org.hibernate</groupId>
-          <artifactId>hibernate-entitymanager</artifactId>
-        </dependency>
-        <dependency>
-          <groupId>concurrent</groupId>
-          <artifactId>concurrent</artifactId>
-          <scope>runtime</scope>
-        </dependency>
-
-      </dependencies>
-    </profile>
 
   </profiles>
 
