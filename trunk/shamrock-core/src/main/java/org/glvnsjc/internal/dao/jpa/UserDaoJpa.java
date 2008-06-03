@@ -7,6 +7,8 @@ import javax.persistence.Query;
 import javax.sql.DataSource;
 
 import org.glvnsjc.internal.dao.UserDao;
+import org.glvnsjc.model.domain.SchoolAdmin;
+import org.glvnsjc.model.domain.SystemAdmin;
 import org.glvnsjc.model.domain.User;
 import org.glvnsjc.util.SpringMessageSource;
 import org.springframework.context.support.MessageSourceAccessor;
@@ -100,4 +102,20 @@ public class UserDaoJpa
         return jdbcTemplate.queryForObject( "select password from " + "user" + " where name=?", String.class,
                                             username );
     }
+    
+    
+    @SuppressWarnings("unchecked")
+    public List<SchoolAdmin> getSchoolAdmins()
+    {
+        return this.entityManager.createQuery("select obj from " + SchoolAdmin.class.getName() + " obj" ) .getResultList();
+        
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<SystemAdmin> getSystemAdmins()
+    {
+        return this.entityManager.createQuery("select obj from " + SystemAdmin.class.getName() + " obj" ) .getResultList();
+        
+    }
+    
 }

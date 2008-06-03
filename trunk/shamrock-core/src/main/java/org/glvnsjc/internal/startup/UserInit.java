@@ -4,7 +4,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 
 import org.glvnsjc.model.domain.RoleType;
-import org.glvnsjc.model.domain.Staff;
+import org.glvnsjc.model.domain.SystemAdmin;
 import org.glvnsjc.model.domain.User;
 import org.glvnsjc.service.NameExistsException;
 import org.glvnsjc.service.PredefinedRoles;
@@ -36,7 +36,7 @@ public class UserInit
         }
         catch ( UsernameNotFoundException e )
         {
-            adminUser = new Staff();
+            adminUser = new SystemAdmin();
             adminUser.setEnabled( true );
             adminUser.setName( ADMIN_USER );
             adminUser.setPassword( ADMIN_USER );
