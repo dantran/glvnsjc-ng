@@ -72,18 +72,5 @@ public interface UserManager
      */
     List<SystemAdmin> getSystemAdmins();
     
-    /**
-     * save and make sure school admin as school admihn role
-     * @param schoolAdmin
-     * @return
-     */
-    SchoolAdmin saveSchoolAdmin( SchoolAdmin schoolAdmin )  throws NameExistsException;
-
-    /**
-     * save and make sure systemAdmin has Admin role
-     * @param systemAdmin
-     * @return
-     */
-    SystemAdmin saveSystemAdmin( SystemAdmin systemAdmin )  throws NameExistsException;
     
 }

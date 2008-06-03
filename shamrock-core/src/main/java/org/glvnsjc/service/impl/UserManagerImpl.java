@@ -7,8 +7,11 @@ import javax.jws.WebService;
 import javax.persistence.EntityExistsException;
 
 import org.glvnsjc.internal.dao.UserDao;
+import org.glvnsjc.model.domain.Instructor;
+import org.glvnsjc.model.domain.Parent;
 import org.glvnsjc.model.domain.RoleType;
 import org.glvnsjc.model.domain.SchoolAdmin;
+import org.glvnsjc.model.domain.Student;
 import org.glvnsjc.model.domain.SystemAdmin;
 import org.glvnsjc.model.domain.User;
 import org.glvnsjc.service.NameExistsException;
@@ -111,6 +114,7 @@ public class UserManagerImpl
 
         try
         {
+            setupImplicitRole( user );
             return dao.saveUser( user );
         }
         catch ( DataIntegrityViolationException e )
@@ -147,19 +151,6 @@ public class UserManagerImpl
         return (User) dao.loadUserByUsername( username );
     }
 
-    public SchoolAdmin saveSchoolAdmin( SchoolAdmin schoolAdmin )
-        throws NameExistsException
-    {
-        schoolAdmin.addRole( predefinedRoles.getRoleByType( RoleType.ROLE_SCHOOL_ADMIN ) );
-        return (SchoolAdmin) this.saveUser( schoolAdmin );
-    }
-
-    public SystemAdmin saveSystemAdmin( SystemAdmin systemAdmin )
-        throws NameExistsException
-    {
-        systemAdmin.addRole( predefinedRoles.getRoleByType( RoleType.ROLE_ADMIN ) );
-        return (SystemAdmin) this.saveUser( systemAdmin );
-    }
 
     public List<SchoolAdmin> getSchoolAdmins()
     {
@@ -169,5 +160,40 @@ public class UserManagerImpl
     public List<SystemAdmin> getSystemAdmins()
     {
         return dao.getSystemAdmins();
+    }
+    
+    private void setupImplicitRole( User user )
+    {
+        if ( user instanceof Student )
+        {
+            user.addRole( predefinedRoles.getRoleByType( RoleType.ROLE_STUDENT ) );
+            return;
+        }
+        
+        if ( user instanceof SystemAdmin )
+        {
+            user.addRole( predefinedRoles.getRoleByType( RoleType.ROLE_ADMIN ) );
+            return;
+        }
+        
+        if ( user instanceof SchoolAdmin )
+        {
+            user.addRole( predefinedRoles.getRoleByType( RoleType.ROLE_SCHOOL_ADMIN ) );
+            return;
+        }
+        
+        if ( user instanceof Instructor )
+        {
+            user.addRole( predefinedRoles.getRoleByType( RoleType.ROLE_TEACHER ) );
+            return;
+        }
+
+
+        if ( user instanceof Parent )
+        {
+            user.addRole( predefinedRoles.getRoleByType( RoleType.ROLE_PARENT ) );
+            return;
+        }
+        
     }
 }
