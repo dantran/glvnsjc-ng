@@ -2,11 +2,13 @@ package org.glvnsjc.internal.dao;
 
 import java.util.List;
 
+import org.glvnsjc.model.domain.SchoolAdmin;
+import org.glvnsjc.model.domain.SystemAdmin;
+import org.glvnsjc.model.domain.User;
 import org.springframework.security.userdetails.UserDetails;
 import org.springframework.security.userdetails.UsernameNotFoundException;
-import org.glvnsjc.model.domain.User;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * User Data Access Object (GenericDao) interface.
@@ -48,4 +50,9 @@ public interface UserDao
      */
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     String getUserPassword( String username );
+    
+    List<SchoolAdmin> getSchoolAdmins();
+    
+    List<SystemAdmin> getSystemAdmins();
+    
 }

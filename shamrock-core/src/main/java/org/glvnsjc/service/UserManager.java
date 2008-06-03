@@ -2,6 +2,8 @@ package org.glvnsjc.service;
 
 import java.util.List;
 
+import org.glvnsjc.model.domain.SchoolAdmin;
+import org.glvnsjc.model.domain.SystemAdmin;
 import org.glvnsjc.model.domain.User;
 import org.springframework.security.userdetails.UsernameNotFoundException;
 
@@ -57,4 +59,31 @@ public interface UserManager
      * @param userId the user's id
      */
     void removeUser( String userId );
+    
+    
+    /**
+     * @return List of available School administrator accounts
+     */
+    List<SchoolAdmin> getSchoolAdmins();
+
+    /**
+     * 
+     * @return List of available System administrator accounts
+     */
+    List<SystemAdmin> getSystemAdmins();
+    
+    /**
+     * save and make sure school admin as school admihn role
+     * @param schoolAdmin
+     * @return
+     */
+    SchoolAdmin saveSchoolAdmin( SchoolAdmin schoolAdmin )  throws NameExistsException;
+
+    /**
+     * save and make sure systemAdmin has Admin role
+     * @param systemAdmin
+     * @return
+     */
+    SystemAdmin saveSystemAdmin( SystemAdmin systemAdmin )  throws NameExistsException;
+    
 }

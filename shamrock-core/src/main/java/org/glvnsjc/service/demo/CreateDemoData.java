@@ -7,6 +7,7 @@ import org.glvnsjc.model.domain.Clazz;
 import org.glvnsjc.model.domain.Course;
 import org.glvnsjc.model.domain.Instructor;
 import org.glvnsjc.model.domain.School;
+import org.glvnsjc.model.domain.SchoolAdmin;
 import org.glvnsjc.model.domain.Student;
 import org.glvnsjc.model.domain.Term;
 import org.glvnsjc.service.GenericNameManager;
@@ -47,16 +48,24 @@ public class CreateDemoData
         throws NameExistsException
     {
         //Setup school infrastructure
+        
+        SchoolAdmin schoolAdmin = new SchoolAdmin();
+        schoolAdmin.setName( "schooladmin" );
+        schoolAdmin.setPassword( "admin" );
 
         School school = new School();
         school.setName( "MHT" );
         school.setDescription( "Giao Ly Viet Ngu at Most Holy Trinity" );
-        schoolManager.save( school );
+        school = schoolManager.save( school );
+        schoolAdmin.addSchool( school );
         
         school = new School();
         school.setName( "GLVNSJC" );
         school.setDescription( "Giao Ly Viet Ngu at St. Patrick" );
         school = schoolManager.save( school );
+        schoolAdmin.addSchool(school);
+        
+        this.userManager.saveUser( schoolAdmin );
 
         Instructor instructor1 = new Instructor();
         instructor1.setName( "instructor 1" );

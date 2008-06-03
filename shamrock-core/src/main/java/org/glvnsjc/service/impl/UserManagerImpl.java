@@ -7,8 +7,12 @@ import javax.jws.WebService;
 import javax.persistence.EntityExistsException;
 
 import org.glvnsjc.internal.dao.UserDao;
+import org.glvnsjc.model.domain.RoleType;
+import org.glvnsjc.model.domain.SchoolAdmin;
+import org.glvnsjc.model.domain.SystemAdmin;
 import org.glvnsjc.model.domain.User;
 import org.glvnsjc.service.NameExistsException;
+import org.glvnsjc.service.PredefinedRoles;
 import org.glvnsjc.service.UserManager;
 import org.glvnsjc.service.UserService;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -23,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author <a href="mailto:matt@raibledesigns.com">Matt Raible</a>
  */
 @WebService(serviceName = "UserService", endpointInterface = "org.glvnsjc.service.UserService")
-@Service( "userManager")
+@Service("userManager")
 @Transactional
 public class UserManagerImpl
     extends UniversalManagerImpl
@@ -34,6 +38,9 @@ public class UserManagerImpl
 
     @Resource
     private PasswordEncoder passwordEncoder;
+
+    @Resource
+    private PredefinedRoles predefinedRoles;
 
     /**
      * {@inheritDoc}
@@ -140,4 +147,27 @@ public class UserManagerImpl
         return (User) dao.loadUserByUsername( username );
     }
 
+    public SchoolAdmin saveSchoolAdmin( SchoolAdmin schoolAdmin )
+        throws NameExistsException
+    {
+        schoolAdmin.addRole( predefinedRoles.getRoleByType( RoleType.ROLE_SCHOOL_ADMIN ) );
+        return (SchoolAdmin) this.saveUser( schoolAdmin );
+    }
+
+    public SystemAdmin saveSystemAdmin( SystemAdmin systemAdmin )
+        throws NameExistsException
+    {
+        systemAdmin.addRole( predefinedRoles.getRoleByType( RoleType.ROLE_ADMIN ) );
+        return (SystemAdmin) this.saveUser( systemAdmin );
+    }
+
+    public List<SchoolAdmin> getSchoolAdmins()
+    {
+        return dao.getSchoolAdmins();
+    }
+
+    public List<SystemAdmin> getSystemAdmins()
+    {
+        return dao.getSystemAdmins();
+    }
 }
