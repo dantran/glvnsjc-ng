@@ -4,15 +4,16 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
-import javax.faces.context.FacesContext;
 
+import org.apache.myfaces.orchestra.conversation.annotations.ConversationName;
 import org.glvnsjc.model.domain.School;
 import org.glvnsjc.service.SchoolManager;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 @Component
-@Scope("request")
+@Scope("conversation.access")
+@ConversationName("mainSchools")
 public class MainSchoolList
     extends BasePage
 {

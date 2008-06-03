@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("request")
-//@ConversationName("schoolDetail")
 public class SchoolDetail
 {
 
