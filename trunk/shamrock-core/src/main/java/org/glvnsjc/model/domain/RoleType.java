@@ -8,7 +8,7 @@ public enum RoleType {
     
     ROLE_BRANCH_ADMIN,
     
-    ROLE_TEACHER,
+    ROLE_INSTRUCTOR,
     
     ROLE_STUDENT,
     

@@ -184,7 +184,7 @@ public class UserManagerImpl
         
         if ( user instanceof Instructor )
         {
-            user.addRole( predefinedRoles.getRoleByType( RoleType.ROLE_TEACHER ) );
+            user.addRole( predefinedRoles.getRoleByType( RoleType.ROLE_INSTRUCTOR ) );
             return;
         }
 

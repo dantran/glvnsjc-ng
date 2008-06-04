@@ -246,4 +246,8 @@ public abstract class User
         this.enabled = enabled;
     }
     
+    public boolean isInRole( RoleType roleType )
+    {
+        return this.getRoles().contains( roleType.name() );
+    }
 }
