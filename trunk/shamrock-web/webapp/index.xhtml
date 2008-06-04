@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -11,70 +9,7 @@
   >
 
   <ui:composition template="/templates/main.xhtml">
-
-    <ui:param name="pageid" value="page1" />
-
-    <ui:define name="window-title">
-      <h:outputText value="Template Window Title" />
-    </ui:define>
-
-    <head>
-    <title>Insert title here</title>
-    </head>
-
-    <ui:define name="content">
-
-      <tr:form>
-      <tr:panelCaptionGroup captionText="The Caption Text">
-        <tr:panelGroupLayout layout="vertical">
-          <tr:outputText value="Hello outputText" />
-          <tr:outputText value="${testView.testString}" />
-        </tr:panelGroupLayout>
-      </tr:panelCaptionGroup>
-      </tr:form>
-      
-      
-    <p>Here is an example of default tab panel with 3 tabs.</p>
-    <rich:tabPanel>
-        <rich:tab label="First">
-            Here is tab #1
-        </rich:tab>
-        <rich:tab label="Second">
-            Here is tab #2
-        </rich:tab>
-        <rich:tab label="Third">
-            Here is tab #3
-        </rich:tab>
-    </rich:tabPanel>
-    <br/><br/>
-    <p>Here is an example of tab panel switched in "ajax" style. Second tab is disabled.</p>
-    <rich:tabPanel switchType="ajax">
-        <rich:tab label="First">
-            Here is tab #1
-        </rich:tab>
-        <rich:tab label="Second" disabled="true">
-            Here is tab #2
-        </rich:tab>
-        <rich:tab label="Third">
-            Here is tab #3
-        </rich:tab>
-    </rich:tabPanel>
-    <br/><br/>
-    <p>Here is an example of tab panel switched completely on client.</p>
-    <rich:tabPanel switchType="client">
-        <rich:tab label="First">
-            Here is tab #1
-        </rich:tab>
-        <rich:tab label="Second">
-            Here is tab #2
-        </rich:tab>
-        <rich:tab label="Third">
-            Here is tab #3
-        </rich:tab>
-    </rich:tabPanel>
-      
-    </ui:define>
-
+ 
   </ui:composition>
 
 </html>

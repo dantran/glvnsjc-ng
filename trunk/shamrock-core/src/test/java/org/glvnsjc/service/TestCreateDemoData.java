@@ -35,6 +35,6 @@ public class TestCreateDemoData
         assertEquals( 4, schools.size() );
         
         List<User> users = userManager.getUsers();
-        assertEquals( 5, users.size() );
+        assertEquals( 6, users.size() );
     }
 }
