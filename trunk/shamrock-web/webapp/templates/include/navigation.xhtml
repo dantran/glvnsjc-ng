@@ -6,26 +6,26 @@
   <rich:panel styleClass="panel_menu" bodyClass="rich-laguna-panel-no-header">
     <rich:panelBar selectedPanel="#{navigator.currentComponent.group}" width="100%" height="200px">
 
-      <rich:panelBarItem id="system" label="System">
+      <rich:panelBarItem id="system" label="System" rendered="#{currentUser.systemAdmin}" >
         <ui:include src="/templates/include/components-group.xhtml">
           <ui:param name="components" value="#{navigator.systemMenu}" />
         </ui:include>
       </rich:panelBarItem>
 
-      <rich:panelBarItem id="school" label="School">
+      <rich:panelBarItem id="school" label="School" rendered="#{currentUser.schoolAdmin}" >
         <ui:include src="/templates/include/components-group.xhtml">
           <ui:param name="components" value="#{navigator.schoolMenu}" />
         </ui:include>
       </rich:panelBarItem>
 
-      <rich:panelBarItem id="instructor" label="Instructor">
+      <rich:panelBarItem id="instructor" label="Instructor" rendered="#{currentUser.instructor}" >
         <ui:include src="/templates/include/components-group.xhtml">
           <ui:param name="components" value="#{navigator.instructorMenu}" />
         </ui:include>
       </rich:panelBarItem>
 
 
-      <rich:panelBarItem id="student" label="Student">
+      <rich:panelBarItem id="student" label="Student" rendered="#{currentUser.student}" >
         <ui:include src="/templates/include/components-group.xhtml">
           <ui:param name="components" value="#{navigator.studentMenu}" />
         </ui:include>
