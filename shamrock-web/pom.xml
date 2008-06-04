@@ -185,15 +185,15 @@
 
     <plugins>
 
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>tomcat-maven-plugin</artifactId>
-          <version>1.0-alpha-1</version>
-          <configuration>
-            <url>http://glvnsjc.homedns.org:8080/manager</url>
-            <server>shamrock-demo-tomcat</server>
-          </configuration>
-        </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>tomcat-maven-plugin</artifactId>
+        <version>1.0-alpha-1</version>
+        <configuration>
+          <url>http://glvnsjc.homedns.org:8080/manager</url>
+          <server>shamrock-demo-tomcat</server>
+        </configuration>
+      </plugin>
 
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
