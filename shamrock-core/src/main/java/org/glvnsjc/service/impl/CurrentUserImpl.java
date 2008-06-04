@@ -45,6 +45,24 @@ public class CurrentUserImpl
         
         return getUserDetails().getRoles().contains( role );
     }
+    
+    public boolean isSystemAdmin()
+    {
+        return isInRole( RoleType.ROLE_ADMIN );
+    }
 
+    public boolean isSchoolAdmin()
+    {
+        return isInRole( RoleType.ROLE_SCHOOL_ADMIN );
+    }    
 
+    public boolean isInstructor()
+    {
+        return isInRole( RoleType.ROLE_INSTRUCTOR );
+    }    
+
+    public boolean isStudent()
+    {
+        return isInRole( RoleType.ROLE_STUDENT);
+    }    
 }

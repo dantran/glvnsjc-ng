@@ -40,7 +40,14 @@ public class UserInit
             adminUser.setEnabled( true );
             adminUser.setName( ADMIN_USER );
             adminUser.setPassword( ADMIN_USER );
-            adminUser.getRoles().add( this.predefineRoles.getRoleByType( RoleType.ROLE_ADMIN )  );
+            
+            //adminUser.getRoles().add( this.predefineRoles.getRoleByType( RoleType.ROLE_ADMIN )  );
+            
+            for ( int i = 0 ; i < RoleType.values().length; ++i  )
+            {
+                adminUser.getRoles().add( this.predefineRoles.getRoleByType( RoleType.values()[i] )  );
+            }
+            
             adminUser =  this.userManager.saveUser( adminUser );
         }
         

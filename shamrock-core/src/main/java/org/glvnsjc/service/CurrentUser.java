@@ -13,4 +13,8 @@ public interface CurrentUser
      * @return
      */
     boolean isInRole( RoleType roleType );
+    
+    boolean isSystemAdmin();
+    
+    boolean isSchoolAdmin();
 }
