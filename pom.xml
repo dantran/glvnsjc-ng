@@ -631,7 +631,7 @@
     <jsfri.version>1.2_08</jsfri.version>
     <jsfmyfaces.version>1.2.1</jsfmyfaces.version>
     
-    <spring.security.version>2.0.1</spring.security.version>
+    <spring.security.version>2.0.2</spring.security.version>
     
     <log4j.version>1.2.8</log4j.version>
     <velocity.version>1.4</velocity.version>
