@@ -2,6 +2,7 @@ package org.glvnsjc.webapp.action;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
+import javax.faces.event.ActionEvent;
 
 import org.glvnsjc.model.domain.School;
 import org.glvnsjc.service.SchoolManager;
@@ -106,6 +107,11 @@ public class SchoolDetail
 
         return null;
     }
+    
+    public void persistSchoolListener( ActionEvent event )
+    {
+        this.persistSchool();
+    }
 
     public String selectSchool()
     {
@@ -126,6 +132,11 @@ public class SchoolDetail
         }
 
         return null;
+    }
+    
+    public void selectSchoolListener( ActionEvent event )
+    {
+        this.selectSchool();
     }
 
     public void setSchoolManager( SchoolManager schoolManager )
