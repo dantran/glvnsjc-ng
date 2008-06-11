@@ -211,8 +211,12 @@
 
       <plugin>
         <artifactId>maven-eclipse-plugin</artifactId>
+                  <version>2.5.1</version>
+        
 
         <configuration>
+
+          <wtpversion>2.0</wtpversion>
 
           <additionalProjectFacets>
             <jst.jsf>1.2</jst.jsf>

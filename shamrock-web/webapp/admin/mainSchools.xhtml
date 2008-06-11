@@ -117,6 +117,62 @@
       </tr:form>
 
     </tr:panelGroupLayout>
+    
+    <tr:panelGroupLayout>
+      <tr:form>
+          <tr:panelTabbed >
+            <tr:showDetailItem text="Tab 1">
+              <tr:panelHeader text="Header 1">
+                <tr:panelFormLayout>
+                  <tr:inputText readOnly="true" label="Label 1-1" value="Value"
+                                styleClass="AFFieldTextMarker"/>
+                  <tr:inputText readOnly="true" label="Date/Time from last partial refresh"
+                                value="#{date.currentDate}" styleClass="AFFieldTextMarker">
+                    <tr:convertDateTime pattern="EEEEEEEEE, ddMMMyyyy, HH:mm:ss z"/>
+                  </tr:inputText>
+                </tr:panelFormLayout>
+              </tr:panelHeader>
+            </tr:showDetailItem>
+            <tr:showDetailItem text="Tab 2">
+              <tr:panelHeader text="Header 2">
+                <tr:panelFormLayout>
+                  <tr:inputText readOnly="true" label="Label 2-1" value="Value"
+                                styleClass="AFFieldTextMarker"/>
+                  <tr:inputText readOnly="true" label="Date/Time from last partial refresh"
+                                value="#{date.currentDate}" styleClass="AFFieldTextMarker">
+                    <tr:convertDateTime pattern="EEEEEEEEE, ddMMMyyyy, HH:mm:ss z"/>
+                  </tr:inputText>
+                </tr:panelFormLayout>
+              </tr:panelHeader>
+            </tr:showDetailItem>
+            <tr:showDetailItem text="Tab 3" disclosed="true">
+              <tr:panelHeader text="Header 3">
+                <tr:panelFormLayout>
+                  <tr:inputText readOnly="true" label="Label 3-1" value="Value"
+                                styleClass="AFFieldTextMarker"/>
+                  <tr:inputText readOnly="true" label="Date/Time from last partial refresh"
+                                value="#{date.currentDate}" styleClass="AFFieldTextMarker">
+                    <tr:convertDateTime pattern="EEEEEEEEE, ddMMMyyyy, HH:mm:ss z"/>
+                  </tr:inputText>
+                </tr:panelFormLayout>
+              </tr:panelHeader>
+            </tr:showDetailItem>
+            <tr:showDetailItem text="Tab 4" disabled="true"/>
+            <tr:showDetailItem text="Tab 5">
+              <tr:panelHeader text="Header 5">
+                <tr:panelFormLayout>
+                  <tr:inputText readOnly="true" label="Label 5-1" value="Value"
+                                styleClass="AFFieldTextMarker"/>
+                  <tr:inputText readOnly="true" label="Date/Time from last partial refresh"
+                                value="#{date.currentDate}" styleClass="AFFieldTextMarker">
+                    <tr:convertDateTime pattern="EEEEEEEEE, ddMMMyyyy, HH:mm:ss z"/>
+                  </tr:inputText>
+                </tr:panelFormLayout>
+              </tr:panelHeader>
+            </tr:showDetailItem>
+          </tr:panelTabbed>      
+      </tr:form>
+    </tr:panelGroupLayout>
 
 
   </ui:define>
