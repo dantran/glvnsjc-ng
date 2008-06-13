@@ -9,7 +9,6 @@
 
   <ui:define name="content">
 
-
     <h:form id="list">
 
       <rich:dataTable value="#{mainSchoolList.mainSchools}" var="school" width="680" rows="25">
@@ -72,34 +71,51 @@
           <h:outputText value="School Details"></h:outputText>
         </f:facet>
         <h:form>
-          <rich:tabPanel switchType="client" height="200" >
-            <rich:tab label="Main" >
+          <rich:tabPanel switchType="client" height="200">
+            <rich:tab label="Main">
+
+<style type="text/css">
+.rich-message-marker img {
+  padding-right: 7px;
+}
+.rich-message-label {
+  color: red;
+}
+</style>
               <h:panelGrid columns="2" labelWidth="20%" fieldWidth="67%">
-                <h:inputHidden id="selectedSchoolId" value="#{schoolDetail.id}" />
-                <h:inputHidden id="selectedSchoolAction" value="#{schoolDetail.action}" />
                 <h:outputText value="#{base['school.name']}" />
-                <h:inputText required="true" size="30" label="Name" value="#{schoolDetail.school.name}"
+                <h:panelGrid columns="2">
+                <h:inputText id="name" required="true" size="30" label="Name" value="#{schoolDetail.school.name}"
                   readonly="#{schoolDetail.readOnly}" disabled="#{schoolDetail.readOnly}" />
+                <rich:message for="name" />
+              </h:panelGrid>
 
                 <h:outputText value="#{base['school.description']}" />
                 <h:inputText size="60" label="Description" value="#{schoolDetail.school.description}"
                   readonly="#{schoolDetail.readOnly}" disabled="#{schoolDetail.readOnly}" />
               </h:panelGrid>
+              
+              <h:inputHidden id="selectedSchoolId" value="#{schoolDetail.id}" />
+              <h:inputHidden id="selectedSchoolAction" value="#{schoolDetail.action}" />
             </rich:tab>
-            <rich:tab label="Address" disabled="#{schoolDetail.readOnly}" >
+            <rich:tab label="Address" disabled="#{schoolDetail.readOnly}">
             </rich:tab>
-            <rich:tab label="Administrators" disabled="#{schoolDetail.readOnly}" >
-              <rich:listShuttle sourceValue="#{userManager.schoolAdmins}"  var="items"
-                listHeight="300" listWidth="200" sourceCaptionLabel="Available Items"
-                targetCaptionLabel="Currently Active Items" >
+            <!-- 
+            <rich:tab label="Administrators" disabled="#{schoolDetail.readOnly}">
+              <rich:listShuttle sourceValue="#{userManager.schoolAdmins}" var="items" listHeight="300" listWidth="200"
+                sourceCaptionLabel="Available Items" targetCaptionLabel="Currently Active Items">
                 <rich:column>
                   <h:outputText value="#{items.name}"></h:outputText>
                 </rich:column>
               </rich:listShuttle>
             </rich:tab>
+ -->
           </rich:tabPanel>
           <rich:spacer width="1" height="10" />
-          <a4j:commandLink value="#{schoolDetail.action}" immediate="#{schoolDetail.readOnly}" action="#{schoolDetail.persistSchool}" />
+          <a4j:commandLink value="#{schoolDetail.action}" immediate="#{schoolDetail.readOnly}"
+            action="#{schoolDetail.persistSchool}">
+            <a4j:actionparam name="action" value="#{base['crud.add']}" assignTo="#{schoolDetail.action}" />
+          </a4j:commandLink>
         </h:form>
       </rich:panel>
     </a4j:outputPanel>
