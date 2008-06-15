@@ -114,7 +114,7 @@
           <rich:spacer width="1" height="10" />
           <a4j:commandLink value="#{schoolDetail.action}" immediate="#{schoolDetail.readOnly}"
             action="#{schoolDetail.persistSchool}">
-            <a4j:actionparam name="action" value="#{base['crud.add']}" assignTo="#{schoolDetail.action}" />
+            <a4j:actionparam name="action" value="#{schoolDetail.action}" assignTo="#{schoolDetail.action}" />
           </a4j:commandLink>
         </h:form>
       </rich:panel>
