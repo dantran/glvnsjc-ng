@@ -77,59 +77,16 @@
     </param-value>
   </context-param>
 
-  <!-- =========================================================================== 
-    Trinidad settings                             
-    =========================================================================== -->
-  <context-param>
-    <param-name>org.apache.myfaces.trinidad.USE_APPLICATION_VIEW_CACHE</param-name>
-    <param-value>false</param-value>
-  </context-param>
-
-  <context-param>
-    <param-name>org.apache.myfaces.trinidad.CHECK_FILE_MODIFICATION</param-name>
-    <param-value>false</param-value>
-  </context-param>
-
-  <context-param>
-    <param-name>org.apache.myfaces.trinidad.CHANGE_PERSISTENCE</param-name>
-    <param-value>session</param-value>
-  </context-param>
-
-  <context-param>
-    <param-name>org.apache.myfaces.trinidad.ALTERNATE_VIEW_HANDLER</param-name>
-    <param-value>com.sun.facelets.FaceletViewHandler</param-value>
-  </context-param>
-
-  <servlet>
-    <servlet-name>trinidadResourceServlet</servlet-name>
-    <servlet-class>org.apache.myfaces.trinidad.webapp.ResourceServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>trinidadResourceServlet</servlet-name>
-    <url-pattern>/adf/*</url-pattern>
-  </servlet-mapping>
-
-  <filter>
-    <filter-name>trinidad</filter-name>
-    <filter-class>org.apache.myfaces.trinidad.webapp.TrinidadFilter</filter-class>
-  </filter>
-
-  <filter-mapping>
-    <filter-name>trinidad</filter-name>
-    <servlet-name>facesServlet</servlet-name>
-  </filter-mapping>
-
   <!-- =========================================================================== --> 
   <!--  Richfaces settings                                                         -->                             
   <!-- =========================================================================== -->
   
-  <!-- 
+  
   <context-param>
     <param-name>org.ajax4jsf.VIEW_HANDLERS</param-name>
     <param-value>com.sun.facelets.FaceletViewHandler</param-value>
   </context-param>
-  -->
+  
   <context-param>
     <param-name>org.richfaces.SKIN</param-name>
     <param-value>blueSky</param-value>
