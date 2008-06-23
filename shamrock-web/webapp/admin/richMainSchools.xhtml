@@ -74,29 +74,31 @@
           <rich:tabPanel switchType="client" height="200">
             <rich:tab label="Main">
 
-<style type="text/css">
+              <style type="text/css">
 .rich-message-marker img {
-  padding-right: 7px;
+	padding-right: 7px;
 }
+
 .rich-message-label {
-  color: red;
+	color: red;
 }
 </style>
               <h:panelGrid columns="2" labelWidth="20%" fieldWidth="67%">
+
                 <h:outputText value="#{base['school.name']}" />
                 <h:panelGrid columns="2">
-                <h:inputText id="name" required="true" size="30" label="Name" value="#{schoolDetail.school.name}"
-                  readonly="#{schoolDetail.readOnly}" disabled="#{schoolDetail.readOnly}" />
-                <rich:message for="name" />
-              </h:panelGrid>
+                  <h:inputText id="name" required="true" size="30" label="Name" value="#{schoolDetail.school.name}"
+                    readonly="#{schoolDetail.readOnly}" disabled="#{schoolDetail.readOnly}" />
+                  <rich:message for="name" />
+                </h:panelGrid>
 
                 <h:outputText value="#{base['school.description']}" />
-                <h:inputText size="60" label="Description" value="#{schoolDetail.school.description}"
+                <h:inputText id="description" size="60" label="Description" value="#{schoolDetail.school.description}"
                   readonly="#{schoolDetail.readOnly}" disabled="#{schoolDetail.readOnly}" />
+
+                <h:inputHidden id="selectedSchoolId" value="#{schoolDetail.id}" />
+                <h:inputHidden id="selectedSchoolAction" value="#{schoolDetail.action}" />
               </h:panelGrid>
-              
-              <h:inputHidden id="selectedSchoolId" value="#{schoolDetail.id}" />
-              <h:inputHidden id="selectedSchoolAction" value="#{schoolDetail.action}" />
             </rich:tab>
             <rich:tab label="Address" disabled="#{schoolDetail.readOnly}">
             </rich:tab>
