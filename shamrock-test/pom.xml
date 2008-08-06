@@ -11,6 +11,27 @@
 
   <name>shamrock-test</name>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>1.5.6-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+   
+  <repositories>
+    <repository>
+      <id>snapshots</id>
+      <name>Apache Snapshots</name>
+      <url>http://snapshots.repository.codehaus.org/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
    
   <build>
     <plugins>
