@@ -609,6 +609,7 @@
   <modules>
     <module>shamrock-core</module>
     <module>shamrock-web</module>
+    <module>shamrock-docs</module>
   </modules>
 
   <!-- ================================================================================ -->
