@@ -12,14 +12,14 @@ import org.glvnsjc.model.NamedEntity;
 
 @Entity
 public class Branch
-extends NamedEntity
+    extends NamedEntity
 {
     private static final long serialVersionUID = 1L;
-    
+
     @ManyToOne
-    @JoinColumn( nullable=false)
+    @JoinColumn(nullable = false)
     private School parentSchool;
-    
+
     public School getParentSchool()
     {
         return parentSchool;
@@ -29,7 +29,7 @@ extends NamedEntity
     {
         this.parentSchool = parentSchool;
     }
-    
+
     @OneToMany
     private Set<Instructor> instructors = new HashSet<Instructor>();
 
@@ -42,7 +42,7 @@ extends NamedEntity
     {
         this.instructors = instructors;
     }
-    
+
     public void addInstructor( Instructor instructor )
     {
         this.instructors.add( instructor );
