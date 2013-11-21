@@ -32,7 +32,7 @@
 
 
     <!-- ================================================================== -->
-    <!--  WEB                                                               -->
+    <!-- WEB -->
     <!-- ================================================================== -->
 
     <dependency>
@@ -102,11 +102,8 @@
 
     </dependency>
 
-    <dependency>
-      <groupId>com.corejsf</groupId>
-      <artifactId>corejsf-validator</artifactId>
-      <version>${corejsf.validator.version}</version>
-    </dependency>
+    <!-- <dependency> <groupId>com.corejsf</groupId> <artifactId>corejsf-validator</artifactId> <version>${corejsf.validator.version}</version> 
+      </dependency> -->
 
     <dependency>
       <groupId>javax.servlet.jsp</groupId>
@@ -183,7 +180,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>tomcat-maven-plugin</artifactId>
-        <version>1.0-alpha-1</version>
         <configuration>
           <url>http://glvnsjc.homedns.org:8080/manager</url>
           <server>shamrock-demo-tomcat</server>
@@ -202,32 +198,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-
-      <plugin>
-        <artifactId>maven-eclipse-plugin</artifactId>
-                  <version>2.5.1</version>
-        
-
-        <configuration>
-
-          <wtpversion>2.0</wtpversion>
-
-          <additionalProjectFacets>
-            <jst.jsf>1.2</jst.jsf>
-          </additionalProjectFacets>
-
-          <additionalProjectnatures>
-            <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
-          </additionalProjectnatures>
-
-          <additionalBuildcommands>
-            <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
-          </additionalBuildcommands>
-
-          <wtpContextName>${artifactId}</wtpContextName>
-
-        </configuration>
       </plugin>
 
       <plugin>
@@ -266,7 +236,7 @@
 
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.1</version>
+        <version>1.7</version>
         <executions>
           <execution>
             <id>create-build-properties</id>
@@ -278,10 +248,8 @@
               <tasks>
                 <mkdir dir="${secondary.resource.directory}" />
                 <tstamp />
-                <!--  
-                  blanklines are intended to force eclipse formatter leave the properties
-                  alone, we dont want all properties in one line
-                -->
+                <!-- blanklines are intended to force eclipse formatter leave the properties alone, we dont want all properties 
+                  in one line -->
                 <echo file="${build.properties.file}">
                   version=${project.version}
 
@@ -301,9 +269,7 @@
 
   <profiles>
 
-    <!--=============================================================
-      JSF Provider
-      ===============================================================-->
+    <!--============================================================= JSF Provider =============================================================== -->
 
     <profile>
       <id>jsfri</id>
@@ -347,8 +313,6 @@
         </dependency>
       </dependencies>
     </profile>
-
-
 
   </profiles>
 
