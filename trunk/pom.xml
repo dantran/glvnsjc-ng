@@ -84,6 +84,7 @@
     </repository>
   </repositories>
 
+
   <!-- ================================================================================ -->
   <!-- SCM                                                                              -->
   <!-- ================================================================================ -->
@@ -193,7 +194,12 @@
         <version>${hibernate.core.version}</version>
       </dependency>
 
-
+      <dependency>
+        <groupId>javax.transaction</groupId>
+        <artifactId>jta</artifactId>
+        <version>1.1</version>
+      </dependency>
+      
       <!-- ================================================================================ -->
       <!-- Container                                                                        -->
       <!-- ================================================================================ -->
@@ -364,18 +370,6 @@
         </plugin>
 
         <plugin>
-          <artifactId>maven-eclipse-plugin</artifactId>
-          <version>2.5.1</version>
-          <configuration>
-            <workspace>${basedir}</workspace>
-            <wtpversion>2.0</wtpversion>
-            <workspaceCodeStylesURL>
-              http://svn.apache.org/repos/asf/maven/plugins/trunk/maven-eclipse-plugin/src/optional/eclipse-config/maven-styles.xml
-            </workspaceCodeStylesURL>
-          </configuration>
-        </plugin>
-
-        <plugin>
           <artifactId>maven-site-plugin</artifactId>
           <configuration>
             <inputEncoding>utf-8</inputEncoding>
@@ -384,7 +378,7 @@
 
         <plugin>
           <artifactId>maven-release-plugin</artifactId>
-          <version>2.0-beta-7</version>
+          <version>2.2.3</version>
           <configuration>
             <tagBase>https://glvnsjc.dev.java.net/svn/glvnsjc/tags</tagBase>
             <preparationGoals>clean</preparationGoals>
@@ -475,6 +469,32 @@
           </configuration>
         </plugin>
 
+        <!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build 
+          itself. -->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <pluginExecutionFilter>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <versionRange>[1.7,)</versionRange>
+                    <goals>
+                      <goal>run</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <ignore></ignore>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
 
       </plugins>
 
